@@ -1,5 +1,5 @@
 import React from 'react';
-import { Book, Package, Code, Users, ChevronRight, CheckCircle, Terminal } from 'lucide-react';
+import { Package, Code, Users, ChevronRight, CheckCircle, Terminal } from 'lucide-react';
 
 const SquaredComputingWebsite = () => {
   return (

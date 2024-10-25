@@ -10,13 +10,13 @@ const SquaredComputingWebsite = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
               <CircuitBoard className="text-blue-600 h-8 w-8" />
-              <span className="text-xl font-bold">Squared Computing</span>
+              <span className="text-xl font-bold text-gray-900">Squared Computing</span>
             </div>
             <div className="hidden md:flex space-x-8">
-              <a href="#services" className="hover:text-blue-600">Services</a>
-              <a href="#products" className="hover:text-blue-600">Products</a>
-              <a href="#about" className="hover:text-blue-600">About</a>
-              <a href="#contact" className="hover:text-blue-600">Contact</a>
+              <a href="#services" className="text-gray-700 hover:text-blue-600">Services</a>
+              <a href="#products" className="text-gray-700 hover:text-blue-600">Products</a>
+              <a href="#about" className="text-gray-700 hover:text-blue-600">About</a>
+              <a href="#contact" className="text-gray-700 hover:text-blue-600">Contact</a>
             </div>
           </div>
         </nav>
@@ -27,10 +27,10 @@ const SquaredComputingWebsite = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-5xl font-bold mb-6">
+              <h1 className="text-5xl font-bold mb-6 text-gray-900">
                 Expert Firmware Development Consulting
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-gray-700 mb-8">
                 We help businesses bring their hardware to life with custom firmware solutions and expert consulting services.
               </p>
               <div className="flex space-x-4">
@@ -44,7 +44,7 @@ const SquaredComputingWebsite = () => {
             </div>
             <div className="bg-white p-8 rounded-xl shadow-lg">
               <Bot className="h-16 w-16 text-blue-600 mb-6" />
-              <h3 className="text-2xl font-semibold mb-4">Our Expertise</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Our Expertise</h3>
               <div className="space-y-4">
                 {[
                   'Embedded Systems Development',
@@ -54,7 +54,7 @@ const SquaredComputingWebsite = () => {
                 ].map((service) => (
                   <div key={service} className="flex items-center space-x-3">
                     <CheckCircle className="text-green-500 h-5 w-5" />
-                    <span>{service}</span>
+                    <span className="text-gray-700">{service}</span>
                   </div>
                 ))}
               </div>
@@ -66,7 +66,7 @@ const SquaredComputingWebsite = () => {
       {/* Services Section */}
       <section id="services" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Firmware Development Services</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Firmware Development Services</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
@@ -87,8 +87,8 @@ const SquaredComputingWebsite = () => {
             ].map((service) => (
               <div key={service.title} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">{service.title}</h3>
+                <p className="text-gray-700">{service.description}</p>
               </div>
             ))}
           </div>
@@ -98,14 +98,14 @@ const SquaredComputingWebsite = () => {
       {/* Products Section */}
       <section id="products" className="py-20 px-4 bg-gray-100">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Our Products</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Our Products</h2>
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="p-8">
               <div className="flex items-center space-x-4 mb-6">
                 <Package className="h-10 w-10 text-blue-600" />
-                <h3 className="text-2xl font-bold">Parcel Point</h3>
+                <h3 className="text-2xl font-bold text-gray-900">Parcel Point</h3>
               </div>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-700 mb-6">
                 A comprehensive parcel storage management system designed for modern real-estates.
               </p>
               <div className="grid md:grid-cols-2 gap-6">
@@ -117,7 +117,7 @@ const SquaredComputingWebsite = () => {
                 ].map((feature) => (
                   <div key={feature} className="flex items-center space-x-2">
                     <CheckCircle className="text-green-500 h-5 w-5" />
-                    <span>{feature}</span>
+                    <span className="text-gray-700">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -133,8 +133,8 @@ const SquaredComputingWebsite = () => {
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
-          <p className="text-gray-600 mb-8 max-w-xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Get in Touch</h2>
+          <p className="text-gray-700 mb-8 max-w-xl mx-auto">
             Looking for expert firmware development consulting? Let us help bring your hardware to life.
           </p>
           <div className="bg-white p-8 rounded-xl shadow-lg max-w-2xl mx-auto">
@@ -171,13 +171,13 @@ const SquaredComputingWebsite = () => {
                 <CircuitBoard className="h-6 w-6" />
                 <span className="font-bold">Squared Computing</span>
               </div>
-              <p className="text-gray-400">
+              <p className="text-gray-300">
                 Expert firmware development and consulting services.
               </p>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-gray-400">
+              <ul className="space-y-2 text-gray-300">
                 <li>Custom Firmware</li>
                 <li>Consulting</li>
                 <li>System Integration</li>
@@ -185,7 +185,7 @@ const SquaredComputingWebsite = () => {
             </div>
             <div>
               <h4 className="font-semibold mb-4">Products</h4>
-              <ul className="space-y-2 text-gray-400">
+              <ul className="space-y-2 text-gray-300">
                 <li>Parcel Point</li>
                 <li>Documentation</li>
                 <li>API Access</li>
@@ -193,13 +193,13 @@ const SquaredComputingWebsite = () => {
             </div>
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-gray-400">
+              <ul className="space-y-2 text-gray-300">
                 <li>info@squaredcomputing.co.ke</li>
                 <li>Nairobi, Kenya</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-300">
             <p>© {new Date().getFullYear()} Squared Computing Limited. All rights reserved.</p>
           </div>
         </div>

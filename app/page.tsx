@@ -1,5 +1,5 @@
 import React from 'react';
-import { Package, Code, Users, ChevronRight, CheckCircle, Terminal } from 'lucide-react';
+import { Bot, Package, Terminal, Users, ChevronRight, CheckCircle, Laptop, CircuitBoard } from 'lucide-react';
 
 const SquaredComputingWebsite = () => {
   return (
@@ -9,11 +9,11 @@ const SquaredComputingWebsite = () => {
         <nav className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
-              <Terminal className="text-blue-600 h-8 w-8" />
+              <CircuitBoard className="text-blue-600 h-8 w-8" />
               <span className="text-xl font-bold">Squared Computing</span>
             </div>
             <div className="hidden md:flex space-x-8">
-              <a href="#services" className="hover:text-blue-600">Training</a>
+              <a href="#services" className="hover:text-blue-600">Services</a>
               <a href="#products" className="hover:text-blue-600">Products</a>
               <a href="#about" className="hover:text-blue-600">About</a>
               <a href="#contact" className="hover:text-blue-600">Contact</a>
@@ -28,28 +28,33 @@ const SquaredComputingWebsite = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl font-bold mb-6">
-                Empowering Developers in Kenya
+                Expert Firmware Development Consulting
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Expert training in C++ and Qt framework, combined with innovative software solutions for modern businesses.
+                We help businesses bring their hardware to life with custom firmware solutions and expert consulting services.
               </p>
               <div className="flex space-x-4">
                 <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                  Get Started
+                  Consult With Us
                 </button>
                 <button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
-                  View Courses
+                  Our Services
                 </button>
               </div>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-lg">
-              <Terminal className="h-16 w-16 text-blue-600 mb-6" />
-              <h3 className="text-2xl font-semibold mb-4">Featured Training</h3>
+              <Bot className="h-16 w-16 text-blue-600 mb-6" />
+              <h3 className="text-2xl font-semibold mb-4">Our Expertise</h3>
               <div className="space-y-4">
-                {['Advanced C++ Programming', 'Qt Framework Mastery', 'GUI Development'].map((course) => (
-                  <div key={course} className="flex items-center space-x-3">
+                {[
+                  'Embedded Systems Development',
+                  'IoT Firmware Solutions',
+                  'Hardware Integration',
+                  'Performance Optimization'
+                ].map((service) => (
+                  <div key={service} className="flex items-center space-x-3">
                     <CheckCircle className="text-green-500 h-5 w-5" />
-                    <span>{course}</span>
+                    <span>{service}</span>
                   </div>
                 ))}
               </div>
@@ -58,26 +63,26 @@ const SquaredComputingWebsite = () => {
         </div>
       </section>
 
-      {/* Training Services */}
+      {/* Services Section */}
       <section id="services" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Our Training Services</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center">Firmware Development Services</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: 'C++ Programming',
-                icon: <Code className="h-8 w-8 text-blue-600" />,
-                description: 'Comprehensive C++ training from basics to advanced concepts'
+                title: 'Custom Firmware',
+                icon: <CircuitBoard className="h-8 w-8 text-blue-600" />,
+                description: 'Tailored firmware solutions for your specific hardware needs'
               },
               {
-                title: 'Qt Framework',
-                icon: <Terminal className="h-8 w-8 text-blue-600" />,
-                description: 'Master cross-platform application development with Qt'
-              },
-              {
-                title: 'Custom Training',
+                title: 'Consulting',
                 icon: <Users className="h-8 w-8 text-blue-600" />,
-                description: 'Tailored training programs for companies and teams'
+                description: 'Expert guidance on architecture, optimization, and best practices'
+              },
+              {
+                title: 'System Integration',
+                icon: <Terminal className="h-8 w-8 text-blue-600" />,
+                description: 'Seamless integration of firmware with existing systems'
               }
             ].map((service) => (
               <div key={service.title} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
@@ -101,13 +106,13 @@ const SquaredComputingWebsite = () => {
                 <h3 className="text-2xl font-bold">Parcel Point</h3>
               </div>
               <p className="text-gray-600 mb-6">
-                A comprehensive parcel storage management system designed for modern businesses.
+                A comprehensive parcel storage management system designed for modern real-estates.
               </p>
               <div className="grid md:grid-cols-2 gap-6">
                 {[
                   'Secure Storage',
+                  'Easy payments integration',
                   'Customer Notifications',
-                  'Easy Payments Integration',
                   'Analytics Dashboard'
                 ].map((feature) => (
                   <div key={feature} className="flex items-center space-x-2">
@@ -130,7 +135,7 @@ const SquaredComputingWebsite = () => {
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
           <p className="text-gray-600 mb-8 max-w-xl mx-auto">
-            Interested in our training programs or products? We'd love to hear from you.
+            Looking for expert firmware development consulting? Let us help bring your hardware to life.
           </p>
           <div className="bg-white p-8 rounded-xl shadow-lg max-w-2xl mx-auto">
             <div className="grid grid-cols-2 gap-4 mb-4">
@@ -146,7 +151,7 @@ const SquaredComputingWebsite = () => {
               />
             </div>
             <textarea 
-              placeholder="Message" 
+              placeholder="Tell us about your project" 
               className="w-full p-2 border rounded-lg mb-4"
               rows={4}
             />
@@ -163,19 +168,19 @@ const SquaredComputingWebsite = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Terminal className="h-6 w-6" />
+                <CircuitBoard className="h-6 w-6" />
                 <span className="font-bold">Squared Computing</span>
               </div>
               <p className="text-gray-400">
-                Empowering developers through quality training and innovative solutions.
+                Expert firmware development and consulting services.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Training</h4>
+              <h4 className="font-semibold mb-4">Services</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>C++ Programming</li>
-                <li>Qt Framework</li>
-                <li>Custom Solutions</li>
+                <li>Custom Firmware</li>
+                <li>Consulting</li>
+                <li>System Integration</li>
               </ul>
             </div>
             <div>

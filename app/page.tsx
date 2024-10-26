@@ -1,5 +1,34 @@
+'use client';
+
 import React from 'react';
-import { Bot, Package, Terminal, Users, ChevronRight, CheckCircle, Laptop, CircuitBoard } from 'lucide-react';
+import { Bot, Package, Terminal, Users, ChevronRight, CheckCircle, CircuitBoard } from 'lucide-react';
+import { ContactForm } from '@/components/ContactForm';
+import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/lib/constants';
+
+const services = [
+  {
+    title: 'Custom Firmware',
+    icon: <CircuitBoard className="h-8 w-8 text-blue-600" />,
+    description: 'Tailored firmware solutions for your specific hardware needs'
+  },
+  {
+    title: 'Consulting',
+    icon: <Users className="h-8 w-8 text-blue-600" />,
+    description: 'Informed guidance on architecture, optimization, and best practices'
+  },
+  {
+    title: 'System Integration',
+    icon: <Terminal className="h-8 w-8 text-blue-600" />,
+    description: 'Seamless integration of firmware with existing systems'
+  }
+];
+
+const productFeatures = [
+  'Secure Storage',
+  'Easy payments integration',
+  'Customer Notifications',
+  'Analytics Dashboard'
+];
 
 const SquaredComputingWebsite = () => {
   return (
@@ -10,7 +39,7 @@ const SquaredComputingWebsite = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
               <CircuitBoard className="text-blue-600 h-8 w-8" />
-              <span className="text-xl font-bold text-gray-900">Squared Computing</span>
+              <span className="text-xl font-bold text-gray-900">{COMPANY_NAME}</span>
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#services" className="text-gray-700 hover:text-blue-600">Services</a>
@@ -28,10 +57,10 @@ const SquaredComputingWebsite = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl font-bold mb-6 text-gray-900">
-                Expert Firmware Development Consulting
+                Firmware Development Consulting
               </h1>
               <p className="text-xl text-gray-700 mb-8">
-                We help businesses bring their hardware to life with custom firmware solutions and expert consulting services.
+                We help businesses and individuals bring their hardware to life with custom firmware solutions and informed consulting services.
               </p>
               <div className="flex space-x-4">
                 <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
@@ -44,7 +73,7 @@ const SquaredComputingWebsite = () => {
             </div>
             <div className="bg-white p-8 rounded-xl shadow-lg">
               <Bot className="h-16 w-16 text-blue-600 mb-6" />
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Our Expertise</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Our Services</h3>
               <div className="space-y-4">
                 {[
                   'Embedded Systems Development',
@@ -77,7 +106,7 @@ const SquaredComputingWebsite = () => {
               {
                 title: 'Consulting',
                 icon: <Users className="h-8 w-8 text-blue-600" />,
-                description: 'Expert guidance on architecture, optimization, and best practices'
+                description: 'Informed guidance on architecture, optimization, and best practices'
               },
               {
                 title: 'System Integration',
@@ -135,32 +164,12 @@ const SquaredComputingWebsite = () => {
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6 text-gray-900">Get in Touch</h2>
           <p className="text-gray-700 mb-8 max-w-xl mx-auto">
-            Looking for expert firmware development consulting? Let us help bring your hardware to life.
+            Looking for seasoned firmware development consulting? Let us help bring your hardware to life.
           </p>
-          <div className="bg-white p-8 rounded-xl shadow-lg max-w-2xl mx-auto">
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              <input 
-                type="text" 
-                placeholder="Name" 
-                className="p-2 border rounded-lg"
-              />
-              <input 
-                type="email" 
-                placeholder="Email" 
-                className="p-2 border rounded-lg"
-              />
-            </div>
-            <textarea 
-              placeholder="Tell us about your project" 
-              className="w-full p-2 border rounded-lg mb-4"
-              rows={4}
-            />
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors w-full">
-              Send Message
-            </button>
-          </div>
+          <ContactForm />
         </div>
       </section>
+
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12 px-4">
@@ -169,10 +178,10 @@ const SquaredComputingWebsite = () => {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <CircuitBoard className="h-6 w-6" />
-                <span className="font-bold">Squared Computing</span>
+                <span className="font-bold">{COMPANY_NAME}</span>
               </div>
               <p className="text-gray-300">
-                Expert firmware development and consulting services.
+              {COMPANY_DESCRIPTION}
               </p>
             </div>
             <div>
@@ -200,7 +209,7 @@ const SquaredComputingWebsite = () => {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-300">
-            <p>© {new Date().getFullYear()} Squared Computing Limited. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.</p>
           </div>
         </div>
       </footer>

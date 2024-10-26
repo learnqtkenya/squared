@@ -4,6 +4,7 @@ import React from 'react';
 import { Bot, Package, Terminal, Users, ChevronRight, CheckCircle, CircuitBoard } from 'lucide-react';
 import { ContactForm } from '@/components/ContactForm';
 import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/lib/constants';
+import Link from 'next/link';
 
 const services = [
   {
@@ -150,10 +151,13 @@ const SquaredComputingWebsite = () => {
                   </div>
                 ))}
               </div>
-              <button className="mt-8 flex items-center space-x-2 text-blue-600 hover:text-blue-700">
+              <Link
+                href="/products/parcel-point"
+                className="mt-8 inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700"
+              >
                 <span>Learn more about Parcel Point</span>
                 <ChevronRight className="h-4 w-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -181,7 +185,7 @@ const SquaredComputingWebsite = () => {
                 <span className="font-bold">{COMPANY_NAME}</span>
               </div>
               <p className="text-gray-300">
-              {COMPANY_DESCRIPTION}
+                {COMPANY_DESCRIPTION}
               </p>
             </div>
             <div>

@@ -32,6 +32,13 @@ const productFeatures = [
 ];
 
 const SquaredComputingWebsite = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -43,10 +50,30 @@ const SquaredComputingWebsite = () => {
               <span className="text-xl font-bold text-gray-900">{COMPANY_NAME}</span>
             </div>
             <div className="hidden md:flex space-x-8">
-              <a href="#services" className="text-gray-700 hover:text-blue-600">Services</a>
-              <a href="#products" className="text-gray-700 hover:text-blue-600">Products</a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600">About</a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600">Contact</a>
+              <button 
+                onClick={() => scrollToSection('services')} 
+                className="text-gray-700 hover:text-blue-600"
+              >
+                Services
+              </button>
+              <button 
+                onClick={() => scrollToSection('products')} 
+                className="text-gray-700 hover:text-blue-600"
+              >
+                Products
+              </button>
+              <button 
+                onClick={() => scrollToSection('about')} 
+                className="text-gray-700 hover:text-blue-600"
+              >
+                About
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')} 
+                className="text-gray-700 hover:text-blue-600"
+              >
+                Contact
+              </button>
             </div>
           </div>
         </nav>
@@ -64,10 +91,16 @@ const SquaredComputingWebsite = () => {
                 We help businesses and individuals bring their hardware to life with custom firmware solutions and informed consulting services.
               </p>
               <div className="flex space-x-4">
-                <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                <button 
+                  onClick={() => scrollToSection('contact')}
+                  className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                >
                   Consult With Us
                 </button>
-                <button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors">
+                <button 
+                  onClick={() => scrollToSection('services')}
+                  className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors"
+                >
                   Our Services
                 </button>
               </div>
@@ -98,23 +131,7 @@ const SquaredComputingWebsite = () => {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Firmware Development Services</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Custom Firmware',
-                icon: <CircuitBoard className="h-8 w-8 text-blue-600" />,
-                description: 'Tailored firmware solutions for your specific hardware needs'
-              },
-              {
-                title: 'Consulting',
-                icon: <Users className="h-8 w-8 text-blue-600" />,
-                description: 'Informed guidance on architecture, optimization, and best practices'
-              },
-              {
-                title: 'System Integration',
-                icon: <Terminal className="h-8 w-8 text-blue-600" />,
-                description: 'Seamless integration of firmware with existing systems'
-              }
-            ].map((service) => (
+            {services.map((service) => (
               <div key={service.title} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="mb-4">{service.icon}</div>
                 <h3 className="text-xl font-semibold mb-2 text-gray-900">{service.title}</h3>
@@ -139,12 +156,7 @@ const SquaredComputingWebsite = () => {
                 A comprehensive parcel storage management system designed for modern real-estates.
               </p>
               <div className="grid md:grid-cols-2 gap-6">
-                {[
-                  'Secure Storage',
-                  'Easy payments integration',
-                  'Customer Notifications',
-                  'Analytics Dashboard'
-                ].map((feature) => (
+                {productFeatures.map((feature) => (
                   <div key={feature} className="flex items-center space-x-2">
                     <CheckCircle className="text-green-500 h-5 w-5" />
                     <span className="text-gray-700">{feature}</span>
@@ -163,6 +175,18 @@ const SquaredComputingWebsite = () => {
         </div>
       </section>
 
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">About Us</h2>
+          <p className="text-xl text-gray-700 text-center max-w-3xl mx-auto">
+            {COMPANY_DESCRIPTION} We specialize in creating robust firmware solutions 
+            and providing expert consulting services to help businesses optimize their 
+            hardware implementations.
+          </p>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
@@ -173,7 +197,6 @@ const SquaredComputingWebsite = () => {
           <ContactForm />
         </div>
       </section>
-
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12 px-4">

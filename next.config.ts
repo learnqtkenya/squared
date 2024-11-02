@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/learnqtkenya', // Add this if you're not using a custom domain
+  // basePath: '/learnqtkenya', // Add this if you're not using a custom domain
 }
 
 module.exports = nextConfig

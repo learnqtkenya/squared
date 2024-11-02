@@ -94,12 +94,12 @@ const benefits = [
 export default function ParcelPoint() {
     const [imageError, setImageError] = useState(false);
     const [downloadError, setDownloadError] = useState(false);
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/learnqtkenya';
+    // const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/learnqtkenya';
 
     const handleDownload = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${basePath}/brochures/parcel-point-brochure.pdf`);
+            const response = await fetch(`brochures/parcel-point-brochure.pdf`);
             if (!response.ok) {
                 throw new Error('Brochure not found');
             }
@@ -144,7 +144,7 @@ export default function ParcelPoint() {
                     <div className="aspect-video relative rounded-xl overflow-hidden shadow-xl">
                         {!imageError ? (
                             <Image
-                                src={`${basePath}/images/parcel-point-hero.jpg`}
+                                src={`images/parcel-point-hero.jpg`}
                                 alt="ParcelPoint System Overview"
                                 fill
                                 className="object-cover"

@@ -99,7 +99,7 @@ export default function ParcelPoint() {
     const handleDownload = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         try {
-            const response = await fetch(`brochures/parcel-point-brochure.pdf`);
+            const response = await fetch("/brochures/parcel-point-brochure.pdf");
             if (!response.ok) {
                 throw new Error('Brochure not found');
             }
@@ -144,7 +144,7 @@ export default function ParcelPoint() {
                     <div className="aspect-video relative rounded-xl overflow-hidden shadow-xl">
                         {!imageError ? (
                             <Image
-                                src={`images/parcel-point-hero.jpg`}
+                                src={"/images/parcel-point-hero.jpg"}
                                 alt="ParcelPoint System Overview"
                                 fill
                                 className="object-cover"

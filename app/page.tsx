@@ -24,11 +24,13 @@ const services = [
   }
 ];
 
-const productFeatures = [
-  'Secure Storage',
-  'Easy payments integration',
-  'Customer Notifications',
-  'Analytics Dashboard'
+const parcelPointFeatures = [
+  "24/7 secure parcel access with SMS notifications",
+  "Integrated MPESA payment system",
+  "Weather-resistant, durable design",
+  "Suitable for residential and commercial properties",
+  "Simple user interface with digital access codes",
+  "Centralized delivery management",
 ];
 
 const SquaredComputingWebsite = () => {
@@ -144,36 +146,80 @@ const SquaredComputingWebsite = () => {
 
       {/* Products Section */}
       <section id="products" className="py-20 px-4 bg-gray-100">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Our Products</h2>
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className="p-8">
-              <div className="flex items-center space-x-4 mb-6">
-                <Package className="h-10 w-10 text-blue-600" />
-                <h3 className="text-2xl font-bold text-gray-900">Parcel Point</h3>
-              </div>
-              <p className="text-gray-700 mb-6">
-                A comprehensive parcel storage management system designed for modern real-estates.
-              </p>
-              <div className="grid md:grid-cols-2 gap-6">
-                {productFeatures.map((feature) => (
-                  <div key={feature} className="flex items-center space-x-2">
-                    <CheckCircle className="text-green-500 h-5 w-5" />
-                    <span className="text-gray-700">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              <Link
-                href="/products/parcel-point"
-                className="mt-8 inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700"
-              >
-                <span>Learn more about Parcel Point</span>
-                <ChevronRight className="h-4 w-4" />
-              </Link>
+            <div className="max-w-6xl mx-auto">
+                <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Our Products</h2>
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div className="p-8">
+                        {/* Product Header */}
+                        <div className="flex items-center space-x-4 mb-6">
+                            <Package className="h-10 w-10 text-blue-600" />
+                            <h3 className="text-2xl font-bold text-gray-900">ParcelPoint</h3>
+                        </div>
+
+                        {/* Product Description */}
+                        <p className="text-gray-700 mb-8 text-lg">
+                            A secure, smart parcel locker system designed for seamless last-mile delivery.
+                            Strategically placed in residential communities, commercial centers, schools,
+                            and offices for ultimate convenience.
+                        </p>
+
+                        {/* Target Markets */}
+                        <div className="mb-8">
+                            <h4 className="text-lg font-semibold text-gray-900 mb-4">Perfect for:</h4>
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <div className="flex items-start space-x-2">
+                                    <CheckCircle className="text-green-500 h-5 w-5 mt-1 flex-shrink-0" />
+                                    <span className="text-gray-700">Residential complexes and gated communities</span>
+                                </div>
+                                <div className="flex items-start space-x-2">
+                                    <CheckCircle className="text-green-500 h-5 w-5 mt-1 flex-shrink-0" />
+                                    <span className="text-gray-700">Shopping malls and e-commerce collection points</span>
+                                </div>
+                                <div className="flex items-start space-x-2">
+                                    <CheckCircle className="text-green-500 h-5 w-5 mt-1 flex-shrink-0" />
+                                    <span className="text-gray-700">Universities and educational institutions</span>
+                                </div>
+                                <div className="flex items-start space-x-2">
+                                    <CheckCircle className="text-green-500 h-5 w-5 mt-1 flex-shrink-0" />
+                                    <span className="text-gray-700">Corporate offices and business centers</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Key Features */}
+                        <div className="mb-8">
+                            <h4 className="text-lg font-semibold text-gray-900 mb-4">Key Features:</h4>
+                            <div className="grid md:grid-cols-2 gap-4">
+                                {parcelPointFeatures.map((feature) => (
+                                    <div key={feature} className="flex items-start space-x-2">
+                                        <CheckCircle className="text-green-500 h-5 w-5 mt-1 flex-shrink-0" />
+                                        <span className="text-gray-700">{feature}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Call to Action */}
+                        <div className="mt-8 flex items-center justify-between">
+                            <Link
+                                href="/products/parcel-point"
+                                className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-semibold"
+                            >
+                                <span>Learn more about ParcelPoint</span>
+                                <ChevronRight className="h-5 w-5" />
+                            </Link>
+
+                            <Link
+                                href="/#contact"
+                                className="inline-flex items-center px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                            >
+                                Get Started
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
       {/* About Section */}
       <section id="about" className="py-20 px-4 bg-white">

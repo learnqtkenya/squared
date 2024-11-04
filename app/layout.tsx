@@ -1,4 +1,3 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -8,6 +7,7 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -19,7 +19,13 @@ export const metadata: Metadata = {
   description: "Professional firmware development and consulting services in Kenya. Custom solutions for embedded systems, IoT, and hardware integration.",
   keywords: ["firmware development", "consulting", "embedded systems", "IoT", "Kenya", "hardware integration"],
   authors: [{ name: "Squared Computing" }],
-  viewport: "width=device-width, initial-scale=1",
+  icons: {
+    icon: [
+      { url: "./favicon.ico", sizes: "16x16" },
+      { url: "./favicon.ico", sizes: "32x32" },
+    ],
+    shortcut: [{ url: "./favicon.ico" }],
+  },
 };
 
 export default function RootLayout({
@@ -29,6 +35,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="./favicon.ico" sizes="any" type="image/x-icon"/>
+        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon"/>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

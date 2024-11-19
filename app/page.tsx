@@ -274,7 +274,7 @@ const SquaredComputingWebsite = () => {
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-300">
-                <li>info@squaredcomputing.co.ke</li>
+                <li>hello@squared.co.ke</li>
                 <li>Nairobi, Kenya</li>
               </ul>
             </div>

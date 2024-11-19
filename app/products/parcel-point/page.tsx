@@ -31,7 +31,7 @@ export default function ParcelPoint() {
     return (
         <div className="min-h-screen bg-white">
             {/* Header */}
-            <header className="py-4 px-6 bg-gray-100">
+            <header className="py-4 px-4 sm:px-6 bg-gray-100">
                 <div className="max-w-7xl mx-auto">
                     <Link href="/" className="flex items-center gap-2 text-gray-900 hover:text-blue-600">
                         <ChevronLeft className="h-5 w-5" />
@@ -40,9 +40,21 @@ export default function ParcelPoint() {
                 </div>
             </header>
 
+            {/* Logo Section */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+                <div className="flex flex-col items-center justify-center">
+                    <img
+                        src="/images/logo.png"
+                        alt="ParcelPoint Logo"
+                        className="h-20 w-auto"
+                    />
+                </div>
+            </div>
+
+
             {/* Hero Section */}
-            <section className="max-w-7xl mx-auto px-6 py-12">
-                <div className="grid grid-cols-2 gap-12">
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                     {/* Image Carousel */}
                     <div className="relative">
                         <img
@@ -74,9 +86,9 @@ export default function ParcelPoint() {
                     </div>
 
                     {/* Hero Content */}
-                    <div>
-                        <h1 className="text-4xl font-bold text-gray-900 mb-6">Convenient Deliveries and Pickups, Anytime</h1>
-                        <p className="text-lg text-gray-600 mb-8">
+                    <div className="space-y-6">
+                        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">Convenient Deliveries and Pickups, Anytime</h1>
+                        <p className="text-lg text-gray-600">
                             A secure, smart parcel locker system designed for seamless last-mile delivery.
                             Strategically placed in residential communities, commercial centers, schools,
                             and offices for ultimate convenience.
@@ -91,7 +103,7 @@ export default function ParcelPoint() {
                                 For personal use, you can store items securely and pick them up later. Simply drop your parcel
                                 or items, make a quick M-Pesa payment, and use your code to access the locker anytime.
                             </p>
-                            <button className="bg-blue-500 text-white px-6 py-3 rounded-lg" onClick={handleDownload} >
+                            <button className="bg-blue-500 text-white px-6 py-3 rounded-lg w-full sm:w-auto" onClick={handleDownload}>
                                 Download Brochure
                             </button>
                         </div>
@@ -100,10 +112,10 @@ export default function ParcelPoint() {
             </section>
 
             {/* How It Works */}
-            <section className="bg-gray-50 py-16">
-                <div className="max-w-7xl mx-auto px-6">
-                    <h2 className="text-3xl text-gray-900 font-bold text-center mb-12">How It Works</h2>
-                    <div className="grid grid-cols-4 gap-8">
+            <section className="bg-gray-50 py-12 sm:py-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <h2 className="text-2xl sm:text-3xl text-gray-900 font-bold text-center mb-8 sm:mb-12">How It Works</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                         {[
                             {
                                 title: "1. Deliver or Store Your Parcel",
@@ -137,9 +149,9 @@ export default function ParcelPoint() {
             </section>
 
             {/* Network Section */}
-            <section className="py-16 bg-gray-100 text-center">
-                <div className="max-w-3xl mx-auto px-6">
-                    <p className="text-lg text-gray-600">
+            <section className="py-12 sm:py-16 bg-gray-100 text-center">
+                <div className="max-w-3xl mx-auto px-4 sm:px-6">
+                    <p className="text-2xl text-gray-600">
                         We're building a network of ParcelPoint lockers across Kenya, strategically located in
                         malls, residential areas, schools, and offices. This makes secure, convenient parcel pickup
                         and delivery easily accessible, wherever you are.
@@ -152,127 +164,110 @@ export default function ParcelPoint() {
             </section>
 
             {/* Real Solutions Section */}
-            <section className="py-16">
-                <div className="max-w-7xl mx-auto px-6">
-                    <h2 className="text-3xl text-gray-900 font-bold mb-12 text-center">
+            <section className="py-12 sm:py-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <h2 className="text-2xl sm:text-3xl text-gray-900 font-bold mb-8 sm:mb-12 text-center">
                         Delivering Real Solutions with ParcelPoint
                     </h2>
 
-                    {/* Missed Deliveries */}
-                    <div className="grid grid-cols-2 gap-12 mb-16">
-                        <div className="bg-gray-100 rounded-lg aspect-video"></div>
-                        <div>
-                            <h3 className="text-2xl text-gray-900 font-bold mb-4">
-                                Missed Deliveries in a Busy Schedule
-                            </h3>
-                            <p className="text-gray-600">
-                                In a fast-paced city life, missed deliveries are more than just an
-                                inconvenience—they waste valuable time. ParcelPoint solves this problem
-                                by offering 24/7 access to secure lockers. Whether you're at work, at
-                                the gym, or running errands, your parcels are waiting for you at your
-                                convenience. With a unique access code sent directly to your phone, you
-                                can pick up your deliveries when it fits into your busy day.
-                            </p>
+                    {/* Solutions Grid */}
+                    <div className="space-y-8 sm:space-y-16">
+                        {/* Missed Deliveries */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                            <div className="bg-gray-100 rounded-lg aspect-video"></div>
+                            <div>
+                                <h3 className="text-xl sm:text-2xl text-gray-900 font-bold mb-4">
+                                    Missed Deliveries in a Busy Schedule
+                                </h3>
+                                <p className="text-gray-600">
+                                    In a fast-paced city life, missed deliveries are more than just an
+                                    inconvenience—they waste valuable time. ParcelPoint solves this problem
+                                    by offering 24/7 access to secure lockers. Whether you're at work, at
+                                    the gym, or running errands, your parcels are waiting for you at your
+                                    convenience.
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    {/* Inconvenient Locations */}
-                    <div className="grid grid-cols-2 gap-12 mb-16">
-                        <div>
-                            <h3 className="text-2xl text-gray-900 font-bold mb-4">
-                                Inconvenient Pickup Locations
-                            </h3>
-                            <p className="text-gray-600">
-                                Living in a busy city means you're often juggling work, social
-                                commitments, and family. The last thing you want is to trek across town
-                                to find a parcel pickup point. ParcelPoint has strategically placed
-                                lockers in high-traffic locations like malls, office buildings, and
-                                residential complexes, so you can collect your parcels quickly without
-                                wasting time. Whether it's on your way home or near your workplace,
-                                there's a ParcelPoint locker just around the corner.
-                            </p>
+                        {/* Inconvenient Locations */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                            <div className="lg:order-2 bg-gray-100 rounded-lg aspect-video"></div>
+                            <div className="lg:order-1">
+                                <h3 className="text-xl sm:text-2xl text-gray-900 font-bold mb-4">
+                                    Inconvenient Pickup Locations
+                                </h3>
+                                <p className="text-gray-600">
+                                    Living in a busy city means you're often juggling work, social
+                                    commitments, and family. The last thing you want is to trek across town
+                                    to find a parcel pickup point. ParcelPoint has strategically placed
+                                    lockers in high-traffic locations like malls, office buildings, and
+                                    residential complexes.
+                                </p>
+                            </div>
                         </div>
-                        <div className="bg-gray-100 rounded-lg aspect-video"></div>
-                    </div>
 
-                    {/* Hassle-Free Payments */}
-                    <div className="grid grid-cols-2 gap-12">
-                        <div className="bg-gray-100 rounded-lg aspect-video"></div>
-                        <div>
-                            <h3 className="text-2xl text-gray-900 font-bold mb-4">
-                                Hassle-Free Payments
-                            </h3>
-                            <p className="text-gray-600">
-                                City dwellers often deal with long lines and frustrating payment
-                                processes. ParcelPoint eliminates this by allowing you to pay for your
-                                parcel pickup through M-Pesa directly at the locker, simplifying the
-                                process. No more waiting for cashiers or dealing with complicated
-                                payment steps—just a quick, secure transaction, so you can get your
-                                parcel and get back to your day without delay.
-                            </p>
+                        {/* Hassle-Free Payments */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                            <div className="bg-gray-100 rounded-lg aspect-video"></div>
+                            <div>
+                                <h3 className="text-xl sm:text-2xl text-gray-900 font-bold mb-4">
+                                    Hassle-Free Payments
+                                </h3>
+                                <p className="text-gray-600">
+                                    City dwellers often deal with long lines and frustrating payment
+                                    processes. ParcelPoint eliminates this by allowing you to pay for your
+                                    parcel pickup through M-Pesa directly at the locker, simplifying the
+                                    process.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Partners Section */}
-            <section className="bg-gray-50 py-16">
-                <div className="max-w-7xl mx-auto px-6">
-                    <h2 className="text-3xl text-gray-900 font-bold mb-12 text-center">
+            <section className="bg-gray-50 py-12 sm:py-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <h2 className="text-2xl sm:text-3xl text-gray-900 font-bold mb-8 sm:mb-12 text-center">
                         Perfect Partners for ParcelPoint
                     </h2>
-                    <div className="grid grid-cols-4 gap-8">
-                        <div className="bg-white p-6 rounded-lg shadow">
-                            <h3 className="font-bold text-gray-900 mb-4">E-commerce Platforms</h3>
-                            <p className="text-gray-600">
-                                We partner with popular e-commerce platforms to streamline deliveries.
-                                By offering ParcelPoint lockers as secure, convenient pickup points, we
-                                enhance the shopping experience for customers and ensure timely
-                                deliveries.
-                            </p>
-                        </div>
-
-                        <div className="bg-white p-6 rounded-lg shadow">
-                            <h3 className="font-bold text-gray-900 mb-4">Retail chains</h3>
-                            <p className="text-gray-600">
-                                We collaborate with retail stores and malls to place ParcelPoint
-                                lockers at high-traffic locations. This allows customers to
-                                conveniently pick up their online purchases, providing a seamless
-                                delivery and pickup experience.
-                            </p>
-                        </div>
-
-                        <div className="bg-white p-6 rounded-lg shadow">
-                            <h3 className="font-bold text-gray-900 mb-4">Real Estate Developers</h3>
-                            <p className="text-gray-600">
-                                We work with developers of residential and commercial properties to
-                                install ParcelPoint lockers in high-density areas. This solution brings
-                                convenience to tenants, offering a secure and reliable parcel
-                                management system.
-                            </p>
-                        </div>
-
-                        <div className="bg-white p-6 rounded-lg shadow">
-                            <h3 className="font-bold text-gray-900 mb-4">Courier & Logistics Companies</h3>
-                            <p className="text-gray-600">
-                                We team up with couriers and logistics providers to reduce delivery
-                                inefficiencies. ParcelPoint lockers serve as reliable and secure
-                                collection points, ensuring timely deliveries while minimizing missed
-                                packages.
-                            </p>
-                        </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                        {[
+                            {
+                                title: "E-commerce Platforms",
+                                description: "We partner with popular e-commerce platforms to streamline deliveries."
+                            },
+                            {
+                                title: "Retail chains",
+                                description: "We collaborate with retail stores and malls to place ParcelPoint lockers at high-traffic locations."
+                            },
+                            {
+                                title: "Real Estate Developers",
+                                description: "We work with developers of residential and commercial properties to install ParcelPoint lockers."
+                            },
+                            {
+                                title: "Courier & Logistics Companies",
+                                description: "We team up with couriers and logistics providers to reduce delivery inefficiencies."
+                            }
+                        ].map((partner, index) => (
+                            <div key={index} className="bg-white p-6 rounded-lg shadow">
+                                <h3 className="font-bold text-gray-900 mb-4">{partner.title}</h3>
+                                <p className="text-gray-600">{partner.description}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
             {/* FAQ Section */}
-            <section className="py-16">
-                <div className="max-w-7xl mx-auto px-6">
-                    <h2 className="text-3xl text-gray-900 font-bold mb-12 text-center">
+            <section className="py-12 sm:py-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <h2 className="text-2xl sm:text-3xl text-gray-900 font-bold mb-8 sm:mb-12 text-center">
                         Frequently Asked Questions
                     </h2>
-                    <div className="grid grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {[
+
                             {
                                 question: "How do I pick up my parcel from a ParcelPoint locker?",
                                 answer: "Use the unique 6-digit code sent to your phone via SMS to retrieve your parcel."
@@ -311,7 +306,7 @@ export default function ParcelPoint() {
                                     <summary className="font-bold text-gray-900 cursor-pointer list-none">
                                         ▸ {faq.question}
                                     </summary>
-                                    <p className="mt-4 text-gray-900">
+                                    <p className="mt-4 text-gray-600">
                                         {faq.answer}
                                     </p>
                                 </details>
@@ -322,15 +317,15 @@ export default function ParcelPoint() {
             </section>
 
             {/* Contact Section */}
-            <section className="bg-gray-50 py-16">
-                <div className="max-w-3xl mx-auto px-6 text-center">
+            <section className="bg-gray-50 py-12 sm:py-16">
+                <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
                     <p className="text-lg text-gray-900 mb-8">
                         ParcelPoint serves key industries like e-commerce, retail, logistics, and
                         real estate, offering secure and efficient parcel solutions. Contact us to
                         learn how we can streamline your parcel management.
                     </p>
                     <Link href="/#contact">
-                        <button className="bg-blue-500 text-white px-6 py-3 rounded-lg">
+                        <button className="bg-blue-500 text-white px-6 py-3 rounded-lg w-full sm:w-auto">
                             Get in touch
                         </button>
                     </Link>
@@ -338,9 +333,9 @@ export default function ParcelPoint() {
             </section>
 
             {/* Footer */}
-            <footer className="bg-gray-900 text-white py-12">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid grid-cols-4 gap-8">
+            <footer className="bg-gray-900 text-white py-8 sm:py-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div>
                             <h3 className="font-bold mb-4">Squared Computing</h3>
                             <p className="text-gray-400">
@@ -367,7 +362,7 @@ export default function ParcelPoint() {
                         <div>
                             <h3 className="font-bold mb-4">Contact</h3>
                             <ul className="space-y-2 text-gray-400">
-                                <li>info@squaredcomputing.co.ke</li>
+                                <li className="break-words">hello@squared.co.ke</li>
                                 <li>Nairobi, Kenya</li>
                             </ul>
                         </div>

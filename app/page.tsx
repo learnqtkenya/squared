@@ -269,8 +269,6 @@ const SquaredComputingWebsite = () => {
               <h4 className="font-semibold mb-4">Products</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>Parcel Point</li>
-                <li>Documentation</li>
-                <li>API Access</li>
               </ul>
             </div>
             <div>

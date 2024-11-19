@@ -1,97 +1,18 @@
-'use client';
+"use client";
 
 import React, { useState } from 'react';
-import Image from 'next/image';
+import { Package, ChevronRight, ChevronLeft, MapPin } from 'lucide-react';
 import Link from 'next/link';
-import {
-    Package,
-    ChevronLeft,
-    Clock,
-    Shield,
-    CreditCard,
-    Building,
-    Smartphone,
-    Users,
-    ShoppingBag,
-    Download
-} from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/CustomCard';
-
-const features = [
-    {
-        icon: <Clock className="h-6 w-6 text-blue-600" />,
-        title: '24/7 Access',
-        description: 'Recipients can pick up parcels at any time, with lockers available day and night.'
-    },
-    {
-        icon: <Smartphone className="h-6 w-6 text-blue-600" />,
-        title: 'SMS Notification & Secure Access',
-        description: 'Each parcel delivery generates an SMS with a unique 6-digit code for secure retrieval.'
-    },
-    {
-        icon: <CreditCard className="h-6 w-6 text-blue-600" />,
-        title: 'Real-Time Payment Integration',
-        description: 'Simple MPESA payment prompt allows recipients to make payments quickly and securely upon pickup.'
-    },
-    {
-        icon: <Shield className="h-6 w-6 text-blue-600" />,
-        title: 'Durable Design',
-        description: 'Weather-resistant lockers built with high-quality materials for both indoor and outdoor installations.'
-    }
-];
-
-const markets = [
-    {
-        icon: <Building className="h-6 w-6 text-blue-600" />,
-        title: 'Residential Complexes',
-        description: 'Ideal for apartment buildings and gated communities with high package volume.'
-    },
-    {
-        icon: <ShoppingBag className="h-6 w-6 text-blue-600" />,
-        title: 'Retail & E-commerce',
-        description: 'Shopping malls and collection points can reduce missed deliveries and increase satisfaction.'
-    },
-    {
-        icon: <Users className="h-6 w-6 text-blue-600" />,
-        title: 'Educational Institutions',
-        description: 'Universities and schools benefit from convenient and secure pickup for students and staff.'
-    },
-    {
-        icon: <Building className="h-6 w-6 text-blue-600" />,
-        title: 'Corporate Offices',
-        description: 'Perfect for corporations with significant employee counts for personal and business deliveries.'
-    }
-];
-
-const benefits = [
-    {
-        title: 'For Customers',
-        points: [
-            'Convenience with 24/7 pickup access',
-            'Security through SMS notifications and access codes',
-            'Flexible payment via MPESA integration'
-        ]
-    },
-    {
-        title: 'For Couriers & E-commerce',
-        points: [
-            'Cost savings by minimizing re-deliveries',
-            'Optimized delivery routes with centralized systems',
-            'Enhanced customer experience and satisfaction'
-        ]
-    }
-];
 
 export default function ParcelPoint() {
-    const [imageError, setImageError] = useState(false);
-    const [downloadError, setDownloadError] = useState(false);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const images = ['/images/parcel-point-hero.jpg', '/images/parcel-point-hero.jpg', '/images/parcel-point-hero.jpg', '/images/parcel-point-hero.jpg'];
 
-    const handleDownload = async (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
+    const handleDownload = async () => {
         try {
             const response = await fetch("/brochures/parcel-point-brochure.pdf");
             if (!response.ok) throw new Error('Brochure not found');
-            
+
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
             const link = document.createElement('a');
@@ -103,185 +24,359 @@ export default function ParcelPoint() {
             document.body.removeChild(link);
         } catch (error) {
             console.error('Download failed:', error);
-            setDownloadError(true);
+            alert('The brochure is currently unavailable. Please try again later.');
         }
     };
+
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-            {/* Navigation */}
-            <nav className="bg-white shadow-sm p-4">
-                <div className="max-w-6xl mx-auto flex items-center justify-between">
-                    <Link href="/" className="flex items-center space-x-2 text-gray-900 hover:text-blue-600">
+        <div className="min-h-screen bg-white">
+            {/* Header */}
+            <header className="py-4 px-6 bg-gray-100">
+                <div className="max-w-7xl mx-auto">
+                    <Link href="/" className="flex items-center gap-2 text-gray-900 hover:text-blue-600">
                         <ChevronLeft className="h-5 w-5" />
                         <span>Back to Squared Computing</span>
                     </Link>
                 </div>
-            </nav>
+            </header>
 
             {/* Hero Section */}
-            <section className="pt-16 pb-12 px-4">
-                <div className="max-w-6xl mx-auto text-center">
-                    <div className="flex items-center space-x-3 justify-center mb-6">
-                        <Package className="h-12 w-12 text-blue-600" />
-                        <h1 className="text-5xl font-bold text-gray-900">ParcelPoint</h1>
-                    </div>
-                    <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-12">
-                        A secure, smart parcel locker system designed for seamless last-mile delivery.
-                        Strategically placed in residential communities, commercial centers, schools,
-                        and offices for ultimate convenience.
-                    </p>
-                    
-                    {/* Hero Image */}
-                    <div className="relative w-full aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden shadow-xl mb-12">
-                        {!imageError ? (
-                            <Image
-                                src="/images/parcel-point-hero.jpg"
-                                alt="ParcelPoint Smart Locker System"
-                                fill
-                                className="object-cover"
-                                onError={() => setImageError(true)}
-                                priority
-                            />
-                        ) : (
-                            <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                                <Package className="h-20 w-20 text-gray-400" />
-                            </div>
-                        )}
-                    </div>
-
-                    {/* Download Button */}
-                    <div className="flex justify-center space-x-4 mb-8">
+            <section className="max-w-7xl mx-auto px-6 py-12">
+                <div className="grid grid-cols-2 gap-12">
+                    {/* Image Carousel */}
+                    <div className="relative">
+                        <img
+                            src={images[currentImageIndex]}
+                            alt="ParcelPoint Locker"
+                            className="w-full aspect-square object-cover rounded-lg"
+                        />
                         <button
-                            onClick={handleDownload}
-                            className="flex items-center space-x-2 px-6 py-3 bg-white text-blue-600 border-2 border-blue-600 rounded-lg hover:bg-blue-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                            disabled={downloadError}
+                            onClick={() => setCurrentImageIndex(i => (i - 1 + images.length) % images.length)}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow"
                         >
-                            <Download className="h-5 w-5" />
-                            <span>{downloadError ? 'Brochure Unavailable' : 'Download Brochure'}</span>
+                            <ChevronLeft className="h-6 w-6 text-gray-900" />
                         </button>
+                        <button
+                            onClick={() => setCurrentImageIndex(i => (i + 1) % images.length)}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow"
+                        >
+                            <ChevronRight className="h-6 w-6 text-gray-900" />
+                        </button>
+                        <div className="flex gap-2 justify-center mt-4">
+                            {images.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => setCurrentImageIndex(idx)}
+                                    className={`h-2 w-2 rounded-full ${idx === currentImageIndex ? 'bg-blue-500' : 'bg-gray-300'}`}
+                                />
+                            ))}
+                        </div>
                     </div>
-                    {downloadError && (
-                        <p className="text-red-500 text-sm">
-                            The brochure is currently unavailable. Please contact us for more information.
+
+                    {/* Hero Content */}
+                    <div>
+                        <h1 className="text-4xl font-bold text-gray-900 mb-6">Convenient Deliveries and Pickups, Anytime</h1>
+                        <p className="text-lg text-gray-600 mb-8">
+                            A secure, smart parcel locker system designed for seamless last-mile delivery.
+                            Strategically placed in residential communities, commercial centers, schools,
+                            and offices for ultimate convenience.
                         </p>
-                    )}
+                        <div className="space-y-6">
+                            <p className="text-lg text-gray-600">
+                                ParcelPoint makes parcel deliveries and pickups effortless and secure. Deliverers drop off
+                                parcels into smart lockers, and recipients retrieve them at their convenience using a unique
+                                access code sent to their phone.
+                            </p>
+                            <p className="text-lg text-gray-600">
+                                For personal use, you can store items securely and pick them up later. Simply drop your parcel
+                                or items, make a quick M-Pesa payment, and use your code to access the locker anytime.
+                            </p>
+                            <button className="bg-blue-500 text-white px-6 py-3 rounded-lg" onClick={handleDownload} >
+                                Download Brochure
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            {/* How it Works */}
-            <section className="py-16 px-4 bg-gray-50">
-                <div className="max-w-6xl mx-auto">
-                    <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">How It Works</h2>
-                    <div className="grid md:grid-cols-4 gap-8">
-                        {['Delivery', 'Pickup Process', 'Secure Payment', 'Package Retrieval'].map((step, index) => (
-                            <Card key={index}>
-                                <CardHeader>
-                                    <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center mb-4">
-                                        {index + 1}
-                                    </div>
-                                    <CardTitle className="text-xl text-gray-900">{step}</CardTitle>
-                                </CardHeader>
-                            </Card>
+            {/* How It Works */}
+            <section className="bg-gray-50 py-16">
+                <div className="max-w-7xl mx-auto px-6">
+                    <h2 className="text-3xl text-gray-900 font-bold text-center mb-12">How It Works</h2>
+                    <div className="grid grid-cols-4 gap-8">
+                        {[
+                            {
+                                title: "1. Deliver or Store Your Parcel",
+                                subtitle: "Convenient Drop-Off",
+                                description: "Couriers or individuals can deposit parcels securely at ParcelPoint lockers, available in malls, residential areas, schools, and offices."
+                            },
+                            {
+                                title: "2. Access Code Sent",
+                                subtitle: "Hassle-Free Notifications",
+                                description: "The recipient gets a unique 6-digit code via SMS as soon as a parcel is stored, ensuring only they can access it."
+                            },
+                            {
+                                title: "3. Pay at Pickup",
+                                subtitle: "Quick MPESA Payments",
+                                description: "Recipients pay securely with MPESA when picking up their parcels—simple, fast, and reliable."
+                            },
+                            {
+                                title: "4. Flexible Pickup",
+                                subtitle: "24/7 Access",
+                                description: "Pick up your parcel anytime using the access code—no missed deliveries, no waiting."
+                            }
+                        ].map((step, index) => (
+                            <div key={index} className="bg-white p-6 rounded-lg shadow">
+                                <h3 className="font-bold text-gray-900 mb-2">{step.title}</h3>
+                                <h4 className="text-blue-600 mb-4">{step.subtitle}</h4>
+                                <p className="text-gray-600">{step.description}</p>
+                            </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Features Grid */}
-            <section className="py-16 px-4">
-                <div className="max-w-6xl mx-auto">
-                    <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Key Features</h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {features.map((feature, index) => (
-                            <Card key={index} className="hover:shadow-lg transition-shadow">
-                                <CardContent className="pt-6">
-                                    <div className="mb-4">{feature.icon}</div>
-                                    <h3 className="text-xl font-semibold mb-2 text-gray-900">{feature.title}</h3>
-                                    <p className="text-gray-700">{feature.description}</p>
-                                </CardContent>
-                            </Card>
-                        ))}
+            {/* Network Section */}
+            <section className="py-16 bg-gray-100 text-center">
+                <div className="max-w-3xl mx-auto px-6">
+                    <p className="text-lg text-gray-600">
+                        We're building a network of ParcelPoint lockers across Kenya, strategically located in
+                        malls, residential areas, schools, and offices. This makes secure, convenient parcel pickup
+                        and delivery easily accessible, wherever you are.
+                    </p>
+                    <button className="mt-8 bg-blue-500 text-white px-6 py-3 rounded-lg flex items-center gap-2 mx-auto">
+                        <MapPin className="h-5 w-5" />
+                        See our locations
+                    </button>
+                </div>
+            </section>
+
+            {/* Real Solutions Section */}
+            <section className="py-16">
+                <div className="max-w-7xl mx-auto px-6">
+                    <h2 className="text-3xl text-gray-900 font-bold mb-12 text-center">
+                        Delivering Real Solutions with ParcelPoint
+                    </h2>
+
+                    {/* Missed Deliveries */}
+                    <div className="grid grid-cols-2 gap-12 mb-16">
+                        <div className="bg-gray-100 rounded-lg aspect-video"></div>
+                        <div>
+                            <h3 className="text-2xl text-gray-900 font-bold mb-4">
+                                Missed Deliveries in a Busy Schedule
+                            </h3>
+                            <p className="text-gray-600">
+                                In a fast-paced city life, missed deliveries are more than just an
+                                inconvenience—they waste valuable time. ParcelPoint solves this problem
+                                by offering 24/7 access to secure lockers. Whether you're at work, at
+                                the gym, or running errands, your parcels are waiting for you at your
+                                convenience. With a unique access code sent directly to your phone, you
+                                can pick up your deliveries when it fits into your busy day.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Inconvenient Locations */}
+                    <div className="grid grid-cols-2 gap-12 mb-16">
+                        <div>
+                            <h3 className="text-2xl text-gray-900 font-bold mb-4">
+                                Inconvenient Pickup Locations
+                            </h3>
+                            <p className="text-gray-600">
+                                Living in a busy city means you're often juggling work, social
+                                commitments, and family. The last thing you want is to trek across town
+                                to find a parcel pickup point. ParcelPoint has strategically placed
+                                lockers in high-traffic locations like malls, office buildings, and
+                                residential complexes, so you can collect your parcels quickly without
+                                wasting time. Whether it's on your way home or near your workplace,
+                                there's a ParcelPoint locker just around the corner.
+                            </p>
+                        </div>
+                        <div className="bg-gray-100 rounded-lg aspect-video"></div>
+                    </div>
+
+                    {/* Hassle-Free Payments */}
+                    <div className="grid grid-cols-2 gap-12">
+                        <div className="bg-gray-100 rounded-lg aspect-video"></div>
+                        <div>
+                            <h3 className="text-2xl text-gray-900 font-bold mb-4">
+                                Hassle-Free Payments
+                            </h3>
+                            <p className="text-gray-600">
+                                City dwellers often deal with long lines and frustrating payment
+                                processes. ParcelPoint eliminates this by allowing you to pay for your
+                                parcel pickup through M-Pesa directly at the locker, simplifying the
+                                process. No more waiting for cashiers or dealing with complicated
+                                payment steps—just a quick, secure transaction, so you can get your
+                                parcel and get back to your day without delay.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Target Markets */}
-            <section className="py-16 px-4 bg-gray-50">
-                <div className="max-w-6xl mx-auto">
-                    <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Target Markets</h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {markets.map((market, index) => (
-                            <Card key={index} className="hover:shadow-lg transition-shadow">
-                                <CardContent className="pt-6">
-                                    <div className="mb-4">{market.icon}</div>
-                                    <h3 className="text-xl font-semibold mb-2 text-gray-900">{market.title}</h3>
-                                    <p className="text-gray-700">{market.description}</p>
-                                </CardContent>
-                            </Card>
-                        ))}
+            {/* Partners Section */}
+            <section className="bg-gray-50 py-16">
+                <div className="max-w-7xl mx-auto px-6">
+                    <h2 className="text-3xl text-gray-900 font-bold mb-12 text-center">
+                        Perfect Partners for ParcelPoint
+                    </h2>
+                    <div className="grid grid-cols-4 gap-8">
+                        <div className="bg-white p-6 rounded-lg shadow">
+                            <h3 className="font-bold text-gray-900 mb-4">E-commerce Platforms</h3>
+                            <p className="text-gray-600">
+                                We partner with popular e-commerce platforms to streamline deliveries.
+                                By offering ParcelPoint lockers as secure, convenient pickup points, we
+                                enhance the shopping experience for customers and ensure timely
+                                deliveries.
+                            </p>
+                        </div>
+
+                        <div className="bg-white p-6 rounded-lg shadow">
+                            <h3 className="font-bold text-gray-900 mb-4">Retail chains</h3>
+                            <p className="text-gray-600">
+                                We collaborate with retail stores and malls to place ParcelPoint
+                                lockers at high-traffic locations. This allows customers to
+                                conveniently pick up their online purchases, providing a seamless
+                                delivery and pickup experience.
+                            </p>
+                        </div>
+
+                        <div className="bg-white p-6 rounded-lg shadow">
+                            <h3 className="font-bold text-gray-900 mb-4">Real Estate Developers</h3>
+                            <p className="text-gray-600">
+                                We work with developers of residential and commercial properties to
+                                install ParcelPoint lockers in high-density areas. This solution brings
+                                convenience to tenants, offering a secure and reliable parcel
+                                management system.
+                            </p>
+                        </div>
+
+                        <div className="bg-white p-6 rounded-lg shadow">
+                            <h3 className="font-bold text-gray-900 mb-4">Courier & Logistics Companies</h3>
+                            <p className="text-gray-600">
+                                We team up with couriers and logistics providers to reduce delivery
+                                inefficiencies. ParcelPoint lockers serve as reliable and secure
+                                collection points, ensuring timely deliveries while minimizing missed
+                                packages.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Benefits Section */}
-            <section className="py-16 px-4">
-                <div className="max-w-6xl mx-auto">
-                    <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Benefits</h2>
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {benefits.map((benefit, index) => (
-                            <Card key={index}>
-                                <CardHeader>
-                                    <CardTitle className="text-gray-900">{benefit.title}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <ul className="space-y-3">
-                                        {benefit.points.map((point, idx) => (
-                                            <li key={idx} className="flex items-start space-x-2">
-                                                <div className="mt-2">
-                                                    <div className="h-2 w-2 bg-blue-600 rounded-full" />
-                                                </div>
-                                                <span className="text-gray-700">{point}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </CardContent>
-                            </Card>
+            {/* FAQ Section */}
+            <section className="py-16">
+                <div className="max-w-7xl mx-auto px-6">
+                    <h2 className="text-3xl text-gray-900 font-bold mb-12 text-center">
+                        Frequently Asked Questions
+                    </h2>
+                    <div className="grid grid-cols-2 gap-6">
+                        {[
+                            {
+                                question: "How do I pick up my parcel from a ParcelPoint locker?",
+                                answer: "Use the unique 6-digit code sent to your phone via SMS to retrieve your parcel."
+                            },
+                            {
+                                question: "Can I store my items in a ParcelPoint locker?",
+                                answer: "Yes, you can store items securely and pick them up later using the access code sent on storage."
+                            },
+                            {
+                                question: "How do I make a payment for my parcel?",
+                                answer: "Payments are made through M-Pesa directly at the locker for a quick and secure transaction."
+                            },
+                            {
+                                question: "Where are ParcelPoint lockers located?",
+                                answer: "Our lockers are strategically placed in malls, residential areas, schools, and offices across Kenya."
+                            },
+                            {
+                                question: "What if I miss my pickup?",
+                                answer: "Your parcel remains secure in the locker until you're able to collect it."
+                            },
+                            {
+                                question: "Can I send a parcel to a ParcelPoint locker?",
+                                answer: "Yes, you can send parcels to any ParcelPoint location for secure storage and pickup."
+                            },
+                            {
+                                question: "Is ParcelPoint available in all cities in Kenya?",
+                                answer: "We're continuously expanding our network across major cities in Kenya."
+                            },
+                            {
+                                question: "How long can I leave my parcel in a ParcelPoint locker?",
+                                answer: "Parcels can be stored for as long as it is convenient for you."
+                            }
+                        ].map((faq, index) => (
+                            <div key={index} className="bg-white p-6 rounded-lg shadow">
+                                <details>
+                                    <summary className="font-bold text-gray-900 cursor-pointer list-none">
+                                        ▸ {faq.question}
+                                    </summary>
+                                    <p className="mt-4 text-gray-900">
+                                        {faq.answer}
+                                    </p>
+                                </details>
+                            </div>
                         ))}
                     </div>
                 </div>
             </section>
 
             {/* Contact Section */}
-            <section className="py-16 px-4 bg-gray-50">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-3xl font-bold mb-6 text-gray-900">Get Started with ParcelPoint</h2>
-                    <p className="text-gray-700 mb-8">
-                        Ready to transform your parcel management? Contact us to learn more about
-                        ParcelPoint and discuss implementation options for your property.
+            <section className="bg-gray-50 py-16">
+                <div className="max-w-3xl mx-auto px-6 text-center">
+                    <p className="text-lg text-gray-900 mb-8">
+                        ParcelPoint serves key industries like e-commerce, retail, logistics, and
+                        real estate, offering secure and efficient parcel solutions. Contact us to
+                        learn how we can streamline your parcel management.
                     </p>
-                    <div className="flex justify-center space-x-4">
-                        <Link
-                            href="/#contact"
-                            className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-                        >
-                            Contact Us
-                        </Link>
-                        <button
-                            onClick={handleDownload}
-                            className="flex items-center space-x-2 px-8 py-3 bg-white text-blue-600 border-2 border-blue-600 rounded-lg hover:bg-blue-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                            disabled={downloadError}
-                        >
-                            <Download className="h-5 w-5" />
-                            <span>Download Brochure</span>
+                    <Link href="/#contact">
+                        <button className="bg-blue-500 text-white px-6 py-3 rounded-lg">
+                            Get in touch
                         </button>
-                    </div>
-                    {downloadError && (
-                        <p className="text-red-500 text-sm mt-2">
-                            The brochure is currently unavailable. Please contact us for more information.
-                        </p>
-                    )}
+                    </Link>
                 </div>
             </section>
+
+            {/* Footer */}
+            <footer className="bg-gray-900 text-white py-12">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="grid grid-cols-4 gap-8">
+                        <div>
+                            <h3 className="font-bold mb-4">Squared Computing</h3>
+                            <p className="text-gray-400">
+                                Informed firmware development and consulting services.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 className="font-bold mb-4">Services</h3>
+                            <ul className="space-y-2 text-gray-400">
+                                <li>Custom Firmware</li>
+                                <li>Consulting</li>
+                                <li>System Integration</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 className="font-bold mb-4">Products</h3>
+                            <ul className="space-y-2 text-gray-400">
+                                <li>Parcel Point</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 className="font-bold mb-4">Contact</h3>
+                            <ul className="space-y-2 text-gray-400">
+                                <li>info@squaredcomputing.co.ke</li>
+                                <li>Nairobi, Kenya</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                        <p>© 2024 Squared Computing. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }

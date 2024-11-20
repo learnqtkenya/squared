@@ -335,7 +335,7 @@ export default function ParcelPoint() {
             {/* Contact Section */}
             <section className="bg-gray-50 py-12 sm:py-16">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-                    <p className="text-lg text-gray-900 mb-8">
+                    <p className="text-2xl text-gray-900 mb-8">
                         ParcelPoint serves key industries like e-commerce, retail, logistics, and
                         real estate, offering secure and efficient parcel solutions. Contact us to
                         learn how we can streamline your parcel management.

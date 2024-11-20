@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function ParcelPoint() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const images = ['/images/parcel-point/parcel-point-hero.jpg', '/images/parcel-point/locker/1.png', '/images/parcel-point/locker/2.png', '/images/parcel-point/locker/3.png', '/images/parcel-point/locker/4.png', '/images/parcel-point/locker/5.png', '/images/parcel-point/locker/6.png', '/images/parcel-point/locker/7.png'];
+    const images = ['/images/parcel-point/locker/1.png', '/images/parcel-point/locker/2.png', '/images/parcel-point/locker/3.png', '/images/parcel-point/locker/4.png', '/images/parcel-point/locker/5.png', '/images/parcel-point/locker/6.png', '/images/parcel-point/locker/7.png'];
 
     const handleDownload = async () => {
         try {

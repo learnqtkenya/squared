@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function ParcelPoint() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const images = ['/images/parcel-point-hero.jpg', '/images/parcel-point-hero.jpg', '/images/parcel-point-hero.jpg', '/images/parcel-point-hero.jpg'];
+    const images = ['/images/parcel-point/parcel-point-hero.jpg', '/images/parcel-point/locker/1.png', '/images/parcel-point/locker/2.png', '/images/parcel-point/locker/3.png', '/images/parcel-point/locker/4.png', '/images/parcel-point/locker/5.png', '/images/parcel-point/locker/6.png', '/images/parcel-point/locker/7.png'];
 
     const handleDownload = async () => {
         try {
@@ -42,15 +42,18 @@ export default function ParcelPoint() {
 
             {/* Logo Section */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex items-center justify-center gap-4">
                     <img
-                        src="/images/logo.png"
+                        src="/images/parcel-point/parcel_point_dark.png"
                         alt="ParcelPoint Logo"
-                        className="h-20 w-auto"
+                        className="h-16 w-auto"
                     />
+                    <div className="flex flex-col">
+                        <span className="text-3xl text-gray-900 font-bold">ParcelPoint</span>
+                        <span className="text-sm tracking-widest text-gray-600">DROP • PAY • PICK</span>
+                    </div>
                 </div>
             </div>
-
 
             {/* Hero Section */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
@@ -174,7 +177,11 @@ export default function ParcelPoint() {
                     <div className="space-y-8 sm:space-y-16">
                         {/* Missed Deliveries */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                            <div className="bg-gray-100 rounded-lg aspect-video"></div>
+                            <img
+                                src="/images/parcel-point/other/missed-deliveries.png"
+                                alt="Person retrieving parcel from locker"
+                                className="w-full aspect-video object-cover rounded-lg"
+                            />
                             <div>
                                 <h3 className="text-xl sm:text-2xl text-gray-900 font-bold mb-4">
                                     Missed Deliveries in a Busy Schedule
@@ -191,7 +198,11 @@ export default function ParcelPoint() {
 
                         {/* Inconvenient Locations */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                            <div className="lg:order-2 bg-gray-100 rounded-lg aspect-video"></div>
+                            <img
+                                src="/images/parcel-point/other/inconvenient-locations.png"
+                                alt="ParcelPoint locker locations"
+                                className="lg:order-2 w-full aspect-video object-cover rounded-lg"
+                            />
                             <div className="lg:order-1">
                                 <h3 className="text-xl sm:text-2xl text-gray-900 font-bold mb-4">
                                     Inconvenient Pickup Locations
@@ -206,9 +217,14 @@ export default function ParcelPoint() {
                             </div>
                         </div>
 
+
                         {/* Hassle-Free Payments */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                            <div className="bg-gray-100 rounded-lg aspect-video"></div>
+                            <img
+                                src="/images/parcel-point/other/hassle-free-payments.png"
+                                alt="M-Pesa payment at ParcelPoint locker"
+                                className="w-full aspect-video object-cover rounded-lg"
+                            />
                             <div>
                                 <h3 className="text-xl sm:text-2xl text-gray-900 font-bold mb-4">
                                     Hassle-Free Payments

@@ -206,7 +206,7 @@ const SquaredComputingWebsite = () => {
               {/* Call to Action */}
               <div className="mt-8 flex items-center justify-between">
                 <Link
-                  href="/parcel-point"
+                  href="/parcelpoint"
                   className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-semibold"
                 >
                   <span>Learn more about ParcelPoint</span>

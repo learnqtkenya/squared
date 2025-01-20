@@ -3,9 +3,12 @@
 import React, { useState } from 'react';
 import { Package, ChevronRight, ChevronLeft, MapPin } from 'lucide-react';
 import Link from 'next/link';
+import LocationModal from './LocationModal';
+
 
 const ParcelPoint = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
     const images = ['/images/parcel-point/locker/1.jpeg', '/images/parcel-point/locker/2.jpeg', '/images/parcel-point/locker/3.jpeg'];
 
     const handleDownload = async () => {
@@ -162,12 +165,19 @@ const ParcelPoint = () => {
                         malls, residential areas, schools, and offices. This makes secure, convenient parcel pickup
                         and delivery easily accessible, wherever you are.
                     </p>
-                    <button className="mt-8 bg-white text-black px-6 py-3 rounded-lg flex items-center gap-2 mx-auto hover:bg-gray-100 transition-colors">
+                    <button
+                        className="mt-8 bg-white text-black px-6 py-3 rounded-lg flex items-center gap-2 mx-auto hover:bg-gray-100 transition-colors"
+                        onClick={() => setIsLocationModalOpen(true)}
+                    >
                         <MapPin className="h-5 w-5" />
                         See our locations
                     </button>
                 </div>
             </section>
+            <LocationModal
+                isOpen={isLocationModalOpen}
+                onClose={() => setIsLocationModalOpen(false)}
+            />
 
             {/* Real Solutions Section */}
             <section className="py-12 sm:py-16 bg-black">
@@ -313,7 +323,7 @@ const ParcelPoint = () => {
                             },
                             {
                                 question: "How long can I leave my parcel in a ParcelPoint locker?",
-                                answer: "Parcels can be stored for as long as it is convenient for you."
+                                answer: "Parcels can be stored for up to 3 days from the time of delivery. You'll receive SMS reminder at 2 days after delivery. If not collected within 3 days, our team will retrieve the parcel and contact you to arrange an alternative delivery option."
                             }
                         ].map((faq, index) => (
                             <div key={index} className="bg-gray-900 p-6 rounded-lg shadow border border-gray-800">

@@ -9,17 +9,17 @@ import Link from 'next/link';
 const services = [
   {
     title: 'Custom Firmware',
-    icon: <CircuitBoard className="h-8 w-8 text-gray-300" />,
+    icon: <CircuitBoard className="h-8 w-8 text-emerald-600" />,
     description: 'Tailored firmware solutions for your specific hardware needs'
   },
   {
     title: 'Consulting',
-    icon: <Users className="h-8 w-8 text-gray-300" />,
+    icon: <Users className="h-8 w-8 text-emerald-600" />,
     description: 'Informed guidance on architecture, optimization, and best practices'
   },
   {
     title: 'System Integration',
-    icon: <Terminal className="h-8 w-8 text-gray-300" />,
+    icon: <Terminal className="h-8 w-8 text-emerald-600" />,
     description: 'Seamless integration of firmware with existing systems'
   }
 ];
@@ -42,9 +42,9 @@ const SquaredComputingWebsite = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-black shadow-md fixed w-full z-50">
+      <header className="bg-white/90 shadow-sm backdrop-blur-sm fixed w-full z-50 border-b border-emerald-100">
         <nav className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
@@ -53,30 +53,30 @@ const SquaredComputingWebsite = () => {
                 alt="Squared Computing Logo"
                 className="h-8 w-auto"
               />
-              <span className="text-xl font-bold text-white">{COMPANY_NAME}</span>
+              <span className="text-xl font-bold text-gray-800">{COMPANY_NAME}</span>
             </div>
             <div className="hidden md:flex space-x-8">
               <button
                 onClick={() => scrollToSection('services')}
-                className="text-gray-300 hover:text-white"
+                className="text-gray-600 hover:text-emerald-600 transition-colors"
               >
                 Services
               </button>
               <button
                 onClick={() => scrollToSection('products')}
-                className="text-gray-300 hover:text-white"
+                className="text-gray-600 hover:text-emerald-600 transition-colors"
               >
                 Products
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-gray-300 hover:text-white"
+                className="text-gray-600 hover:text-emerald-600 transition-colors"
               >
                 About
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="text-gray-300 hover:text-white"
+                className="text-gray-600 hover:text-emerald-600 transition-colors"
               >
                 Contact
               </button>
@@ -86,34 +86,34 @@ const SquaredComputingWebsite = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-gray-900 to-black">
+      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-white to-emerald-50">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-5xl font-bold mb-6 text-white">
+              <h1 className="text-5xl font-bold mb-6 text-gray-900">
                 Firmware Development Consulting
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-600 mb-8">
                 We help businesses and individuals bring their hardware to life with custom firmware solutions and informed consulting services.
               </p>
               <div className="flex space-x-4">
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors"
+                  className="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors shadow-sm"
                 >
                   Consult With Us
                 </button>
                 <button
                   onClick={() => scrollToSection('services')}
-                  className="border border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition-colors"
+                  className="border-2 border-emerald-600 text-emerald-600 px-6 py-3 rounded-lg hover:bg-emerald-50 transition-colors"
                 >
                   Our Services
                 </button>
               </div>
             </div>
-            <div className="bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-800">
-              <Bot className="h-16 w-16 text-gray-300 mb-6" />
-              <h3 className="text-2xl font-semibold mb-4 text-white">Our Services</h3>
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-emerald-200">
+              <Bot className="h-16 w-16 text-emerald-600 mb-6" />
+              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Our Expertise</h3>
               <div className="space-y-4">
                 {[
                   'Embedded Systems Development',
@@ -122,8 +122,8 @@ const SquaredComputingWebsite = () => {
                   'Performance Optimization'
                 ].map((service) => (
                   <div key={service} className="flex items-center space-x-3">
-                    <CheckCircle className="text-gray-300 h-5 w-5" />
-                    <span className="text-gray-300">{service}</span>
+                    <CheckCircle className="text-emerald-600 h-5 w-5" />
+                    <span className="text-gray-600">{service}</span>
                   </div>
                 ))}
               </div>
@@ -133,15 +133,19 @@ const SquaredComputingWebsite = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-4 bg-black">
+      <section id="services" className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center text-white">Firmware Development Services</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Firmware Development Services</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service) => (
-              <div key={service.title} className="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-800 hover:border-gray-700 transition-colors">
-                <div className="mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-2 text-white">{service.title}</h3>
-                <p className="text-gray-300">{service.description}</p>
+              <div key={service.title} 
+                className="group bg-white p-6 rounded-xl shadow-sm border border-emerald-200 hover:border-emerald-400 transition-all duration-300 hover:shadow-md"
+              >
+                <div className="mb-4">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h3>
+                <p className="text-gray-600">{service.description}</p>
               </div>
             ))}
           </div>
@@ -149,29 +153,29 @@ const SquaredComputingWebsite = () => {
       </section>
 
       {/* Products Section */}
-      <section id="products" className="py-20 px-4 bg-gray-900">
+      <section id="products" className="py-20 px-4 bg-emerald-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center text-white">Our Products</h2>
-          <div className="bg-black rounded-xl shadow-lg overflow-hidden border border-gray-800">
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Our Products</h2>
+          <div className="bg-white rounded-xl shadow-sm border border-emerald-200">
             <div className="p-8">
               <div className="flex items-center space-x-4 mb-6">
-                <Package className="h-10 w-10 text-gray-300" />
-                <h3 className="text-2xl font-bold text-white">ParcelPoint</h3>
+                <Package className="h-10 w-10 text-emerald-600" />
+                <h3 className="text-2xl font-bold text-gray-900">ParcelPoint</h3>
               </div>
 
-              <p className="text-gray-300 mb-8 text-lg">
+              <p className="text-gray-600 mb-8 text-lg">
                 A secure, smart parcel locker system designed for seamless last-mile delivery.
                 Strategically placed in residential communities, commercial centers, schools,
                 and offices for ultimate convenience.
               </p>
 
               <div className="mb-8">
-                <h4 className="text-lg font-semibold text-white mb-4">Perfect for:</h4>
+                <h4 className="text-lg font-semibold text-gray-800 mb-4">Perfect for:</h4>
                 <div className="grid md:grid-cols-2 gap-4">
                   {parcelPointFeatures.map((feature) => (
                     <div key={feature} className="flex items-start space-x-2">
-                      <CheckCircle className="text-gray-300 h-5 w-5 mt-1 flex-shrink-0" />
-                      <span className="text-gray-300">{feature}</span>
+                      <CheckCircle className="text-emerald-600 h-5 w-5 mt-1 flex-shrink-0" />
+                      <span className="text-gray-600">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -180,7 +184,7 @@ const SquaredComputingWebsite = () => {
               <div className="mt-8 flex items-center justify-between">
                 <Link
                   href="/parcelpoint"
-                  className="inline-flex items-center space-x-2 text-gray-300 hover:text-white font-semibold"
+                  className="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-semibold"
                 >
                   <span>Learn more about ParcelPoint</span>
                   <ChevronRight className="h-5 w-5" />
@@ -188,7 +192,7 @@ const SquaredComputingWebsite = () => {
 
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center px-6 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors"
+                  className="inline-flex items-center px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors shadow-sm"
                 >
                   Get Started
                 </Link>
@@ -199,10 +203,10 @@ const SquaredComputingWebsite = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-black">
+      <section id="about" className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center text-white">About Us</h2>
-          <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">About Us</h2>
+          <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto">
             {COMPANY_DESCRIPTION} We specialize in creating robust firmware solutions
             and providing expert consulting services to help businesses optimize their
             hardware implementations.
@@ -211,10 +215,10 @@ const SquaredComputingWebsite = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-gray-900">
+      <section id="contact" className="py-20 px-4 bg-emerald-50">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6 text-white">Get in Touch</h2>
-          <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Get in Touch</h2>
+          <p className="text-gray-600 mb-8 max-w-xl mx-auto">
             Looking for seasoned firmware development consulting? Let us help bring your hardware to life.
           </p>
           <ContactForm />
@@ -222,41 +226,41 @@ const SquaredComputingWebsite = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-12 px-4">
+      <footer className="bg-white text-gray-600 py-12 px-4 border-t border-emerald-100">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <CircuitBoard className="h-6 w-6" />
-                <span className="font-bold">{COMPANY_NAME}</span>
+                <CircuitBoard className="h-6 w-6 text-emerald-600" />
+                <span className="font-bold text-gray-800">{COMPANY_NAME}</span>
               </div>
-              <p className="text-gray-400">
+              <p className="text-gray-600">
                 {COMPANY_DESCRIPTION}
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="font-semibold mb-4 text-gray-800">Services</h4>
+              <ul className="space-y-2">
                 <li>Custom Firmware</li>
                 <li>Consulting</li>
                 <li>System Integration</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Products</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="font-semibold mb-4 text-gray-800">Products</h4>
+              <ul className="space-y-2">
                 <li>Parcel Point</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="font-semibold mb-4 text-gray-800">Contact</h4>
+              <ul className="space-y-2">
                 <li>hello@squared.co.ke</li>
                 <li>Nairobi, Kenya</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <div className="border-t border-emerald-100 mt-12 pt-8 text-center text-gray-600">
             <p>© {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.</p>
           </div>
         </div>

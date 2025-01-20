@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import { Package, ChevronRight, ChevronLeft, MapPin } from 'lucide-react';
 import Link from 'next/link';
 
-export default function ParcelPoint() {
+const ParcelPoint = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const images = ['/images/parcel-point/locker/1.png', '/images/parcel-point/locker/2.png', '/images/parcel-point/locker/3.png', '/images/parcel-point/locker/4.png', '/images/parcel-point/locker/5.png', '/images/parcel-point/locker/6.png', '/images/parcel-point/locker/7.png'];
+    const images = ['/images/parcel-point/locker/1.jpeg', '/images/parcel-point/locker/2.jpeg', '/images/parcel-point/locker/3.jpeg'];
 
     const handleDownload = async () => {
         try {
@@ -29,11 +29,11 @@ export default function ParcelPoint() {
     };
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-gray-950">
             {/* Header */}
-            <header className="py-4 px-4 sm:px-6 bg-gray-100">
+            <header className="py-4 px-4 sm:px-6 bg-black">
                 <div className="max-w-7xl mx-auto">
-                    <Link href="/" className="flex items-center gap-2 text-gray-900 hover:text-blue-600">
+                    <Link href="/" className="flex items-center gap-2 text-gray-300 hover:text-white">
                         <ChevronLeft className="h-5 w-5" />
                         <span>Back to Squared Computing</span>
                     </Link>
@@ -49,8 +49,8 @@ export default function ParcelPoint() {
                         className="h-16 w-auto"
                     />
                     <div className="flex flex-col">
-                        <span className="text-3xl text-gray-900 font-bold">ParcelPoint</span>
-                        <span className="text-sm tracking-widest text-gray-600">DROP • PAY • PICK</span>
+                        <span className="text-3xl text-white font-bold">ParcelPoint</span>
+                        <span className="text-sm tracking-widest text-gray-400">DROP • PAY • PICK</span>
                     </div>
                 </div>
             </div>
@@ -67,22 +67,22 @@ export default function ParcelPoint() {
                         />
                         <button
                             onClick={() => setCurrentImageIndex(i => (i - 1 + images.length) % images.length)}
-                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow"
+                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black p-2 rounded-full shadow"
                         >
-                            <ChevronLeft className="h-6 w-6 text-gray-900" />
+                            <ChevronLeft className="h-6 w-6 text-white" />
                         </button>
                         <button
                             onClick={() => setCurrentImageIndex(i => (i + 1) % images.length)}
-                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow"
+                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black p-2 rounded-full shadow"
                         >
-                            <ChevronRight className="h-6 w-6 text-gray-900" />
+                            <ChevronRight className="h-6 w-6 text-white" />
                         </button>
                         <div className="flex gap-2 justify-center mt-4">
                             {images.map((_, idx) => (
                                 <button
                                     key={idx}
                                     onClick={() => setCurrentImageIndex(idx)}
-                                    className={`h-2 w-2 rounded-full ${idx === currentImageIndex ? 'bg-blue-500' : 'bg-gray-300'}`}
+                                    className={`h-2 w-2 rounded-full ${idx === currentImageIndex ? 'bg-white' : 'bg-gray-600'}`}
                                 />
                             ))}
                         </div>
@@ -90,23 +90,26 @@ export default function ParcelPoint() {
 
                     {/* Hero Content */}
                     <div className="space-y-6">
-                        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">Convenient Deliveries and Pickups, Anytime</h1>
-                        <p className="text-lg text-gray-600">
+                        <h1 className="text-3xl sm:text-4xl font-bold text-white">Convenient Deliveries and Pickups, Anytime</h1>
+                        <p className="text-lg text-gray-300">
                             A secure, smart parcel locker system designed for seamless last-mile delivery.
                             Strategically placed in residential communities, commercial centers, schools,
                             and offices for ultimate convenience.
                         </p>
                         <div className="space-y-6">
-                            <p className="text-lg text-gray-600">
+                            <p className="text-lg text-gray-300">
                                 ParcelPoint makes parcel deliveries and pickups effortless and secure. Deliverers drop off
                                 parcels into smart lockers, and recipients retrieve them at their convenience using a unique
                                 access code sent to their phone.
                             </p>
-                            <p className="text-lg text-gray-600">
+                            <p className="text-lg text-gray-300">
                                 For personal use, you can store items securely and pick them up later. Simply drop your parcel
                                 or items, make a quick M-Pesa payment, and use your code to access the locker anytime.
                             </p>
-                            <button className="bg-blue-500 text-white px-6 py-3 rounded-lg w-full sm:w-auto" onClick={handleDownload}>
+                            <button
+                                className="bg-white text-black px-6 py-3 rounded-lg w-full sm:w-auto hover:bg-gray-100 transition-colors"
+                                onClick={handleDownload}
+                            >
                                 Download Brochure
                             </button>
                         </div>
@@ -115,9 +118,9 @@ export default function ParcelPoint() {
             </section>
 
             {/* How It Works */}
-            <section className="bg-gray-50 py-12 sm:py-16">
+            <section className="bg-black py-12 sm:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <h2 className="text-2xl sm:text-3xl text-gray-900 font-bold text-center mb-8 sm:mb-12">How It Works</h2>
+                    <h2 className="text-2xl sm:text-3xl text-white font-bold text-center mb-8 sm:mb-12">How It Works</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                         {[
                             {
@@ -141,10 +144,10 @@ export default function ParcelPoint() {
                                 description: "Pick up your parcel anytime using the access code—no missed deliveries, no waiting."
                             }
                         ].map((step, index) => (
-                            <div key={index} className="bg-white p-6 rounded-lg shadow">
-                                <h3 className="font-bold text-gray-900 mb-2">{step.title}</h3>
-                                <h4 className="text-blue-600 mb-4">{step.subtitle}</h4>
-                                <p className="text-gray-600">{step.description}</p>
+                            <div key={index} className="bg-gray-900 p-6 rounded-lg shadow border border-gray-800">
+                                <h3 className="font-bold text-white mb-2">{step.title}</h3>
+                                <h4 className="text-gray-300 mb-4">{step.subtitle}</h4>
+                                <p className="text-gray-400">{step.description}</p>
                             </div>
                         ))}
                     </div>
@@ -152,14 +155,14 @@ export default function ParcelPoint() {
             </section>
 
             {/* Network Section */}
-            <section className="py-12 sm:py-16 bg-gray-100 text-center">
+            <section className="py-12 sm:py-16 bg-gray-900 text-center">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6">
-                    <p className="text-2xl text-gray-600">
+                    <p className="text-2xl text-gray-300">
                         We're building a network of ParcelPoint lockers across Kenya, strategically located in
                         malls, residential areas, schools, and offices. This makes secure, convenient parcel pickup
                         and delivery easily accessible, wherever you are.
                     </p>
-                    <button className="mt-8 bg-blue-500 text-white px-6 py-3 rounded-lg flex items-center gap-2 mx-auto">
+                    <button className="mt-8 bg-white text-black px-6 py-3 rounded-lg flex items-center gap-2 mx-auto hover:bg-gray-100 transition-colors">
                         <MapPin className="h-5 w-5" />
                         See our locations
                     </button>
@@ -167,13 +170,12 @@ export default function ParcelPoint() {
             </section>
 
             {/* Real Solutions Section */}
-            <section className="py-12 sm:py-16">
+            <section className="py-12 sm:py-16 bg-black">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <h2 className="text-2xl sm:text-3xl text-gray-900 font-bold mb-8 sm:mb-12 text-center">
+                    <h2 className="text-2xl sm:text-3xl text-white font-bold mb-8 sm:mb-12 text-center">
                         Delivering Real Solutions with ParcelPoint
                     </h2>
 
-                    {/* Solutions Grid */}
                     <div className="space-y-8 sm:space-y-16">
                         {/* Missed Deliveries */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
@@ -183,10 +185,10 @@ export default function ParcelPoint() {
                                 className="w-full aspect-video object-cover rounded-lg"
                             />
                             <div>
-                                <h3 className="text-xl sm:text-2xl text-gray-900 font-bold mb-4">
+                                <h3 className="text-xl sm:text-2xl text-white font-bold mb-4">
                                     Missed Deliveries in a Busy Schedule
                                 </h3>
-                                <p className="text-gray-600">
+                                <p className="text-gray-300">
                                     In a fast-paced city life, missed deliveries are more than just an
                                     inconvenience—they waste valuable time. ParcelPoint solves this problem
                                     by offering 24/7 access to secure lockers. Whether you're at work, at
@@ -196,7 +198,7 @@ export default function ParcelPoint() {
                             </div>
                         </div>
 
-                        {/* Inconvenient Locations */}
+                        {/* Other solutions... */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                             <img
                                 src="/images/parcel-point/other/inconvenient-locations.png"
@@ -204,10 +206,10 @@ export default function ParcelPoint() {
                                 className="lg:order-2 w-full aspect-video object-cover rounded-lg"
                             />
                             <div className="lg:order-1">
-                                <h3 className="text-xl sm:text-2xl text-gray-900 font-bold mb-4">
-                                    Inconvenient Pickup Locations
+                                <h3 className="text-xl sm:text-2xl text-white font-bold mb-4">
+                                    Convenient Pickup Locations
                                 </h3>
-                                <p className="text-gray-600">
+                                <p className="text-gray-300">
                                     Living in a busy city means you're often juggling work, social
                                     commitments, and family. The last thing you want is to trek across town
                                     to find a parcel pickup point. ParcelPoint has strategically placed
@@ -217,8 +219,6 @@ export default function ParcelPoint() {
                             </div>
                         </div>
 
-
-                        {/* Hassle-Free Payments */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                             <img
                                 src="/images/parcel-point/other/hassle-free-payments.png"
@@ -226,10 +226,10 @@ export default function ParcelPoint() {
                                 className="w-full aspect-video object-cover rounded-lg"
                             />
                             <div>
-                                <h3 className="text-xl sm:text-2xl text-gray-900 font-bold mb-4">
+                                <h3 className="text-xl sm:text-2xl text-white font-bold mb-4">
                                     Hassle-Free Payments
                                 </h3>
-                                <p className="text-gray-600">
+                                <p className="text-gray-300">
                                     City dwellers often deal with long lines and frustrating payment
                                     processes. ParcelPoint eliminates this by allowing you to pay for your
                                     parcel pickup through M-Pesa directly at the locker, simplifying the
@@ -242,9 +242,9 @@ export default function ParcelPoint() {
             </section>
 
             {/* Partners Section */}
-            <section className="bg-gray-50 py-12 sm:py-16">
+            <section className="bg-gray-900 py-12 sm:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <h2 className="text-2xl sm:text-3xl text-gray-900 font-bold mb-8 sm:mb-12 text-center">
+                    <h2 className="text-2xl sm:text-3xl text-white font-bold mb-8 sm:mb-12 text-center">
                         Perfect Partners for ParcelPoint
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -266,9 +266,9 @@ export default function ParcelPoint() {
                                 description: "We team up with couriers and logistics providers to reduce delivery inefficiencies."
                             }
                         ].map((partner, index) => (
-                            <div key={index} className="bg-white p-6 rounded-lg shadow">
-                                <h3 className="font-bold text-gray-900 mb-4">{partner.title}</h3>
-                                <p className="text-gray-600">{partner.description}</p>
+                            <div key={index} className="bg-black p-6 rounded-lg shadow border border-gray-800">
+                                <h3 className="font-bold text-white mb-4">{partner.title}</h3>
+                                <p className="text-gray-400">{partner.description}</p>
                             </div>
                         ))}
                     </div>
@@ -276,14 +276,13 @@ export default function ParcelPoint() {
             </section>
 
             {/* FAQ Section */}
-            <section className="py-12 sm:py-16">
+            <section className="py-12 sm:py-16 bg-black">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <h2 className="text-2xl sm:text-3xl text-gray-900 font-bold mb-8 sm:mb-12 text-center">
+                    <h2 className="text-2xl sm:text-3xl text-white font-bold mb-8 sm:mb-12 text-center">
                         Frequently Asked Questions
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {[
-
                             {
                                 question: "How do I pick up my parcel from a ParcelPoint locker?",
                                 answer: "Use the unique 6-digit code sent to your phone via SMS to retrieve your parcel."
@@ -317,12 +316,13 @@ export default function ParcelPoint() {
                                 answer: "Parcels can be stored for as long as it is convenient for you."
                             }
                         ].map((faq, index) => (
-                            <div key={index} className="bg-white p-6 rounded-lg shadow">
-                                <details>
-                                    <summary className="font-bold text-gray-900 cursor-pointer list-none">
-                                        ▸ {faq.question}
+                            <div key={index} className="bg-gray-900 p-6 rounded-lg shadow border border-gray-800">
+                                <details className="group">
+                                    <summary className="font-bold text-white cursor-pointer list-none flex items-center">
+                                        <span className="group-open:rotate-90 transition-transform">▸</span>
+                                        <span className="ml-2">{faq.question}</span>
                                     </summary>
-                                    <p className="mt-4 text-gray-600">
+                                    <p className="mt-4 text-gray-300 pl-6">
                                         {faq.answer}
                                     </p>
                                 </details>
@@ -333,15 +333,15 @@ export default function ParcelPoint() {
             </section>
 
             {/* Contact Section */}
-            <section className="bg-gray-50 py-12 sm:py-16">
+            <section className="bg-gray-900 py-12 sm:py-16">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-                    <p className="text-2xl text-gray-900 mb-8">
+                    <p className="text-2xl text-white mb-8">
                         ParcelPoint serves key industries like e-commerce, retail, logistics, and
                         real estate, offering secure and efficient parcel solutions. Contact us to
                         learn how we can streamline your parcel management.
                     </p>
                     <Link href="/#contact">
-                        <button className="bg-blue-500 text-white px-6 py-3 rounded-lg w-full sm:w-auto">
+                        <button className="bg-white text-black px-6 py-3 rounded-lg w-full sm:w-auto hover:bg-gray-100 transition-colors">
                             Get in touch
                         </button>
                     </Link>
@@ -349,7 +349,7 @@ export default function ParcelPoint() {
             </section>
 
             {/* Footer */}
-            <footer className="bg-gray-900 text-white py-8 sm:py-12">
+            <footer className="bg-black text-white py-8 sm:py-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div>
@@ -384,10 +384,12 @@ export default function ParcelPoint() {
                         </div>
                     </div>
                     <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                        <p>© 2024 Squared Computing. All rights reserved.</p>
+                        <p>© {new Date().getFullYear()} Squared Computing. All rights reserved.</p>
                     </div>
                 </div>
             </footer>
         </div>
     );
 }
+
+export default ParcelPoint;

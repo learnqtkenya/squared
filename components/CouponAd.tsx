@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Gift, Snowflake, X } from 'lucide-react';
+import { Gift, Snowflake, X, Copy, Check } from 'lucide-react';
 
 interface CouponData {
   coupon_code: string;
@@ -13,13 +13,23 @@ const CouponAd = () => {
   const [coupon, setCoupon] = useState<CouponData | null>(null);
   const [error, setError] = useState('');
   const [showCouponAlert, setShowCouponAlert] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    // Check if user came from ad link
     const queryParams = new URLSearchParams(window.location.search);
     const fromAd = queryParams.get('from') === 'ad';
     setShowAd(fromAd);
   }, []);
+
+  useEffect(() => {
+    if (copied) {
+      const timer = setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [copied]);
+
   const handleGrabCoupon = async () => {
     setLoading(true);
     setError('');
@@ -60,6 +70,15 @@ const CouponAd = () => {
     }
   };
 
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+    } catch (err) {
+      console.error('Failed to copy text:', err);
+    }
+  };
+
   if (!showAd) return null;
 
   return (
@@ -76,8 +95,8 @@ const CouponAd = () => {
       <div className="flex items-center justify-center space-x-4">
         <Snowflake className="h-8 w-8 animate-spin text-white/80" />
         <div className="text-center">
-          <h3 className="text-2xl font-bold mb-2">🎄 Holiday Special Offer! 🎁</h3>
-          <p className="text-lg mb-4">Grab your exclusive Christmas discount coupon</p>
+          <h3 className="text-2xl font-bold mb-2">🎄 Special Offer! 🎁</h3>
+          <p className="text-lg mb-4">Grab your exclusive discount coupon</p>
           <button
             onClick={handleGrabCoupon}
             disabled={loading}
@@ -92,10 +111,31 @@ const CouponAd = () => {
 
       {showCouponAlert && coupon && (
         <div className="mt-4 p-4 rounded-lg bg-white text-green-600 border border-green-200">
-          <p>
-            🎉 Congratulations! Use code <span className="font-bold">{coupon.coupon_code}</span> for {coupon.discount_percentage}% off.
-            Valid until {new Date(coupon.expires_at).toLocaleDateString()}
-          </p>
+          <div className="flex flex-col items-center space-y-2">
+            <p className="text-center mb-2">
+              🎉 Congratulations! Your discount code is:
+            </p>
+            <div className="flex items-center space-x-2 bg-green-50 px-4 py-2 rounded-lg">
+              <code className="font-mono text-lg font-bold">{coupon.coupon_code}</code>
+              <button
+                onClick={() => copyToClipboard(coupon.coupon_code)}
+                className="ml-2 p-1 hover:bg-green-100 rounded-full transition-colors"
+                title="Copy to clipboard"
+              >
+                {copied ? (
+                  <Check className="h-5 w-5 text-green-600" />
+                ) : (
+                  <Copy className="h-5 w-5 text-green-600" />
+                )}
+              </button>
+            </div>
+            <p className="text-sm text-green-700">
+              {copied ? 'Copied!' : 'Click the icon to copy'}
+            </p>
+            <p className="text-sm mt-2">
+              Get {coupon.discount_percentage}% off. Valid until {new Date(coupon.expires_at).toLocaleDateString()}
+            </p>
+          </div>
         </div>
       )}
 

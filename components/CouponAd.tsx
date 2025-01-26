@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Gift, Snowflake, X } from 'lucide-react';
 
+interface CouponData {
+  coupon_code: string;
+  discount_percentage: number;
+  expires_at: string;
+}
+
 const CouponAd = () => {
   const [showAd, setShowAd] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [coupon, setCoupon] = useState(null);
+  const [coupon, setCoupon] = useState<CouponData | null>(null);
   const [error, setError] = useState('');
   const [showCouponAlert, setShowCouponAlert] = useState(false);
 
@@ -24,7 +30,7 @@ const CouponAd = () => {
       const data = await response.json();
       
       if (response.ok) {
-        setCoupon(data);
+        setCoupon(data as CouponData);
         setShowCouponAlert(true);
       } else {
         setError(data.error || 'Failed to get coupon');

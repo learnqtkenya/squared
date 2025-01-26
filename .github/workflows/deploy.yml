@@ -11,6 +11,7 @@ permissions:
   id-token: write
 
 env:
+  NEXT_PUBLIC_HOST: ${{ secrets.NEXT_PUBLIC_HOST }}
   NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
   NEXT_PUBLIC_EMAILJS_USER_ID: ${{ secrets.EMAILJS_USER_ID }}
@@ -35,6 +36,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
+          NEXT_PUBLIC_HOST: ${{ secrets.NEXT_PUBLIC_HOST }}
           NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
           NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
           NEXT_PUBLIC_EMAILJS_USER_ID: ${{ secrets.EMAILJS_USER_ID }}

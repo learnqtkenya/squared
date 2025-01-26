@@ -1,11 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: `${process.env.NEXT_PUBLIC_HOST}/api/:path*`, 
+      },
+    ]
+  }, 
   images: {
     unoptimized: true,
     domains: ['tile.openstreetmap.org'],
   },
-  // basePath: '/learnqtkenya', // Add this if you're not using a custom domain
 }
 
 module.exports = nextConfig

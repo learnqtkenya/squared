@@ -26,11 +26,11 @@ const CouponAd = () => {
     setError('');
     
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/grab-coupon`);
+      const response = await fetch('/api/grab-coupon');
       const data = await response.json();
       
       if (response.ok) {
-        setCoupon(data as CouponData);
+        setCoupon(data);
         setShowCouponAlert(true);
       } else {
         setError(data.error || 'Failed to get coupon');
@@ -58,8 +58,8 @@ const CouponAd = () => {
       <div className="flex items-center justify-center space-x-4">
         <Snowflake className="h-8 w-8 animate-spin text-white/80" />
         <div className="text-center">
-          <h3 className="text-2xl font-bold mb-2">🎄 Special Offer! 🎁</h3>
-          <p className="text-lg mb-4">Grab your exclusive discount coupon</p>
+          <h3 className="text-2xl font-bold mb-2">🎄 Holiday Special Offer! 🎁</h3>
+          <p className="text-lg mb-4">Grab your exclusive Christmas discount coupon</p>
           <button
             onClick={handleGrabCoupon}
             disabled={loading}

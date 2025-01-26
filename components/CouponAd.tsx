@@ -20,23 +20,41 @@ const CouponAd = () => {
     const fromAd = queryParams.get('from') === 'ad';
     setShowAd(fromAd);
   }, []);
-
   const handleGrabCoupon = async () => {
     setLoading(true);
     setError('');
-    
+
     try {
-      const response = await fetch('/api/grab-coupon');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/grab-coupon`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
       const data = await response.json();
-      
-      if (response.ok) {
+
+      if (!response.ok) {
+        if (data.error) {
+          setError(data.error);
+          return;
+        }
+        throw new Error('Network response was not ok');
+      }
+
+      if (data && data.coupon_code) {
         setCoupon(data);
         setShowCouponAlert(true);
       } else {
-        setError(data.error || 'Failed to get coupon');
+        setError('No coupons available');
       }
     } catch (err) {
-      setError('Failed to connect to server');
+      const errorMessage = err instanceof Error
+        ? err.message
+        : 'Failed to get coupon';
+
+      setError(errorMessage);
+      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -47,14 +65,14 @@ const CouponAd = () => {
   return (
     <div className="relative bg-gradient-to-r from-red-600 to-green-600 p-6 text-white rounded-lg shadow-lg mx-4 mb-8">
       <div className="absolute top-2 right-2">
-        <button 
+        <button
           onClick={() => setShowAd(false)}
           className="text-white/80 hover:text-white transition-colors"
         >
           <X className="h-5 w-5" />
         </button>
       </div>
-      
+
       <div className="flex items-center justify-center space-x-4">
         <Snowflake className="h-8 w-8 animate-spin text-white/80" />
         <div className="text-center">

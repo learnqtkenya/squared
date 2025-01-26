@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Package, ChevronRight, ChevronLeft, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import LocationModal from './LocationModal';
-
+import CouponAd from '@/components/CouponAd';
 
 const ParcelPoint = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -57,6 +57,9 @@ const ParcelPoint = () => {
                     </div>
                 </div>
             </div>
+
+            {/* CouponAd Ad */}
+            <CouponAd />
 
             {/* Hero Section */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">

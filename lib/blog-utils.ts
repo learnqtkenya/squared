@@ -23,12 +23,20 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
+    // Enhanced markdown processing with syntax highlighting
     const processedContent = await unified()
       .use(remarkParse)
       .use(remarkGfm)
-      .use(remarkRehype)
-      .use(rehypeHighlight)
-      .use(rehypeStringify)
+      .use(remarkRehype, { allowDangerousHtml: true })
+      .use(rehypeHighlight, { 
+        ignoreMissing: true,
+        detect: true,
+        aliases: {
+          'js': 'javascript',
+          'ts': 'typescript',
+        }
+      })
+      .use(rehypeStringify, { allowDangerousHtml: true })
       .process(content);
 
     const contentHtml = processedContent.toString();

@@ -5,13 +5,14 @@ import { Calendar, Clock, Tag, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 import { formatDate } from '@/lib/blog';
 import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
+import '@/app/styles/syntax.css';
+import 'highlight.js/styles/github-dark.css';
 
-type PageParams = {
-  slug: string;
-};
+interface Props {
+  params: Promise<{ slug: string }>;
+}
 
-async function BlogContent({ slug }: PageParams) {
+async function BlogContent({ slug }: { slug: string }) {
   const post = await getPostBySlug(slug);
 
   if (!post) {
@@ -71,7 +72,7 @@ async function BlogContent({ slug }: PageParams) {
   );
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<PageParams> }) {
+export default async function BlogPostPage({ params }: Props) {
   const resolvedParams = await params;
 
   return (
@@ -79,9 +80,7 @@ export default async function BlogPostPage({ params }: { params: Promise<PagePar
       <Navigation />
       
       <main className="pt-32 pb-20 px-4">
-        <Suspense fallback={<div>Loading...</div>}>
-          <BlogContent slug={resolvedParams.slug} />
-        </Suspense>
+        <BlogContent slug={resolvedParams.slug} />
       </main>
 
       <Footer />
@@ -89,7 +88,7 @@ export default async function BlogPostPage({ params }: { params: Promise<PagePar
   );
 }
 
-export async function generateStaticParams(): Promise<PageParams[]> {
+export async function generateStaticParams() {
   const posts = await getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,

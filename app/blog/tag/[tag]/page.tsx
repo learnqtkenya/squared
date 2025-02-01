@@ -4,13 +4,12 @@ import { Footer } from '@/components/Footer';
 import { BlogCard } from '@/components/BlogCard';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
-import { Suspense } from 'react';
 
-type PageParams = {
-  tag: string;
-};
+interface Props {
+  params: Promise<{ tag: string }>;
+}
 
-async function TagContent({ tag }: PageParams) {
+async function TagContent({ tag }: { tag: string }) {
   const posts = await getPostsByTag(tag);
   const decodedTag = decodeURIComponent(tag);
 
@@ -48,7 +47,7 @@ async function TagContent({ tag }: PageParams) {
   );
 }
 
-export default async function TagPage({ params }: { params: Promise<PageParams> }) {
+export default async function TagPage({ params }: Props) {
   const resolvedParams = await params;
 
   return (
@@ -57,9 +56,7 @@ export default async function TagPage({ params }: { params: Promise<PageParams> 
       
       <main className="pt-32 pb-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <Suspense fallback={<div>Loading...</div>}>
-            <TagContent tag={resolvedParams.tag} />
-          </Suspense>
+          <TagContent tag={resolvedParams.tag} />
         </div>
       </main>
 
@@ -68,7 +65,7 @@ export default async function TagPage({ params }: { params: Promise<PageParams> 
   );
 }
 
-export async function generateStaticParams(): Promise<PageParams[]> {
+export async function generateStaticParams() {
   const tags = await getAllTags();
   return Object.keys(tags).map(tag => ({
     tag: tag.toLowerCase(),

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@types/lodash": "^4.17.15",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",

@@ -1,37 +1,19 @@
 'use client';
 
 import React from 'react';
-import { Bot, Package, Terminal, Users, ChevronRight, CheckCircle, CircuitBoard } from 'lucide-react';
-import { ContactForm } from '@/components/ContactForm';
-import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/lib/constants';
+import {
+  CircuitBoard,
+  Cpu,
+  Settings,
+  CheckCircle,
+  ChevronRight
+} from 'lucide-react';
 import Link from 'next/link';
-
-const services = [
-  {
-    title: 'Custom Firmware',
-    icon: <CircuitBoard className="h-8 w-8 text-emerald-600" />,
-    description: 'Tailored firmware solutions for your specific hardware needs'
-  },
-  {
-    title: 'Consulting',
-    icon: <Users className="h-8 w-8 text-emerald-600" />,
-    description: 'Informed guidance on architecture, optimization, and best practices'
-  },
-  {
-    title: 'System Integration',
-    icon: <Terminal className="h-8 w-8 text-emerald-600" />,
-    description: 'Seamless integration of firmware with existing systems'
-  }
-];
-
-const parcelPointFeatures = [
-  "24/7 secure parcel access with SMS notifications",
-  "Integrated MPESA payment system",
-  "Weather-resistant, durable design",
-  "Suitable for residential and commercial properties",
-  "Simple user interface with digital access codes",
-  "Centralized delivery management",
-];
+import { ContactForm } from '@/components/ContactForm';
+import { ValuePropositions } from '@/components/ValuePropositions';
+import { ServicesGrid } from '@/components/ServicesGrid';
+import { Footer } from '@/components/Footer';
+import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/lib/constants';
 
 const SquaredComputingWebsite = () => {
   const scrollToSection = (sectionId: string) => {
@@ -56,28 +38,16 @@ const SquaredComputingWebsite = () => {
               <span className="text-xl font-bold text-gray-800">{COMPANY_NAME}</span>
             </div>
             <div className="hidden md:flex space-x-8">
-              <button
-                onClick={() => scrollToSection('services')}
-                className="text-gray-600 hover:text-emerald-600 transition-colors"
-              >
+              <button onClick={() => scrollToSection('services')} className="text-gray-600 hover:text-emerald-600">
                 Services
               </button>
-              <button
-                onClick={() => scrollToSection('products')}
-                className="text-gray-600 hover:text-emerald-600 transition-colors"
-              >
-                Products
+              <button onClick={() => scrollToSection('expertise')} className="text-gray-600 hover:text-emerald-600">
+                Expertise
               </button>
-              <button
-                onClick={() => scrollToSection('about')}
-                className="text-gray-600 hover:text-emerald-600 transition-colors"
-              >
-                About
+              <button onClick={() => scrollToSection('portfolio')} className="text-gray-600 hover:text-emerald-600">
+                Portfolio
               </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="text-gray-600 hover:text-emerald-600 transition-colors"
-              >
+              <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-emerald-600">
                 Contact
               </button>
             </div>
@@ -90,181 +60,205 @@ const SquaredComputingWebsite = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-5xl font-bold mb-6 text-gray-900">
-                Firmware Development Consulting
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                Full-Stack Embedded Systems Solutions
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                We help businesses and individuals bring their hardware to life with custom firmware solutions and informed consulting services.
+                From hardware design to IoT implementation, we deliver end-to-end embedded solutions that bring your ideas to life.
               </p>
               <div className="flex space-x-4">
                 <button
                   onClick={() => scrollToSection('contact')}
                   className="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors shadow-sm"
                 >
-                  Consult With Us
+                  Start Your Project
                 </button>
                 <button
-                  onClick={() => scrollToSection('services')}
+                  onClick={() => scrollToSection('expertise')}
                   className="border-2 border-emerald-600 text-emerald-600 px-6 py-3 rounded-lg hover:bg-emerald-50 transition-colors"
                 >
-                  Our Services
+                  Our Expertise
                 </button>
               </div>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm border border-emerald-200">
-              <Bot className="h-16 w-16 text-emerald-600 mb-6" />
-              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Our Expertise</h3>
-              <div className="space-y-4">
-                {[
-                  'Embedded Systems Development',
-                  'IoT Firmware Solutions',
-                  'Hardware Integration',
-                  'Performance Optimization'
-                ].map((service) => (
-                  <div key={service} className="flex items-center space-x-3">
-                    <CheckCircle className="text-emerald-600 h-5 w-5" />
-                    <span className="text-gray-600">{service}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Firmware Development Services</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div key={service.title} 
-                className="group bg-white p-6 rounded-xl shadow-sm border border-emerald-200 hover:border-emerald-400 transition-all duration-300 hover:shadow-md"
-              >
-                <div className="mb-4">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section id="products" className="py-20 px-4 bg-emerald-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Our Products</h2>
-          <div className="bg-white rounded-xl shadow-sm border border-emerald-200">
-            <div className="p-8">
-              <div className="flex items-center space-x-4 mb-6">
-                <Package className="h-10 w-10 text-emerald-600" />
-                <h3 className="text-2xl font-bold text-gray-900">ParcelPoint</h3>
-              </div>
-
-              <p className="text-gray-600 mb-8 text-lg">
-                A secure, smart parcel locker system designed for seamless last-mile delivery.
-                Strategically placed in residential communities, commercial centers, schools,
-                and offices for ultimate convenience.
-              </p>
-
-              <div className="mb-8">
-                <h4 className="text-lg font-semibold text-gray-800 mb-4">Perfect for:</h4>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {parcelPointFeatures.map((feature) => (
-                    <div key={feature} className="flex items-start space-x-2">
-                      <CheckCircle className="text-emerald-600 h-5 w-5 mt-1 flex-shrink-0" />
-                      <span className="text-gray-600">{feature}</span>
+              <div className="space-y-6">
+                <h3 className="text-2xl font-semibold mb-4 text-gray-800">Our End-to-End Solutions</h3>
+                <div className="space-y-4">
+                  {[
+                    'Hardware Design & PCB Layout',
+                    'Firmware Development',
+                    'IoT Integration',
+                    'Rapid Prototyping',
+                    'GUI Development with Qt',
+                    'Custom Electronics Solutions'
+                  ].map((capability) => (
+                    <div key={capability} className="flex items-center space-x-3">
+                      <CheckCircle className="text-emerald-600 h-5 w-5 flex-shrink-0" />
+                      <span className="text-gray-600">{capability}</span>
                     </div>
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div className="mt-8 flex items-center justify-between">
-                <Link
-                  href="/parcelpoint"
-                  className="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-semibold"
-                >
-                  <span>Learn more about ParcelPoint</span>
-                  <ChevronRight className="h-5 w-5" />
-                </Link>
+      {/* Key Values Section */}
+      <section id="expertise" className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4 text-center text-gray-900">Why Choose Us</h2>
+          <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            We combine technical excellence with business acumen to deliver solutions that drive your success.
+          </p>
+          <ValuePropositions />
 
-                <Link
-                  href="/#contact"
-                  className="inline-flex items-center px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors shadow-sm"
-                >
-                  Get Started
-                </Link>
+          <div className="mt-16 bg-emerald-50 p-8 rounded-xl border border-emerald-200">
+            <h3 className="text-2xl font-bold mb-6 text-center text-gray-900">Our Technical Foundation</h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Cpu className="h-6 w-6 text-emerald-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Senior Embedded Systems Engineering</h4>
+                    <p className="text-gray-600">10+ years of C++ and system architecture expertise</p>
+                  </div>
+                </div>
+                <div className="pl-16">
+                  <ul className="space-y-2">
+                    {[
+                      'Real-time systems development',
+                      'Hardware architecture design',
+                      'Performance optimization',
+                      'Low-level programming'
+                    ].map((skill) => (
+                      <li key={skill} className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-emerald-600 flex-shrink-0" />
+                        <span className="text-gray-600">{skill}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Settings className="h-6 w-6 text-emerald-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Mechatronics Engineering</h4>
+                    <p className="text-gray-600">Specialized in mechanical-electronic integration</p>
+                  </div>
+                </div>
+                <div className="pl-16">
+                  <ul className="space-y-2">
+                    {[
+                      'CAD/CAM design expertise',
+                      'Prototype development',
+                      'Control systems',
+                      'Industrial automation'
+                    ].map((skill) => (
+                      <li key={skill} className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-emerald-600 flex-shrink-0" />
+                        <span className="text-gray-600">{skill}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-white">
+
+      {/* Services Section */}
+      <section id="services" className="py-20 px-4 bg-emerald-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">About Us</h2>
-          <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto">
-            {COMPANY_DESCRIPTION} We specialize in creating robust firmware solutions
-            and providing expert consulting services to help businesses optimize their
-            hardware implementations.
-          </p>
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Our Services</h2>
+          <ServicesGrid />
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section id="portfolio" className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Featured Project</h2>
+          <div className="bg-emerald-50 rounded-xl p-8 border border-emerald-200">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-600 mb-4">ParcelPoint Smart Locker System</h3>
+                <p className="text-gray-600 mb-6">
+                  A complete IoT solution featuring custom hardware design, secure firmware,
+                  and cloud connectivity for automated parcel management.
+                </p>
+                <ul className="space-y-3 mb-6">
+                  {[
+                    'Custom hardware design and manufacturing',
+                    'Secure microprocessor firmware',
+                    'Mobile and desktop apps integration',
+                    'Cloud-based management system',
+                    'M-PESA payment integration'
+                  ].map((feature) => (
+                    <li key={feature} className="flex items-center space-x-2">
+                      <CheckCircle className="h-4 w-4 text-emerald-600 flex-shrink-0" />
+                      <span className="text-gray-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/parcelpoint">
+                  <button className="inline-flex items-center space-x-2 bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors">
+                    <span>Learn More</span>
+                    <ChevronRight className="h-4 w-4" />
+                  </button>
+                </Link>
+              </div>
+              <img
+                src="/images/parcel-point/locker/1.jpeg"
+                alt="ParcelPoint Locker"
+                className="rounded-lg shadow-sm"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-emerald-50">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900">Get in Touch</h2>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Start Your Project</h2>
           <p className="text-gray-600 mb-8 max-w-xl mx-auto">
-            Looking for seasoned firmware development consulting? Let us help bring your hardware to life.
+            Ready to bring your embedded systems project to life? Let's discuss how our expertise
+            in hardware design, firmware development, and IoT solutions can help achieve your goals.
           </p>
           <ContactForm />
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-white text-gray-600 py-12 px-4 border-t border-emerald-100">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <CircuitBoard className="h-6 w-6 text-emerald-600" />
-                <span className="font-bold text-gray-800">{COMPANY_NAME}</span>
-              </div>
-              <p className="text-gray-600">
-                {COMPANY_DESCRIPTION}
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-gray-800">Services</h4>
-              <ul className="space-y-2">
-                <li>Custom Firmware</li>
-                <li>Consulting</li>
-                <li>System Integration</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-gray-800">Products</h4>
-              <ul className="space-y-2">
-                <li>Parcel Point</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-gray-800">Contact</h4>
-              <ul className="space-y-2">
-                <li>hello@squared.co.ke</li>
-                <li>Nairobi, Kenya</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-emerald-100 mt-12 pt-8 text-center text-gray-600">
-            <p>© {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer
+        sections={[
+          {
+            title: 'Services',
+            links: [
+              { label: 'Hardware Design' },
+              { label: 'Firmware Development' },
+              { label: 'IoT Solutions' },
+              { label: 'Qt Development' }
+            ]
+          },
+          {
+            title: 'Products',
+            links: [
+              { label: 'ParcelPoint', href: '/parcelpoint' }
+            ]
+          }
+        ]}
+      />
     </div>
   );
 };

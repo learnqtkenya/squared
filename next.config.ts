@@ -5,5 +5,6 @@ const nextConfig = {
     unoptimized: true,
     domains: ['tile.openstreetmap.org'],
   },
-  assetPrefix: '.',
 }
+
+module.exports = nextConfig

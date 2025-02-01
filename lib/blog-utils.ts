@@ -10,6 +10,7 @@ import rehypeHighlight from 'rehype-highlight';
 import { BlogPost } from './blog';
 
 const POSTS_DIRECTORY = path.join(process.cwd(), 'content/blog');
+const normalizeTag = (tag: string) => decodeURIComponent(tag.toLowerCase().trim());
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
@@ -23,7 +24,6 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    // Enhanced markdown processing with syntax highlighting
     const processedContent = await unified()
       .use(remarkParse)
       .use(remarkGfm)
@@ -49,6 +49,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const wordCount = content.split(/\s+/).length;
     const readingTime = `${Math.ceil(wordCount / 200)} min read`;
 
+    const tags = (data.tags || []).map(normalizeTag);
+
     return {
       slug: realSlug,
       title: data.title,
@@ -56,7 +58,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       author: data.author || 'Squared Computing',
       excerpt: data.excerpt || extractExcerpt(content),
       content: contentHtml,
-      tags: data.tags || [],
+      tags,
       readingTime,
       coverImage: data.coverImage,
     };
@@ -96,7 +98,11 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 
 export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
   const allPosts = await getAllPosts();
-  return allPosts.filter(post => post.tags.includes(tag));
+  const normalizedSearchTag = normalizeTag(tag);
+  
+  return allPosts.filter(post => 
+    post.tags.some(postTag => normalizeTag(postTag) === normalizedSearchTag)
+  );
 }
 
 export async function getAllTags(): Promise<{ [tag: string]: number }> {
@@ -105,7 +111,8 @@ export async function getAllTags(): Promise<{ [tag: string]: number }> {
 
   posts.forEach(post => {
     post.tags.forEach(tag => {
-      tags[tag] = (tags[tag] || 0) + 1;
+      const normalizedTag = normalizeTag(tag);
+      tags[normalizedTag] = (tags[normalizedTag] || 0) + 1;
     });
   });
 

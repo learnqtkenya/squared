@@ -4,14 +4,19 @@ import { Footer } from '@/components/Footer';
 import { BlogCard } from '@/components/BlogCard';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
+import { notFound } from 'next/navigation';
 
 interface Props {
   params: Promise<{ tag: string }>;
 }
 
 async function TagContent({ tag }: { tag: string }) {
-  const posts = await getPostsByTag(tag);
   const decodedTag = decodeURIComponent(tag);
+  const posts = await getPostsByTag(decodedTag);
+
+  if (posts.length === 0) {
+    notFound();
+  }
 
   return (
     <>
@@ -32,24 +37,18 @@ async function TagContent({ tag }: { tag: string }) {
         </p>
       </div>
 
-      {posts.length > 0 ? (
-        <div className="grid md:grid-cols-2 gap-8">
-          {posts.map(post => (
-            <BlogCard key={post.slug} post={post} />
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-12 text-gray-600">
-          No posts found with this tag.
-        </div>
-      )}
+      <div className="grid md:grid-cols-2 gap-8">
+        {posts.map(post => (
+          <BlogCard key={post.slug} post={post} />
+        ))}
+      </div>
     </>
   );
 }
 
 export default async function TagPage({ params }: Props) {
   const resolvedParams = await params;
-
+  
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />

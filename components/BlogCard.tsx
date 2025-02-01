@@ -48,7 +48,7 @@ export const BlogCard = ({ post }: BlogCardProps) => (
           {post.tags.map(tag => (
             <Link 
               key={tag}
-              href={`/blog/tag/${tag.toLowerCase()}`}
+              href={`/blog/tag/${encodeURIComponent(tag.toLowerCase())}`}
               className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-colors"
             >
               <Tag className="h-3 w-3" />

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {
-  CircuitBoard,
   Cpu,
   Settings,
   CheckCircle,
@@ -13,7 +12,8 @@ import { ContactForm } from '@/components/ContactForm';
 import { ValuePropositions } from '@/components/ValuePropositions';
 import { ServicesGrid } from '@/components/ServicesGrid';
 import { Footer } from '@/components/Footer';
-import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/lib/constants';
+import { Navigation } from '@/components/Navigation';
+
 
 const SquaredComputingWebsite = () => {
   const scrollToSection = (sectionId: string) => {
@@ -26,34 +26,7 @@ const SquaredComputingWebsite = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white/90 shadow-sm backdrop-blur-sm fixed w-full z-50 border-b border-emerald-100">
-        <nav className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-2">
-              <img
-                src="/images/squared/squared_computing_dark.png"
-                alt="Squared Computing Logo"
-                className="h-8 w-auto"
-              />
-              <span className="text-xl font-bold text-gray-800">{COMPANY_NAME}</span>
-            </div>
-            <div className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('services')} className="text-gray-600 hover:text-emerald-600">
-                Services
-              </button>
-              <button onClick={() => scrollToSection('expertise')} className="text-gray-600 hover:text-emerald-600">
-                Expertise
-              </button>
-              <button onClick={() => scrollToSection('portfolio')} className="text-gray-600 hover:text-emerald-600">
-                Portfolio
-              </button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-emerald-600">
-                Contact
-              </button>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <Navigation onScrollToSection={scrollToSection} />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-white to-emerald-50">

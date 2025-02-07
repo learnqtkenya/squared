@@ -7,8 +7,6 @@ excerpt: "Learn about the fundamentals of embedded systems development and how t
 coverImage: "/images/blog/embedded-systems-intro.jpg"
 ---
 
-# Introduction to Embedded Systems Development
-
 Embedded systems are specialized computing systems designed to perform dedicated functions within larger mechanical or electrical systems. In this post, we'll explore the fundamentals of embedded systems development and provide practical insights for getting started.
 
 ## What Are Embedded Systems?

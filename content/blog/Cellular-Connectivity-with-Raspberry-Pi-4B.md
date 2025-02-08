@@ -9,13 +9,24 @@ coverImage: "/images/blog/usb-a7670e-modem.png"
 
 ## Introduction
 
-The evolution of single-board computers has transformed the landscape of embedded systems development. While the Arduino UNO remains a reliable choice for specific applications, the Raspberry Pi 4B, with its quad-core processor and up to 8GB RAM, offers expanded capabilities for more complex IoT implementations. However, this increased computing power introduces its own set of challenges, particularly when integrating cellular connectivity.
+Implementing cellular connectivity in embedded Linux systems presents unique challenges, particularly in the context of the Raspberry Pi 4B platform. While the Pi 4B offers significant processing capabilities and versatile I/O options, integrating cellular modems requires careful consideration of hardware interfaces, driver support, and system service interactions. This technical implementation explores the process of adding cellular connectivity to a Raspberry Pi 4B, focusing on the challenges of modem selection, system integration, and configuration of the ModemManager framework.
 
 ## Project Requirements
 
-This implementation focuses on two primary objectives for a Raspberry Pi 4B-based IoT application:
-1. Establish internet connectivity using a SIM card
-2. Enable SMS messaging capabilities using the same SIM card
+The implementation addresses two specific networking requirements for a Raspberry Pi 4B-based IoT application:
+
+1. **System-Wide Cellular Network Integration**
+   - Enable full TCP/IP networking capabilities through the cellular modem
+   - Integrate with the Linux networking stack for system-wide internet access
+   - Support automatic network interface configuration via NetworkManager
+   - Ensure proper routing and DNS resolution for all system services
+
+2. **SMS Messaging Functionality**
+   - Enable programmatic SMS message handling
+   - Integrate with ModemManager's messaging interfaces
+   - Support both message transmission and reception
+
+These requirements extend beyond basic AT command support, necessitating proper integration with Linux networking subsystems and system management services.
 
 ## Hardware Integration Options
 

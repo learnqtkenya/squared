@@ -180,17 +180,25 @@ ModemManager[1197]: <msg> [modem1] state changed (connecting -> connected)
 ModemManager[1197]: <msg> [modem1] simple connect state (10/10): all done
 ```
 
-## Moving Forward: Raspberry Pi Implementation
+## Moving Forward: Testing on Raspberry Pi 4B
 
-With successful Linux driver integration and cellular connectivity confirmed on the development system, the next phase involves replicating this implementation on the Raspberry Pi 4B. Key considerations for the transition include:
+With successful Linux driver integration and cellular connectivity confirmed on the development system, our next phase involves practical testing and validation on the Raspberry Pi 4B. The following key areas will be covered:
 
-1. **Architecture Compatibility**
-   - Verify kernel version and header availability on Raspberry Pi OS
-   - Check for ARM-specific compilation requirements
+1. **Initial Setup on Raspberry Pi**
+   - Installing and configuring ModemManager
+   - Setting up network interfaces
+   - Verifying driver functionality on ARM architecture
 
-2. **System Integration**
-   - ModemManager and NetworkManager configuration adaptation
-   - Power management considerations
-   - Boot-time initialization sequence
+2. **SMS Testing**
+   - Command-line testing with mmcli
+   - Message sending and receiving verification
+   - Queue management and status monitoring
+   - Troubleshooting common messaging issues
 
-The next section will detail the process of implementing this proven configuration on the Raspberry Pi 4B platform.
+3. **Internet Connectivity Testing**
+   - Network registration and APN configuration
+   - Connection establishment verification
+   - Basic connectivity testing
+   - Bandwidth and latency measurement
+
+The next section will provide a hands-on guide for testing both SMS and internet capabilities on the Raspberry Pi 4B, including practical examples, troubleshooting tips, and performance validation methods.

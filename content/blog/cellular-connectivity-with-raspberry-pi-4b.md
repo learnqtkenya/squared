@@ -329,3 +329,7 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="1e0e", ATTRS{idProduct}=="9011", RUN+="/sbin
 ```
 
 The next section will detail the implementation of proper driver support and ModemManager configuration for the A7670E modem.
+
+[Part 2: Driver Support for A7670E: Kernel Module Implementation](https://squared.co.ke/blog/driver-support-for-a7670e)
+
+[Part 3: Testing A7670E Modem Features with CellularPi](https://squared.co.ke/blog/testing-cellular-connectivity-on-pi4b)

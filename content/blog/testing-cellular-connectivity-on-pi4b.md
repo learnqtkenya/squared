@@ -469,3 +469,12 @@ Based on our testing results, we recommend:
    - Cache failed requests for retry
 
 These findings will inform our future development and deployment strategies for cellular-based IoT applications.
+
+[Part 1: The Implementation Chronicles: A7670E USB Modem](https://squared.co.ke/blog/cellular-connectivity-with-raspberry-pi-4b)
+
+[Part 2: Driver Support for A7670E: Kernel Module Implementation](https://squared.co.ke/blog/driver-support-for-a7670e)
+
+## Resources
+
+1. [learnqtkenya/CellularPi](https://github.com/learnqtkenya/CellularPi)
+2. [learnqtkenya/QTonRaspberryPi](https://github.com/learnqtkenya/QTonRaspberryPi)

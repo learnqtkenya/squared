@@ -126,7 +126,6 @@ mkdir -p /lib/modules/`uname -r`/kernel/drivers/net/usb/
 cp -f simcom_wwan.ko /lib/modules/`uname -r`/kernel/drivers/net/usb/
 depmod
 ```
-**You can fully updated driver here** [learnqtkenya/SIM7600_NDIS](https://github.com/learnqtkenya/SIM7600_NDIS)
 
 ## Post-Installation Configuration
 
@@ -202,3 +201,11 @@ With successful Linux driver integration and cellular connectivity confirmed on 
    - Bandwidth and latency measurement
 
 The next section will provide a hands-on guide for testing both SMS and internet capabilities on the Raspberry Pi 4B, including practical examples, troubleshooting tips, and performance validation methods.
+
+[Part 1: The Implementation Chronicles: A7670E USB Modem](https://squared.co.ke/blog/cellular-connectivity-with-raspberry-pi-4b)
+
+[Part 3: Testing A7670E Modem Features with CellularPi](https://squared.co.ke/blog/testing-cellular-connectivity-on-pi4b)
+
+## Resources
+
+1. Update SIM7600 driver [learnqtkenya/SIM7600_NDIS](https://github.com/learnqtkenya/SIM7600_NDIS)

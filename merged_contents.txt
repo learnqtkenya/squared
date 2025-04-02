@@ -1,3 +1,7 @@
+
+
+--- content/blog/canbus-fragmentation.md ---
+
 ---
 title: "Implementing a CAN Bus Fragmentation Protocol: A Developer's Guide"
 date: "2025-03-25"
@@ -6,17 +10,6 @@ tags: ["CAN"]
 excerpt: "How do you squeeze a 100-byte telemetry packet through an 8-byte straw? One fragment at a time."
 coverImage: "/images/blog/can-fragmentation.png"
 ---
-
-## Preface: Understanding the Context
-
-**Important Note**: This blog post is an educational exploration of creating a custom fragmentation protocol for classical CAN bus. In real-world applications, there are several established protocol stacks that already solve this problem efficiently:
-
-- **J1939 Protocol Stack**: Widely used in automotive and heavy-duty vehicle applications
-- **CANopen**: Common in industrial automation
-- **OBD2**
-- ...
-
-If you're working on a production system, it's strongly recommended to use these battle-tested protocol stacks. This implementation is primarily for learning purposes, demonstrating the underlying principles of data fragmentation on a constrained communication bus.
 
 ## Introduction: The CAN Bus Foundation
 
@@ -38,7 +31,7 @@ A standard CAN frame consists of several fields:
 - **ACK Field**: Acknowledgment from receivers
 - **End of Frame (EOF)**: Seven recessive bits marking frame end
 
-The key limitation we'll address is that **data field size of 8 bytes maximum on classical CAN**. This constraint exists because CAN was designed for real-time control systems where short, frequent messages are typical.
+The key limitation we'll address is that **data field size of 8 bytes maximum**. This constraint exists because CAN was designed for real-time control systems where short, frequent messages are typical.
 
 ### Standard vs. Extended CAN IDs
 
@@ -116,9 +109,9 @@ uint8_t getPriority(uint32_t can_id) {
 
 This bit manipulation is fundamental to creating an efficient protocol on top of CAN.
 
-## The 8-Byte Limitation Challenge of classical CAN
+## The 8-Byte Limitation Challenge
 
-Now that we understand how to use CAN IDs effectively, we face the main limitation: the 8-byte payload maximum of classical CAN. This constraint becomes problematic in several scenarios:
+Now that we understand how to use CAN IDs effectively, we face the main limitation: the 8-byte payload maximum. This constraint becomes problematic in several scenarios:
 
 1. **Telemetry data**: Sending multiple sensor readings with timestamps
 2. **Configuration parameters**: Updating device settings in bulk
@@ -1002,7 +995,7 @@ void mainLoop() {
 
 ## Conclusion
 
-Implementing a CAN fragmentation protocol requires careful design and attention to detail, but the result is a robust solution for transmitting data structures much larger than classical CAN's native 8-byte limit (or even CAN FD's 64-byte limit).
+Implementing a CAN fragmentation protocol requires careful design and attention to detail, but the result is a robust solution for transmitting data structures much larger than CAN's native 8-byte limit (or even CAN FD's 64-byte limit).
 
 By understanding the core concepts—fragment types, message tracking, reassembly, and error handling—you can implement a reliable protocol tailored to your specific application needs.
 
@@ -1019,8 +1012,6 @@ With these tools and techniques, you can overcome the fundamental payload limita
 ---
 
 ## Resources
-1. [J1939 Standard Documentation](https://www.sae.org/standards/content/j1939/)
-2. [UAVCAN Protocol Specification](https://uavcan.org/)
-3. [CAN in Automation (CiA) Standards](https://www.can-cia.org/)
-4. [http://www.hoefner-online.de/home/pdfs/2017GlabbeekHoefnerMars.pdf](http://www.hoefner-online.de/home/pdfs/2017GlabbeekHoefnerMars.pdf)
-5. [https://www.csselectronics.com/pages/can-bus-ultimate-guide](https://www.csselectronics.com/pages/can-bus-ultimate-guide)
+
+1. [http://www.hoefner-online.de/home/pdfs/2017GlabbeekHoefnerMars.pdf](http://www.hoefner-online.de/home/pdfs/2017GlabbeekHoefnerMars.pdf)
+2. [https://www.csselectronics.com/pages/can-bus-ultimate-guide](https://www.csselectronics.com/pages/can-bus-ultimate-guide)

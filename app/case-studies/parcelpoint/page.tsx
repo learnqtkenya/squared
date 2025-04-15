@@ -362,7 +362,7 @@ const ParcelPointCaseStudyPage = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
+            {/* <div className="grid grid-cols-2 gap-4">
               <img
                 src="/api/placeholder/300/200"
                 alt="ParcelPoint Installation"
@@ -383,7 +383,7 @@ const ParcelPointCaseStudyPage = () => {
                 alt="ParcelPoint User"
                 className="rounded-lg shadow-sm"
               />
-            </div>
+            </div> */}
           </div>
           
           <div className="text-center">

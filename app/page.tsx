@@ -139,14 +139,14 @@ const SquaredComputingWebsite = () => {
             </div>
           </div>
 
-          <div className="mt-12 text-center">
+          {/* <div className="mt-12 text-center">
             <Link href="/services">
               <button className="inline-flex items-center space-x-2 bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors">
                 <span>View All Services</span>
                 <ChevronRight className="h-4 w-4" />
               </button>
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
 

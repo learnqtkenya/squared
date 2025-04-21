@@ -444,16 +444,12 @@ const EmbeddedSystemsDesignPage = () => {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">ParcelPoint Smart Locker System</h3>
                 <p className="text-gray-600 mb-6">
                   The ParcelPoint project showcases our comprehensive embedded systems design capabilities.
-                  We delivered a complete solution from custom PCB design to optimized firmware and intuitive HMI.
+                  We delivered a complete solution from custom hardware design to optimized firmware and intuitive HMI.
                 </p>
                 <ul className="space-y-3 mb-6">
                   {[
-                    'Custom mainboard with STM32F7 microcontroller',
-                    'Motor driver circuit for electronic locks',
-                    'Power management for battery operation',
-                    'RTOS-based firmware with secure communication',
-                    'Touchscreen HMI with LVGL',
-                    'Full production documentation and support'
+                    'Control unit with STM32F1 MCU for electronic locks',
+                    'Touchscreen HMI with Qt on an arm64 MPU'
                   ].map((feature) => (
                     <li key={feature} className="flex items-center space-x-2">
                       <CheckCircle className="h-4 w-4 text-emerald-600 flex-shrink-0" />

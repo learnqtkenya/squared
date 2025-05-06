@@ -1,3 +1,4 @@
+
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -7,6 +8,8 @@ import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
+import rehypeSanitize from 'rehype-sanitize';
+import rehypeRaw from 'rehype-raw';
 import { BlogPost, extractExcerpt } from './blog';
 
 const POSTS_DIRECTORY = path.join(process.cwd(), 'content/blog');
@@ -25,10 +28,16 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const { data, content } = matter(fileContents);
 
     const processedContent = await unified()
-      .use(remarkParse)
-      .use(remarkGfm)
-      .use(remarkRehype, { allowDangerousHtml: true })
-      .use(rehypeHighlight, { 
+      .use(remarkParse)                          // Parse markdown
+      .use(remarkGfm)                            // Support GFM (tables, autolinks, etc)
+      .use(remarkRehype, {                       // Convert to HTML, with options:
+        allowDangerousHtml: true,                // Allow HTML in markdown
+        footnoteLabel: 'Footnotes',
+        footnoteBackLabel: 'Back to content',
+      })
+      .use(rehypeRaw)                            // Handle HTML in markdown
+      .use(rehypeSanitize)                       // Sanitize HTML
+      .use(rehypeHighlight, {                    // Syntax highlighting
         ignoreMissing: true,
         detect: true,
         aliases: {
@@ -36,7 +45,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
           'ts': 'typescript',
         }
       })
-      .use(rehypeStringify, { allowDangerousHtml: true })
+      .use(rehypeStringify)                      // Serialize HTML
       .process(content);
 
     const contentHtml = processedContent.toString();
@@ -139,9 +148,15 @@ export async function getAllCategories(): Promise<{ [category: string]: number }
   const categories: { [category: string]: number } = {};
 
   posts.forEach(post => {
-    post.categories.forEach(category => {
-      const normalizedCategory = category.toLowerCase();
-      categories[normalizedCategory] = (categories[normalizedCategory] || 0) + 1;
+    const postCategories = Array.isArray(post.categories) 
+      ? post.categories 
+      : [post.categories].filter(Boolean);
+    
+    postCategories.forEach(category => {
+      if (category) {
+        const normalizedCategory = category.toLowerCase().trim();
+        categories[normalizedCategory] = (categories[normalizedCategory] || 0) + 1;
+      }
     });
   });
 

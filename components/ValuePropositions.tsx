@@ -1,4 +1,5 @@
 import { Zap, Rocket, Layers, Target } from 'lucide-react';
+import React from 'react';
 
 interface ValueProp {
   icon: React.ReactNode;
@@ -7,14 +8,16 @@ interface ValueProp {
 }
 
 const ValueCard = ({ icon, title, description }: ValueProp) => (
-  <div className="group bg-gradient-to-b from-emerald-50 to-white p-6 rounded-xl border border-emerald-200 hover:border-emerald-400 transition-all duration-300 hover:shadow-lg">
+  <div className="group bg-gradient-to-b from-emerald-50 to-white dark:from-emerald-900/20 dark:to-gray-900 p-6 rounded-xl border border-emerald-200 dark:border-emerald-900 hover:border-emerald-400 dark:hover:border-emerald-700 transition-all duration-300 hover:shadow-lg">
     <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
-      <div className="w-16 h-16 mx-auto bg-emerald-100 rounded-full flex items-center justify-center">
-        {icon}
+      <div className="w-16 h-16 mx-auto bg-emerald-100 dark:bg-emerald-900/50 rounded-full flex items-center justify-center">
+        {React.cloneElement(icon as React.ReactElement, { 
+          className: "h-8 w-8 text-emerald-600 dark:text-emerald-500" 
+        })}
       </div>
     </div>
-    <h3 className="text-xl font-semibold mb-3 text-center text-gray-900">{title}</h3>
-    <p className="text-gray-600 text-center">{description}</p>
+    <h3 className="text-xl font-semibold mb-3 text-center text-gray-900 dark:text-white">{title}</h3>
+    <p className="text-gray-600 dark:text-gray-300 text-center">{description}</p>
   </div>
 );
 

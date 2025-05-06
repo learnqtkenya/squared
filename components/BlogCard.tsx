@@ -8,7 +8,7 @@ interface BlogCardProps {
 }
 
 export const BlogCard = ({ post }: BlogCardProps) => (
-  <article className="bg-white rounded-xl border border-emerald-200 hover:border-emerald-400 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md">
+  <article className="bg-white dark:bg-gray-800 rounded-lg border border-emerald-200 dark:border-emerald-900 hover:border-emerald-400 dark:hover:border-emerald-700 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md h-full flex flex-col">
     {post.coverImage && (
       <Link href={`/blog/${post.slug}`}>
         <div className="aspect-video w-full overflow-hidden">
@@ -21,42 +21,42 @@ export const BlogCard = ({ post }: BlogCardProps) => (
         </div>
       </Link>
     )}
-    <div className="p-6">
-      <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+    <div className="p-3 flex-1 flex flex-col">
+      <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-300 mb-2">
         <div className="flex items-center gap-1">
-          <Calendar className="h-4 w-4" />
+          <Calendar className="h-3 w-3" />
           <time>{formatDate(post.date)}</time>
         </div>
         <div className="flex items-center gap-1">
-          <Clock className="h-4 w-4" />
+          <Clock className="h-3 w-3" />
           <span>{post.readingTime}</span>
         </div>
       </div>
       
-      <Link href={`/blog/${post.slug}`}>
-        <h2 className="text-2xl font-bold text-gray-900 mb-3 hover:text-emerald-600 transition-colors">
+      <Link href={`/blog/${post.slug}`} className="flex-1 flex flex-col">
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-2 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors line-clamp-2">
           {post.title}
         </h2>
+      
+        <p className="text-gray-600 dark:text-gray-300 mb-3 line-clamp-3 text-sm flex-1">
+          {post.excerpt}
+        </p>
       </Link>
       
-      <p className="text-gray-600 mb-4 line-clamp-3">
-        {post.excerpt}
-      </p>
-      
-      <div className="flex items-center justify-between">
-        <div className="flex flex-wrap gap-2">
-          {post.tags.map(tag => (
+      <div className="flex items-center justify-between mt-auto pt-2">
+        <div className="flex flex-wrap gap-1">
+          {post.tags.slice(0, 2).map(tag => (
             <Link 
               key={tag}
               href={`/blog/tag/${encodeURIComponent(tag.toLowerCase())}`}
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-colors"
+              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors"
             >
-              <Tag className="h-3 w-3" />
+              <Tag className="h-2 w-2" />
               {tag}
             </Link>
           ))}
         </div>
-        <div className="text-sm text-gray-600">
+        <div className="text-xs text-gray-600 dark:text-gray-400">
           By {post.author}
         </div>
       </div>

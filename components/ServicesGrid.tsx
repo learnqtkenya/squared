@@ -1,4 +1,5 @@
 import { CircuitBoard, Cpu, Settings, Layout, CheckCircle } from 'lucide-react';
+import React from 'react';
 import { ReactNode } from 'react';
 
 interface ServiceDetail {
@@ -11,17 +12,19 @@ interface ServiceDetail {
 interface ServiceCardProps extends ServiceDetail {}
 
 const ServiceCard = ({ icon, title, description, details }: ServiceCardProps) => (
-  <div className="bg-white p-6 rounded-xl shadow-sm border border-emerald-200 hover:border-emerald-400 transition-all duration-300 group">
+  <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-emerald-200 dark:border-emerald-900 hover:border-emerald-400 dark:hover:border-emerald-700 transition-all duration-300 group">
     <div className="mb-4 transform group-hover:scale-105 transition-transform duration-300">
-      {icon}
+      {React.cloneElement(icon as React.ReactElement, { 
+        className: "h-8 w-8 text-emerald-600 dark:text-emerald-500" 
+      })}
     </div>
-    <h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>
-    <p className="text-gray-600 mb-4">{description}</p>
+    <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">{title}</h3>
+    <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
     <ul className="space-y-2">
       {details.map((detail) => (
         <li key={detail} className="flex items-center space-x-2">
-          <CheckCircle className="h-4 w-4 text-emerald-600 flex-shrink-0" />
-          <span className="text-gray-600">{detail}</span>
+          <CheckCircle className="h-4 w-4 text-emerald-600 dark:text-emerald-500 flex-shrink-0" />
+          <span className="text-gray-600 dark:text-gray-300">{detail}</span>
         </li>
       ))}
     </ul>

@@ -1,10 +1,12 @@
 ---
 title: "Testing Cellular Features Using CellularPi: Implementation and Testing"
-date: "2025-02-11"
-author: "Erick"
-tags: ["Pi", "Modems", "ModemManager", "AT Commands"]
-excerpt: "Testing A7670E Modem Features with CellularPi: Part 3"
-coverImage: "/images/blog/a7670e-with-pi.jpeg"
+date: 2025-02-11 08:00:00 +0300
+author: Erick
+categories: [embedded]
+tags: [Pi, Modems, ModemManager, AT Commands]
+image:
+    path: "/images/blog/a7670e-with-pi.jpeg"
+    alt: a7670-modem
 ---
 
 ## Introduction

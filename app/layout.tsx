@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "./styles/syntax.css";
 import 'highlight.js/styles/github-dark.css';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,15 +35,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="w-full h-full">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full h-full`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

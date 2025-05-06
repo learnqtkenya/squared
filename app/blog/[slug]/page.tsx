@@ -8,7 +8,13 @@ import { notFound } from 'next/navigation';
 import '@/app/styles/syntax.css'; 
 import BlogCommentsWrapper from '@/components/BlogCommentsWrapper';
 import { BlogCard } from '@/components/BlogCard';
-import { Metadata } from 'next';
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export default async function BlogPostPage({
   params

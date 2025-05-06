@@ -31,15 +31,26 @@ export const ContactForm: React.FC = () => {
     setSubmitStatus('sending');
 
     try {
+      // Ensure all required IDs are available
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        console.error('Missing required EmailJS configuration');
+        setSubmitStatus('error');
+        return;
+      }
+
       const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          service_id: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-          template_id: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-          user_id: process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
+          service_id: serviceId,
+          template_id: templateId,
+          user_id: publicKey,
           template_params: {
             from_name: formData.name,
             reply_to: formData.email,
@@ -49,15 +60,18 @@ export const ContactForm: React.FC = () => {
         })
       });
 
+      const responseText = await response.text();
+
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
+        console.error('EmailJS error:', responseText);
         setSubmitStatus('error');
       }
     } catch (error) {
-      setSubmitStatus('error');
       console.error('Contact form submission error:', error);
+      setSubmitStatus('error');
     }
   };
 

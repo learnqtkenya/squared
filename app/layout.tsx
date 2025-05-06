@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import "./styles/syntax.css";
+import 'highlight.js/styles/github-dark.css';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,10 +23,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Squared Computing" }],
   icons: {
     icon: [
-      { url: "./favicon.ico", sizes: "16x16" },
-      { url: "./favicon.ico", sizes: "32x32" },
+      { url: "/favicon.ico" }
     ],
-    shortcut: [{ url: "./favicon.ico" }],
   },
 };
 
@@ -37,8 +37,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="./favicon.ico" sizes="any" type="image/x-icon"/>
-        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

@@ -5,6 +5,8 @@ import { Package, ChevronRight, ChevronLeft, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import LocationModal from './LocationModal';
 import CouponAd from '@/components/CouponAd';
+import { Footer } from '@/components/Footer';
+
 
 const ParcelPoint = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -358,45 +360,26 @@ const ParcelPoint = () => {
             </section>
 
             {/* Footer */}
-            <footer className="bg-white text-gray-600 py-8 sm:py-12 border-t border-emerald-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div>
-                            <h3 className="font-bold text-gray-900 mb-4">Squared Computing</h3>
-                            <p className="text-gray-600">
-                                Informed firmware development and consulting services.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h3 className="font-bold text-gray-900 mb-4">Services</h3>
-                            <ul className="space-y-2 text-gray-600">
-                                <li>Custom Firmware</li>
-                                <li>Consulting</li>
-                                <li>System Integration</li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h3 className="font-bold text-gray-900 mb-4">Products</h3>
-                            <ul className="space-y-2 text-gray-600">
-                                <li>Parcel Point</li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h3 className="font-bold text-gray-900 mb-4">Contact</h3>
-                            <ul className="space-y-2 text-gray-600">
-                                <li className="break-words">hello@squared.co.ke</li>
-                                <li>Nairobi, Kenya</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="border-t border-emerald-100 mt-8 pt-8 text-center text-gray-600">
-                        <p>© {new Date().getFullYear()} Squared Computing. All rights reserved.</p>
-                    </div>
-                </div>
-            </footer>
+            <Footer
+                sections={[
+                    {
+                        title: 'Features',
+                        links: [
+                            { label: '24/7 Access' },
+                            { label: 'Secure Storage' },
+                            { label: 'M-PESA Integration' }
+                        ]
+                    },
+                    {
+                        title: 'Company',
+                        links: [
+                            { label: 'About Us', href: '/#about' },
+                            { label: 'Services', href: '/#services' },
+                            { label: 'Contact', href: '/#contact' }
+                        ]
+                    }
+                ]}
+            />
             <LocationModal
                 isOpen={isLocationModalOpen}
                 onClose={() => setIsLocationModalOpen(false)}

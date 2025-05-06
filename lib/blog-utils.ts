@@ -7,7 +7,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
-import { BlogPost } from './blog';
+import { BlogPost, extractExcerpt } from './blog';
 
 const POSTS_DIRECTORY = path.join(process.cwd(), 'content/blog');
 const normalizeTag = (tag: string) => decodeURIComponent(tag.toLowerCase().trim());
@@ -50,17 +50,20 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const readingTime = `${Math.ceil(wordCount / 200)} min read`;
 
     const tags = (data.tags || []).map(normalizeTag);
+    const categories = data.category || data.categories || [];
 
     return {
       slug: realSlug,
       title: data.title,
       date: data.date,
+      lastModified: data.last_modified_at,
       author: data.author || 'Squared Computing',
       excerpt: data.excerpt || extractExcerpt(content),
       content: contentHtml,
       tags,
+      categories: Array.isArray(categories) ? categories : [categories],
       readingTime,
-      coverImage: data.coverImage,
+      coverImage: data.image?.path || data.coverImage,
     };
   } catch (error) {
     console.error(`Error processing post ${slug}:`, error);
@@ -68,50 +71,51 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   }
 }
 
+// Get all blog posts
 export async function getAllPosts(): Promise<BlogPost[]> {
-  try {
-    if (!fs.existsSync(POSTS_DIRECTORY)) {
-      fs.mkdirSync(POSTS_DIRECTORY, { recursive: true });
-      console.warn('Created blog posts directory');
-      return [];
-    }
-
-    const slugs = fs.readdirSync(POSTS_DIRECTORY)
-      .filter(file => file.endsWith('.md'));
-
-    const postsPromises = slugs.map(async (slug) => {
-      const post = await getPostBySlug(slug);
-      return post;
-    });
-
-    const posts = (await Promise.all(postsPromises))
-      .filter((post): post is BlogPost => post !== null)
-      .sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()));
-
-    return posts;
-  } catch (error) {
-    console.error('Error getting all posts:', error);
+  // Check if directory exists
+  if (!fs.existsSync(POSTS_DIRECTORY)) {
+    fs.mkdirSync(POSTS_DIRECTORY, { recursive: true });
     return [];
   }
+
+  // Get all markdown files
+  const fileNames = fs.readdirSync(POSTS_DIRECTORY)
+    .filter(file => file.endsWith('.md'));
+
+  // Parse each file
+  const postsPromises = fileNames.map(async (fileName) => {
+    // Remove .md extension to get slug
+    const slug = fileName.replace(/\.md$/, '');
+    return await getPostBySlug(slug);
+  });
+
+  // Filter out nulls and sort by date (newest first)
+  const posts = (await Promise.all(postsPromises))
+    .filter((post): post is BlogPost => post !== null)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  return posts;
 }
 
-
+// Get posts by tag
 export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
   const allPosts = await getAllPosts();
-  const normalizedSearchTag = normalizeTag(tag);
+  const normalizedTag = tag.toLowerCase().trim();
   
   return allPosts.filter(post => 
-    post.tags.some(postTag => normalizeTag(postTag) === normalizedSearchTag)
+    post.tags.some(postTag => postTag.toLowerCase() === normalizedTag)
   );
 }
 
+// Get all tags with post counts
 export async function getAllTags(): Promise<{ [tag: string]: number }> {
   const posts = await getAllPosts();
   const tags: { [tag: string]: number } = {};
 
   posts.forEach(post => {
     post.tags.forEach(tag => {
-      const normalizedTag = normalizeTag(tag);
+      const normalizedTag = tag.toLowerCase();
       tags[normalizedTag] = (tags[normalizedTag] || 0) + 1;
     });
   });
@@ -119,20 +123,29 @@ export async function getAllTags(): Promise<{ [tag: string]: number }> {
   return tags;
 }
 
-// Utility function to extract excerpt from markdown content
-export function extractExcerpt(content: string, maxLength: number = 150): string {
-  // Remove headers, links, images, and other markdown syntax
-  const plainText = content
-    .replace(/#+\s+/g, '') // Remove headers
-    .replace(/(?:__|[*#])|\[(.*?)\]\(.*?\)/g, '$1') // Remove markdown syntax
-    .replace(/\n/g, ' ') // Replace newlines with spaces
-    .trim();
+// Get posts by category
+export async function getPostsByCategory(category: string): Promise<BlogPost[]> {
+  const allPosts = await getAllPosts();
+  const normalizedCategory = category.toLowerCase().trim();
+  
+  return allPosts.filter(post => 
+    post.categories.some(cat => cat.toLowerCase() === normalizedCategory)
+  );
+}
 
-  if (plainText.length <= maxLength) {
-    return plainText;
-  }
+// Get all categories with post counts
+export async function getAllCategories(): Promise<{ [category: string]: number }> {
+  const posts = await getAllPosts();
+  const categories: { [category: string]: number } = {};
 
-  return plainText.slice(0, maxLength).trim() + '...';
+  posts.forEach(post => {
+    post.categories.forEach(category => {
+      const normalizedCategory = category.toLowerCase();
+      categories[normalizedCategory] = (categories[normalizedCategory] || 0) + 1;
+    });
+  });
+
+  return categories;
 }
 
 const POSTS_PER_PAGE = 6;

@@ -1,10 +1,12 @@
 ---
 title: "Implementing a CAN Bus Fragmentation Protocol: A Developer's Guide"
-date: "2025-03-25"
-author: "Erick"
-tags: ["CAN"]
-excerpt: "How do you squeeze a 100-byte telemetry packet through an 8-byte straw? One fragment at a time."
-coverImage: "/images/blog/can-fragmentation.png"
+date: 2025-03-25 08:00:00 +0700
+author: Erick
+categories: [embedded]
+tags: [CAN]
+image:
+    path: "/images/blog/can-fragmentation.png"
+    alt: can-fragmentation 
 ---
 
 ## Preface: Understanding the Context

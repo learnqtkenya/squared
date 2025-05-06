@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@highlightjs/cdn-assets": "^11.11.1",
     "@types/lodash": "^4.17.15",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
@@ -21,13 +22,13 @@
     "next": "^15.3.0",
     "react": "^19.0.0-rc.1",
     "react-dom": "^19.0.0-rc.1",
-    "rehype-highlight": "^7.0.1",
+    "rehype-highlight": "^7.0.2",
     "rehype-stringify": "^10.0.1",
     "remark": "^14.0.3",
     "remark-gfm": "^4.0.0",
     "remark-html": "^15.0.2",
     "remark-parse": "^11.0.0",
-    "remark-rehype": "^11.1.1",
+    "remark-rehype": "^11.1.2",
     "tailwind-merge": "^2.6.0",
     "unified": "^11.0.5"
   },

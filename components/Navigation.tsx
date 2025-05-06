@@ -54,7 +54,14 @@ export const Navigation = ({
         { label: 'ParcelPoint', href: '/parcelpoint' }
       ]
     },
-    { label: 'Blog', href: '/blog' },
+    { 
+      label: 'Blog', 
+      children: [
+        { label: 'All Posts', href: '/blog' },
+        { label: 'Archives', href: '/blog/archives' },
+        { label: 'Categories', href: '/blog/categories' }
+      ]
+    },
     { label: 'Contact', onClick: () => onScrollToSection?.('contact') }
   ];
 

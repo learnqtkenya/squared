@@ -1,10 +1,12 @@
 ---
 title: "TouchGFX vs. LVGL vs. Qt: Choosing the Right HMI for Your Embedded Device"
-date: "2025-04-17"
-author: "Erick"
-tags: ["Hmi"]
-excerpt: "Selecting the appropriate GUI framework for embedded devices requires evaluating..."
-coverImage: "/images/blog/gui-fm-selection.jpg"
+date: 2025-04-17 08:00:00 +0700
+author: Erick
+categories: [Hmi]
+tags: [Hmi]
+image: 
+    path: "/images/blog/gui-fm-selection.jpg"
+    alt: gui-fmw-selection
 ---
 
 Selecting the appropriate GUI framework for embedded devices requires evaluating technical capabilities, resource requirements, and development workflows. This article provides an objective comparison of TouchGFX, LVGL, and Qt for MCUs to help engineers make informed decisions based on project requirements.

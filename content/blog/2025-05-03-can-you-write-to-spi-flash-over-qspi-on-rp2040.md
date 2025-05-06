@@ -1,11 +1,15 @@
 ---
 title: "RP2040 QSPI Flash & XIP Memory"
-date: "2025-05-03"
-author: "Erick"
-tags: ["SPI", "RP2040", "Zephyr"]
-excerpt: "System-level research on RP2040’s XIP and ROM behavior"
-coverImage: "/images/blog/qspi-flash.png"
+author: Erick
+date: 2025-05-03 08:00:00 +0700
+categories: [embedded]
+tags: [SPI, RP2040, Zephyr]
+image: 
+    path: "/images/blog/qspi-flash.png"
+    alt: qspi-flash
 ---
+
+## Introduction
 
 The RP2040 (e.g. on a Raspberry Pi Pico) boots and runs **code directly from its external SPI flash** (“execute-in-place” or XIP). In other words, the entire 128 Mb (16 MB) Winbond W25Q128JVS chip is memory‑mapped starting at address **0x1000 0000**. By default reads from this region are cache‑accelerated (16 kB cache), but there are mirror aliases for non‑cached and no‑allocate accesses at **0x1100 0000**, **0x1200 0000**, and **0x1300 0000**. The upshot is that *reading* the flash is trivial – you can just dereference a pointer into 0x1000 0000 and the hardware handles the SPI transactions transparently.
 

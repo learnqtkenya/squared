@@ -1,10 +1,12 @@
 ---
 title: "Cellular Connectivity with Raspberry Pi 4B: Implementation and Challenges"
-date: "2025-02-08"
-author: "Erick"
-tags: ["Pi", "Modems"]
-excerpt: "Driver Support for A7670E: Kernel Module Implementation: Part 2"
-coverImage: "/images/blog/usb-a7670e-modem.png"
+date: 2025-02-08 08:00:00 +0300
+author: Erick
+categories: [embedded]
+tags: [Pi, Modems]
+image: 
+   path: "/images/blog/usb-a7670e-modem.png"
+   alt: a7670e-modem
 ---
 
 

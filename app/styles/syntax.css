@@ -1,99 +1,111 @@
-/* Code block styles */
+/* One Dark Pro theme for code syntax highlighting */
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+
+code.hljs {
+  padding: 3px 5px;
+}
+
+.hljs {
+  color: #abb2bf;
+  background: #282c34;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+  color: #c678dd;
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  color: #e06c75;
+}
+
+.hljs-literal {
+  color: #56b6c2;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string {
+  color: #98c379;
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number {
+  color: #d19a66;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  color: #61afef;
+}
+
+.hljs-built_in,
+.hljs-title.class_,
+.hljs-class .hljs-title {
+  color: #e5c07b;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+
+/* Additional styles for better readability */
 pre {
-    background: #1a1a1a !important;
-    border-radius: 0.5rem;
-    color: #fff;
-    font-family: 'GeistMono', monospace;
-    padding: 1.5rem !important;
-    margin: 1.5rem 0 !important;
-    overflow-x: auto;
-  }
-  
-  /* Inline code styles */
-  :not(pre) > code {
-    background: #f3f4f6;
-    color: #ef4444;
-    padding: 0.2rem 0.4rem;
-    border-radius: 0.25rem;
-    font-family: 'GeistMono', monospace;
-    font-size: 0.875em;
-  }
-  
-  /* Token colors */
-  .hljs-keyword {
-    color: #ff79c6;
-  }
-  
-  .hljs-built_in {
-    color: #8be9fd;
-  }
-  
-  .hljs-type {
-    color: #8be9fd;
-  }
-  
-  .hljs-literal {
-    color: #bd93f9;
-  }
-  
-  .hljs-number {
-    color: #bd93f9;
-  }
-  
-  .hljs-regexp {
-    color: #ff5555;
-  }
-  
-  .hljs-string {
-    color: #f1fa8c;
-  }
-  
-  .hljs-subst {
-    color: #f8f8f2;
-  }
-  
-  .hljs-symbol {
-    color: #f1fa8c;
-  }
-  
-  .hljs-class {
-    color: #8be9fd;
-  }
-  
-  .hljs-function {
-    color: #50fa7b;
-  }
-  
-  .hljs-title {
-    color: #50fa7b;
-  }
-  
-  .hljs-params {
-    color: #f8f8f2;
-  }
-  
-  .hljs-comment {
-    color: #6272a4;
-  }
-  
-  .hljs-doctag {
-    color: #ff79c6;
-  }
-  
-  .hljs-meta,
-  .hljs-meta-keyword {
-    color: #bd93f9;
-  }
-  
-  .hljs-meta-string {
-    color: #f1fa8c;
-  }
-  
-  /* Line numbers */
-  .hljs-ln {
-    border-collapse: collapse;
-  }
-  
-  .hljs-ln td {
-    padding: 0 0.5rem;
-  }
+  border-radius: 6px;
+  margin: 1.5em 0;
+}
+
+code {
+  font-family: 'Fira Code', Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+/* Line highlighting */
+.hljs-ln-line.highlight {
+  background-color: #2c313c;
+}
+
+/* For inline code */
+:not(pre) > code {
+  background: #2c313c;
+  color: #abb2bf;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}

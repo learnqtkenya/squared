@@ -5,45 +5,10 @@ import { Calendar, Clock, Tag, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 import { formatDate } from '@/lib/blog';
 import { notFound } from 'next/navigation';
-// import 'highlight.js/styles/atom-one-dark.css';
 import '@/app/styles/syntax.css'; 
 import BlogCommentsWrapper from '@/components/BlogCommentsWrapper';
 import { BlogCard } from '@/components/BlogCard';
 import { Metadata } from 'next';
-
-export async function generateMetadata({
-  params
-}: {
-  params: Promise<{ slug: string }>
-}): Promise<Metadata> {
-  const resolvedParams = await params;
-  const post = await getPostBySlug(resolvedParams.slug);
-
-  if (!post) {
-    return {
-      title: 'Post Not Found',
-    };
-  }
-
-  return {
-    title: post.title,
-    description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: 'article',
-      authors: [post.author],
-      images: post.coverImage ? [{ url: post.coverImage }] : [],
-    },
-  };
-}
-
-export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
 
 export default async function BlogPostPage({
   params
@@ -63,8 +28,8 @@ export default async function BlogPostPage({
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <Navigation />
 
-      <main className="pt-24 pb-16 px-4 w-full">
-        <article className="max-w-5xl mx-auto">
+      <main className="pt-32 pb-20 px-4">
+        <article className="container mx-auto max-w-3xl lg:max-w-4xl xl:max-w-5xl">
           <div className="mb-8">
             <Link
               href="/blog"
@@ -132,7 +97,7 @@ export default async function BlogPostPage({
           {relatedPosts.length > 0 && (
             <div className="mt-16">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-6">Related Posts</h3>
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {relatedPosts.map(relatedPost => (
                   <BlogCard key={relatedPost.slug} post={relatedPost} />
                 ))}

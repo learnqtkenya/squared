@@ -53,9 +53,12 @@ Critically, these operations are **not interrupt‑safe**. Since the CPU is norm
 
 On the positive side, once these rules are followed, the flash can be reprogrammed reliably. The RP2040 is little‑endian and treats the flash as a linear address space, so after a write one can immediately read back updated bytes via normal pointer loads. However, writing does wear out flash (bits can only be flipped 0→1 by erasing), so designers typically plan writes sparingly (e.g. one sector of 4 KB at a time).
 
-## Running on Zephyr RTOS (rpi\_pico)
+## Running on Zephyr RTOS with Settings API : target (rpi\_pico)
 
-We tried to use Zephyr’s filesystem layers (e.g. LittleFS) on a Pico to test runtime flash writes. In Zephyr’s devicetree one usually defines a partition labeled `"storage"` for the file system. For example, adding a fixed-partitions node under the flash device could set aside the last MB of flash for data, leaving the front for the firmware image.
+[samples/subsys/setttings](https://github.com/zephyrproject-rtos/zephyr/tree/main/samples/subsys/settings)
+
+We tried to use Zephyr's Settings API with both NVS and file-based approaches on an RP2040 Pico to test runtime flash operations. In Zephyr's devicetree, we defined a partition labeled `"storage"` for storing settings data:
+
 ```overlay
 &flash0 {
     partitions {
@@ -63,62 +66,130 @@ We tried to use Zephyr’s filesystem layers (e.g. LittleFS) on a Pico to test r
         #address-cells = <1>;
         #size-cells = <1>;
 
-        storage_partition: partition@100000 {
+        storage_partition: partition@1f9000 {
             label = "storage";
-            reg = <0x100000 0x0F0000>;
+            reg = <0x1F9000 0x00007000>;
         };
     };
 };
-
 ```
-In `prj.conf` we enabled:
+
+### NVS-Based Settings (Working Approach)
+
+First, we tested using NVS (Non-Volatile Storage) with these settings in `prj.conf`:
 
 ```conf
 # for spi flash r/w
-CONFIG_DISK_ACCESS=y
-CONFIG_DISK_DRIVERS=y
-
 CONFIG_FLASH=y
 CONFIG_FLASH_MAP=y
-CONFIG_FLASH_PAGE_LAYOUT=y
+CONFIG_SETTINGS=y
+CONFIG_SETTINGS_RUNTIME=y
+CONFIG_NVS=y
+CONFIG_SETTINGS_NVS=y
+CONFIG_HEAP_MEM_POOL_SIZE=256
+CONFIG_MPU_ALLOW_FLASH_WRITE=y
+```
 
+This approach worked correctly. The settings API could save, load, and delete key-value pairs, and the runtime API for both getting and setting values functioned properly.
+
+### File-Based Settings (Problematic)
+
+When we switched to file-based settings with LittleFS, we used this configuration:
+
+```conf
+# File system support
 CONFIG_FILE_SYSTEM=y
 CONFIG_FILE_SYSTEM_LITTLEFS=y
 
-CONFIG_FS_LITTLEFS_BLK_DEV=y
-CONFIG_FILE_SYSTEM_MKFS=y
+# Settings configuration
+CONFIG_SETTINGS=y
+CONFIG_SETTINGS_RUNTIME=y
+CONFIG_SETTINGS_FILE=y
+CONFIG_SETTINGS_FILE_PATH="/ff/settings.cfg"
+
+# Disable NVS settings
+CONFIG_NVS=n
+CONFIG_SETTINGS_NVS=n
 ```
 
-On boot, Zephyr’s FS code tried to mount `"storage"` and format it if empty. Indeed we saw LittleFS messages about mounting or formatting. However, as soon as a write was attempted (for example, creating a file), the system hung.
+In the initialization code, we used LittleFS to mount a filesystem:
 
-This matches a known Zephyr issue: the RP2040 flash driver would **disable XIP**, perform the write, then try to continue with XIP disabled. If any flash data needed (e.g. the code or data buffer) was still mapped, the CPU would stall. Concretely, a Zephyr issue report notes “by default XIP caching is enabled… \[so] if data to write lies in flash, the driver will attempt to read the flash while writing…this will cause the hangup”. In our experiment we saw just such a hang. The stack trace pointed inside `flash_rpi_write` into Zephyr’s `flash_rpi_pico.c` (similar to issue #68728).
+```c
+FS_LITTLEFS_DECLARE_DEFAULT_CONFIG(cstorage);
+static struct fs_mount_t littlefs_mnt = {
+    .type = FS_LITTLEFS,
+    .fs_data = &cstorage,
+    .storage_dev = (void *)STORAGE_PARTITION_ID,
+    .mnt_point = "/ff"
+};
+rc = fs_mount(&littlefs_mnt);
+```
 
-Zephyr’s flash driver was eventually patched to mitigate this: it disables XIP caching in the board init, and buffers any write data that resides in flash into RAM before calling the ROM routines. The patched sequence is essentially the same steps as the SDK: `connect_internal_flash()`, `flash_exit_xip()`, write, `flash_flush_cache()`, then re-enable XIP via the copied-out Boot2. This works, but it shows how fragile it is. In short, our Zephyr attempt was **not plug‑and‑play**. We had to disable caches (`xip_ctrl_hw->ctrl &= ~XIP_CTRL_EN_BITS`) and ensure all flash writes went through these ROM calls. Without that, LittleFS or NVS writes would freeze the core.
+**The Problem:** While we could successfully save settings and perform most operations, the system would hang when using `settings_runtime_get()` to read values back from storage.
 
-## ROM Flash Routines under Firmware
+### Root Cause: XIP Conflicts
 
-So, can *firmware* safely do flash writes? The answer is *yes, but only in a special mode*. You must execute code from SRAM (or from a cache-safe alias) while manipulating flash. The RP2040’s ROM functions make this possible, and even exposed themselves via lookup codes in the SDK (e.g. `rom_flash_exit_xip_fn`, `rom_flash_flush_cache_fn`). In bare‑metal C one can `rom_func_lookup_inline(ROM_FUNC_FLASH_RANGE_ERASE)` to get a function pointer and call it, just as the SDK and Zephyr driver do.
+The culprit is the RP2040's XIP (Execute-In-Place) architecture combined with flash access limitations:
 
-Under Zephyr or other RTOS control, you’d typically need to do the equivalent: switch off XIP, disable IRQs, call the ROM erase/program functions, then re‑enable XIP and IRQs. This is quite low-level, so most RTOSes treat flash writes as special. In Zephyr’s case, the flash driver and filesystem layers must coordinate carefully (for example, by using asynchronous flash APIs or off‑loading writes).
+1. The RP2040 runs code directly from SPI flash through the XIP cache
+2. When accessing flash through file operations, the flash driver must:
+   - Disable XIP mode to send SPI commands to the flash
+   - Buffer any data from flash into RAM
+   - Execute code from SRAM during this period
+   - Re-enable XIP mode and flush the cache
 
-One unresolved question is whether the *ROM write sequences* can be fully relied on in-field. The datasheet is clear on their function signatures and requirements, but it does not cover all edge cases. For example, if one core is in XIP from flash while the other erases a sector, behavior is undefined. The Zephyr community even suggests disabling one core’s XIP entirely when writing . These are hardware‑specific quirks that aren’t obvious from the high-level docs.
+With file-based settings, the `settings_runtime_get()` function attempts to read from a file stored in flash. This operation requires sending SPI commands, which requires disabling XIP. However, if the code execution path itself is in flash (not carefully isolated to SRAM), the CPU stalls when it tries to fetch the next instruction.
 
-## Discussion and Trade‑offs
+### Working Solutions
 
-In summary, **reading** the SPI flash from RP2040 firmware is easy — it’s memory-mapped XIP. But **writing** is a special operation: it requires suspending XIP and using the chip’s SPI commands via ROM routines. The RP2040 datasheet provides the necessary details (function names, alignment rules). In firmware, you must disable interrupts/other core, call `_flash_exit_xip()`, issue erase/program (e.g. via `flash_range_program`), then `_flash_flush_cache()` to re‑enable execution.
+There are several approaches to resolve this issue:
 
-The trade-off is complexity versus convenience. If you really need a built‑in filesystem or data log on RP2040 flash, it *can* be done, but your code must manage the XIP cache and execution location carefully. As the RP2040 forum notes, “code must run from SRAM since flash would not be available for execution” during write. In practice, that means isolating all flash-write logic into routines placed in RAM (or using the BootROM functions), and verifying that no stray XIP access occurs. If done correctly, it works – but it’s easy to get into a deadlock if you miss a detail.
+1. **Use NVS instead of file-based settings** - NVS is specifically designed for this use case and manages the XIP conflicts correctly
 
-Areas where the documentation is clear include the boot‑time routines and their signatures, and the flash geometry (4 KB sectors, 256 B pages). However, the *runtime* behavior is more nuanced and not exhaustively documented. For example, Zephyr’s experience shows that simply calling the ROM flash functions isn’t enough without also disabling caching. Designers should test on their specific hardware and consider alternatives (e.g. using external I²C/SPI FRAM or an SD card) if the complexity is too high.
+2. **Use an external storage device** - Connect an external EEPROM, FRAM, or SD card to avoid conflicts with the main program flash
+
+For most applications, using NVS is the simplest and most reliable approach on RP2040, as it's designed to handle the XIP constraints and flash command sequencing properly.
+
+## RP2040 Code Execution
+
+It's important to clarify that by default, code on the RP2040 runs directly from flash memory using XIP (Execute-In-Place), not from SRAM. Looking at the device tree overlay:
+
+```
+chosen {
+    zephyr,sram = &sram0;
+    zephyr,flash = &flash0;
+    zephyr,code-partition = &slot0_partition;
+};
+```
+
+The `zephyr,code-partition = &slot0_partition` line specifies that code is placed in the flash partition, which is at address 0x10000100 (part of the XIP region). This confirms that code runs from flash by default, not SRAM, which explains the hang when XIP is disabled during flash operations.
+
+While solutions exist to place critical code in SRAM to avoid XIP issues during flash operations, implementing these properly requires careful testing and validation specific to the RP2040 platform and Zephyr RTOS.
+
+## Discussion and Trade-Offs
+
+When working with settings storage on RP2040, developers must carefully consider the hardware's limitations:
+
+- **Reading from flash** is easy with XIP, but **writing to flash** requires special handling
+- **Flash operations must respect XIP constraints** - code execution must shift to SRAM during flash commands
+- **Interrupts must be disabled** during flash operations to prevent code fetches from flash
+
+While file-based approaches (LittleFS) offer more flexibility and a familiar filesystem interface, they introduce complexity when dealing with RP2040's XIP architecture. NVS offers a more direct approach that's better aligned with the hardware constraints.
+
+For applications where settings data is small and infrequently updated, NVS is the recommended approach. For more complex data storage needs, consider:
+1. Carefully relocating flash-related code to SRAM
+2. Using external storage devices to separate code execution from data storage
+3. Implementing custom flash handlers that respect the XIP limitations
 
 ---
 
 **Sources:** 
 1. [RP2040 datasheet and Pico SDK documentation for QSPI/XIP behavior](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf)
 2. [Winbond W25Q128JVS datasheet for flash commands]()
-3. https://vanhunteradams.com/Pico/Bootloader/Boot_sequence.html#:~:text=use%20a%20QSPI%20interface%2C%20which,specific%29%20configurations%20are
-4. https://www.makermatrix.com/blog/read-and-write-data-with-the-pi-pico-onboard-flash/#:~:text=There%20are%20two%20functions%20in,to%20write%20into%20the%20flash
-5. https://www.eevblog.com/forum/microcontrollers/rp2040-writing-and-loading-code-from-qspi-flash-memory/#:~:text=And%20reading%20the%20data%20is,Writing%20is%20harder
-6. https://docs.zephyrproject.org/latest/samples/subsys/fs/littlefs/README.html
-7. https://github.com/zephyrproject-rtos/zephyr/issues/68728
-8. https://www.eevblog.com/forum/microcontrollers/rp2040-writing-and-loading-code-from-qspi-flash-memory/#:~:text=To%20write%20the%20flash%2C%20you,not%20be%20available%20for%20execution
+3. https://github.com/zephyrproject-rtos/zephyr/issues/82632
+4. https://github.com/zephyrproject-rtos/zephyr/issues/68728
+5. https://vanhunteradams.com/Pico/Bootloader/Boot_sequence.html
+6. https://www.makermatrix.com/blog/read-and-write-data-with-the-pi-pico-onboard-flash/
+7. https://www.eevblog.com/forum/microcontrollers/rp2040-writing-and-loading-code-from-qspi-flash-memory
+8. https://docs.zephyrproject.org/latest/samples/subsys/fs/littlefs/README.html
+

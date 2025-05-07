@@ -356,11 +356,29 @@ const ParcelPoint = () => {
                         real estate, offering secure and efficient parcel solutions. Contact us to
                         learn how we can streamline your parcel management.
                     </p>
-                    <Link href="/#contact">
-                        <button className="bg-emerald-600 dark:bg-emerald-700 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-sm">
-                            Get in touch
-                        </button>
-                    </Link>
+                    <div className="flex flex-col sm:flex-row justify-center gap-4">
+                        <a
+                            href="mailto:hello@squared.co.ke?subject=ParcelPoint%20Inquiry"
+                            className="bg-emerald-600 dark:bg-emerald-700 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-sm flex items-center justify-center gap-2"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            Email Us
+                        </a>
+                        <a
+                            href="https://wa.me/254700549607?text=I'm%20interested%20in%20ParcelPoint."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-green-600 dark:bg-green-700 text-white px-6 py-3 rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition-colors shadow-sm flex items-center justify-center gap-2"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                            WhatsApp Us
+                        </a>
+                    </div>
                 </div>
             </section>
 

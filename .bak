@@ -1,0 +1,38 @@
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 bg-emerald-50 dark:bg-gray-800 transition-colors duration-300">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">What Our Clients Say</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white dark:bg-gray-900 p-8 rounded-xl border border-emerald-200 dark:border-emerald-900">
+              <p className="text-gray-600 dark:text-gray-300 mb-6 italic">
+                "Squared Computing took our complex idea and turned it into a market-ready product in half the time we expected. Their team handled all the technical complexities while keeping us informed in terms we could understand."
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 rounded-full flex items-center justify-center mr-4">
+                  <span className="font-semibold text-emerald-600 dark:text-emerald-500">JS</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900 dark:text-white">Jane Smith</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">CEO, LogiTech Solutions</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-white dark:bg-gray-900 p-8 rounded-xl border border-emerald-200 dark:border-emerald-900">
+              <p className="text-gray-600 dark:text-gray-300 mb-6 italic">
+                "As a non-technical founder, I was worried about communicating my vision. The team at Squared Computing translated my business requirements into a brilliant product that exceeded my expectations."
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/50 rounded-full flex items-center justify-center mr-4">
+                  <span className="font-semibold text-emerald-600 dark:text-emerald-500">JD</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900 dark:text-white">John Davis</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Founder, Smart Home Innovations</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>

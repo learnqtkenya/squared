@@ -1,4 +1,3 @@
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -8,8 +7,9 @@ import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
-import rehypeSanitize from 'rehype-sanitize';
 import rehypeRaw from 'rehype-raw';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { BlogPost, extractExcerpt } from './blog';
 
 const POSTS_DIRECTORY = path.join(process.cwd(), 'content/blog');
@@ -30,13 +30,14 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const processedContent = await unified()
       .use(remarkParse)                          // Parse markdown
       .use(remarkGfm)                            // Support GFM (tables, autolinks, etc)
+      .use(remarkMath)                           // Parse math expressions
       .use(remarkRehype, {                       // Convert to HTML, with options:
         allowDangerousHtml: true,                // Allow HTML in markdown
         footnoteLabel: 'Footnotes',
         footnoteBackLabel: 'Back to content',
       })
       .use(rehypeRaw)                            // Handle HTML in markdown
-      .use(rehypeSanitize)                       // Sanitize HTML
+      .use(rehypeKatex)                          // Render math with KaTeX
       .use(rehypeHighlight, {                    // Syntax highlighting
         ignoreMissing: true,
         detect: true,
@@ -80,7 +81,6 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   }
 }
 
-// Get all blog posts
 export async function getAllPosts(): Promise<BlogPost[]> {
   // Check if directory exists
   if (!fs.existsSync(POSTS_DIRECTORY)) {
@@ -215,7 +215,6 @@ export async function getPaginatedPostsByTag(tag: string, page: number = 1) {
   };
 }
 
-// Add a function to get related posts
 export async function getRelatedPosts(currentPost: BlogPost, limit: number = 3): Promise<BlogPost[]> {
   const allPosts = await getAllPosts();
   
@@ -240,7 +239,6 @@ export async function getRelatedPosts(currentPost: BlogPost, limit: number = 3):
   return relatedPosts;
 }
 
-// Add a function to search posts
 export async function searchPosts(query: string): Promise<BlogPost[]> {
   const allPosts = await getAllPosts();
   const searchTerms = query.toLowerCase().split(' ').filter(Boolean);
@@ -255,7 +253,6 @@ export async function searchPosts(query: string): Promise<BlogPost[]> {
   });
 }
 
-// Add a type for pagination info
 export interface PaginationInfo {
   currentPage: number;
   totalPages: number;

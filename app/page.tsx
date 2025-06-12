@@ -111,7 +111,7 @@ const SquaredComputingWebsite = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-                Smart Technology Solutions That Power Your Business
+                Custom Embedded Engineering That Brings Products to Life
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
                 We bring your product ideas to life - from concept to market-ready smart devices that solve real business challenges.

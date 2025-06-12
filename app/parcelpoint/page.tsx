@@ -130,7 +130,7 @@ const ParcelPoint = () => {
                 </div>
             </section>
 
-            {/* How It Works */}
+           {/* How It Works */}
             <section className="bg-emerald-50 dark:bg-gray-800 py-12 sm:py-16 transition-colors duration-300">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <h2 className="text-2xl sm:text-3xl text-gray-900 dark:text-white font-bold text-center mb-8 sm:mb-12">How It Works</h2>
@@ -163,6 +163,202 @@ const ParcelPoint = () => {
                                 <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Service Models Section */}
+            <section className="py-12 sm:py-16 bg-white dark:bg-gray-900">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <div className="text-center mb-12">
+                        <h2 className="text-2xl sm:text-3xl text-gray-900 dark:text-white font-bold mb-4">
+                            Choose Your ParcelPoint Model
+                        </h2>
+                        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                            Whether you want to partner with us, own your own system, or have us manage everything, 
+                            we have a model that fits your needs.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        {/* ParcelPoint-Owned Model */}
+                        <div className="bg-emerald-50 dark:bg-gray-800 rounded-xl p-6 sm:p-8 border-2 border-emerald-200 dark:border-emerald-700 relative">
+                            <div className="absolute top-4 right-4 bg-emerald-600 dark:bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Recommended
+                            </div>
+                            <div className="mb-6">
+                                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                                    We Fully Own
+                                </h3>
+                                <p className="text-emerald-600 dark:text-emerald-500 font-medium">Rental Income Model</p>
+                            </div>
+                            
+                            <div className="space-y-4 mb-6">
+                                <div>
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Perfect for:</h4>
+                                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                        Property owners who want reliable rental income from ParcelPoint without any investment or operational responsibility
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">What You Provide:</h4>
+                                    <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1">
+                                        <li>• Secure space for the locker (we pay rent)</li>
+                                        <li>• Basic power supply</li>
+                                        <li>• Help promote the service</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">What We Handle:</h4>
+                                    <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1">
+                                        <li>• All equipment and installation</li>
+                                        <li>• Maintenance and support</li>
+                                        <li>• Customer service</li>
+                                        <li>• All operational costs</li>
+                                    </ul>
+                                </div>
+                                
+                                <div className="bg-white dark:bg-gray-900 p-4 rounded-lg">
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Our Arrangement:</h4>
+                                    <div className="flex justify-between items-center">
+                                        <span className="text-gray-600 dark:text-gray-300">We pay you</span>
+                                        <span className="text-2xl font-bold text-emerald-600 dark:text-emerald-500">Rent</span>
+                                    </div>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Monthly rent for the physical space where locker is installed</p>
+                                </div>
+                            </div>
+                            
+                            <button 
+                                className="w-full bg-emerald-600 dark:bg-emerald-500 text-white py-3 px-4 rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors font-medium"
+                                onClick={() => window.open('https://wa.me/254700549607?text=I\'m interested in the ParcelPoint rental model where you pay rent for space and handle all operations. I\'d like to learn more about the rental arrangement.', '_blank')}
+                            >
+                                Rent My Space
+                            </button>
+                        </div>
+
+                        {/* Customer-Owned Model */}
+                        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition-colors">
+                            <div className="mb-6">
+                                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                                    You Own Everything
+                                </h3>
+                                <p className="text-emerald-600 dark:text-emerald-500 font-medium">Complete Ownership Model</p>
+                            </div>
+                            
+                            <div className="space-y-4 mb-6">
+                                <div>
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Perfect for:</h4>
+                                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                        Real estate developers, large businesses, and organizations wanting full control
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">What You Get:</h4>
+                                    <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1">
+                                        <li>• Complete locker system</li>
+                                        <li>• Desktop monitoring dashboard</li>
+                                        <li>• 1 year free support & updates</li>
+                                        <li>• White-label branding option</li>
+                                        <li>• Local data (SMS-only, no cloud)</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Ongoing Requirements:</h4>
+                                    <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1">
+                                        <li>• Power supply</li>
+                                        <li>• Safaricom SIM (~KES 1,000/month)</li>
+                                        <li>• Support: $75/hour after year 1</li>
+                                    </ul>
+                                </div>
+                                
+                                <div className="bg-emerald-50 dark:bg-gray-700 p-4 rounded-lg">
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Full Ownership:</h4>
+                                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                        Keep 100% of revenue. Set your own pricing or offer as free amenity.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <button 
+                                className="w-full bg-gray-900 dark:bg-gray-600 text-white py-3 px-4 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-500 transition-colors font-medium"
+                                onClick={() => window.open('mailto:hello@squared.co.ke?subject=ParcelPoint System Purchase Inquiry&body=I\'m interested in purchasing a complete ParcelPoint locker system. Please provide pricing and technical details.', '_blank')}
+                            >
+                                Purchase System
+                            </button>
+                        </div>
+
+                        {/* Partnered Model */}
+                        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition-colors">
+                            <div className="mb-6">
+                                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                                    We Manage, You Earn
+                                </h3>
+                                <p className="text-emerald-600 dark:text-emerald-500 font-medium">Revenue Sharing Model</p>
+                            </div>
+                            
+                            <div className="space-y-4 mb-6">
+                                <div>
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Perfect for:</h4>
+                                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                        Schools, offices, and community centers wanting passive income from lockers
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Your Role:</h4>
+                                    <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1">
+                                        <li>• Provide rent-free space</li>
+                                        <li>• Keep locker area clean & safe</li>
+                                        <li>• Promote ParcelPoint to users</li>
+                                        <li>• Help identify new locations</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Our Role:</h4>
+                                    <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1">
+                                        <li>• Provide & maintain equipment</li>
+                                        <li>• Handle all technical support</li>
+                                        <li>• Manage customer service</li>
+                                        <li>• Process all payments</li>
+                                    </ul>
+                                </div>
+                                
+                                <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg">
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Revenue Split:</h4>
+                                    <div className="text-center">
+                                        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">70% / 30%</div>
+                                        <p className="text-xs text-gray-600 dark:text-gray-300">ParcelPoint / Partner</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button 
+                                className="w-full bg-blue-600 dark:bg-blue-500 text-white py-3 px-4 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium"
+                                onClick={() => window.open('https://wa.me/254700549607?text=I\'m interested in the ParcelPoint revenue sharing model with 70/30 split. I can provide free space and would like to discuss the partnership details.', '_blank')}
+                            >
+                                Become a Partner
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="mt-12 text-center">
+                        <p className="text-gray-600 dark:text-gray-300 mb-6">
+                            Not sure which model is right for you? We'll help you choose the best option for your specific needs.
+                        </p>
+                        <button 
+                            className="bg-emerald-600 dark:bg-emerald-500 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors font-medium inline-flex items-center gap-2"
+                            onClick={() => window.open('https://wa.me/254700549607?text=I\'m interested in ParcelPoint and would like to discuss the different service models.', '_blank')}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                            Get Free Consultation
+                        </button>
                     </div>
                 </div>
             </section>

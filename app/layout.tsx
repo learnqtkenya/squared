@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "./styles/syntax.css";
 import 'highlight.js/styles/github-dark.css';
+import 'katex/dist/katex.min.css'; 
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 const geistSans = localFont({

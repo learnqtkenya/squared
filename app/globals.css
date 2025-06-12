@@ -83,4 +83,53 @@
     background-color: #f5f5f5 !important;
     color: #383a42;
   }
+  
+  /* Math equation styling */
+  .katex {
+    font-size: 1.1em;
+  }
+  
+  /* Dark mode math styling */
+  .dark .katex {
+    color: rgb(229, 231, 235);
+  }
+  
+  /* Display math (block equations) */
+  .katex-display {
+    margin: 1.5em 0;
+    text-align: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5em 0;
+  }
+  
+  /* Inline math styling */
+  .katex {
+    white-space: nowrap;
+  }
+  
+  /* Math in dark mode - override KaTeX default colors */
+  .dark .katex .mord,
+  .dark .katex .mop,
+  .dark .katex .mbin,
+  .dark .katex .mrel,
+  .dark .katex .mopen,
+  .dark .katex .mclose,
+  .dark .katex .mpunct {
+    color: rgb(229, 231, 235);
+  }
+  
+  /* Math delimiters and operators in dark mode */
+  .dark .katex .delimsizing,
+  .dark .katex .delimcenter {
+    color: rgb(229, 231, 235);
+  }
+  
+  /* Responsive math equations */
+  @media (max-width: 640px) {
+    .katex-display {
+      margin: 1em 0;
+      font-size: 0.9em;
+    }
+  }
 }

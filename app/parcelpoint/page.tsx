@@ -130,7 +130,7 @@ const ParcelPoint = () => {
                 </div>
             </section>
 
-           {/* How It Works */}
+            {/* How It Works */}
             <section className="bg-emerald-50 dark:bg-gray-800 py-12 sm:py-16 transition-colors duration-300">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <h2 className="text-2xl sm:text-3xl text-gray-900 dark:text-white font-bold text-center mb-8 sm:mb-12">How It Works</h2>
@@ -175,7 +175,7 @@ const ParcelPoint = () => {
                             Choose Your ParcelPoint Model
                         </h2>
                         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            Whether you want to partner with us, own your own system, or have us manage everything, 
+                            Whether you want to partner with us, own your own system, or have us manage everything,
                             we have a model that fits your needs.
                         </p>
                     </div>
@@ -192,7 +192,7 @@ const ParcelPoint = () => {
                                 </h3>
                                 <p className="text-emerald-600 dark:text-emerald-500 font-medium">Rental Income Model</p>
                             </div>
-                            
+
                             <div className="space-y-4 mb-6">
                                 <div>
                                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Perfect for:</h4>
@@ -200,7 +200,7 @@ const ParcelPoint = () => {
                                         Property owners who want reliable rental income from ParcelPoint without any investment or operational responsibility
                                     </p>
                                 </div>
-                                
+
                                 <div>
                                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">What You Provide:</h4>
                                     <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1">
@@ -209,7 +209,7 @@ const ParcelPoint = () => {
                                         <li>• Help promote the service</li>
                                     </ul>
                                 </div>
-                                
+
                                 <div>
                                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">What We Handle:</h4>
                                     <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1">
@@ -219,7 +219,7 @@ const ParcelPoint = () => {
                                         <li>• All operational costs</li>
                                     </ul>
                                 </div>
-                                
+
                                 <div className="bg-white dark:bg-gray-900 p-4 rounded-lg">
                                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Our Arrangement:</h4>
                                     <div className="flex justify-between items-center">
@@ -229,8 +229,8 @@ const ParcelPoint = () => {
                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Monthly rent for the physical space where locker is installed</p>
                                 </div>
                             </div>
-                            
-                            <button 
+
+                            <button
                                 className="w-full bg-emerald-600 dark:bg-emerald-500 text-white py-3 px-4 rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors font-medium"
                                 onClick={() => window.open('https://wa.me/254700549607?text=I\'m interested in the ParcelPoint rental model where you pay rent for space and handle all operations. I\'d like to learn more about the rental arrangement.', '_blank')}
                             >
@@ -242,52 +242,61 @@ const ParcelPoint = () => {
                         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition-colors">
                             <div className="mb-6">
                                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                                    You Own Everything
+                                    Buy & Own Outright
                                 </h3>
-                                <p className="text-emerald-600 dark:text-emerald-500 font-medium">Complete Ownership Model</p>
+                                <p className="text-emerald-600 dark:text-emerald-500 font-medium">One-Time Purchase Model</p>
                             </div>
-                            
+
                             <div className="space-y-4 mb-6">
                                 <div>
                                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Perfect for:</h4>
                                     <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                        Real estate developers, large businesses, and organizations wanting full control
+                                        Real estate developers, large businesses, and organizations wanting complete ownership and control
                                     </p>
                                 </div>
-                                
+
+                                <div className="bg-blue-50 dark:bg-gray-700 p-4 rounded-lg">
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">How It Works:</h4>
+                                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                        <strong>Pay once, own forever.</strong> You purchase the complete locker system at a fixed price and it becomes your property. No ongoing fees to us.
+                                    </p>
+                                </div>
+
                                 <div>
                                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">What You Get:</h4>
                                     <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1">
-                                        <li>• Complete locker system</li>
+                                        <li>• Complete locker system (yours to keep)</li>
                                         <li>• Desktop monitoring dashboard</li>
                                         <li>• 1 year free support & updates</li>
                                         <li>• White-label branding option</li>
                                         <li>• Local data (SMS-only, no cloud)</li>
+                                        <li>• All installation documentation</li>
                                     </ul>
                                 </div>
-                                
+
                                 <div>
-                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Ongoing Requirements:</h4>
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Your Ongoing Costs:</h4>
                                     <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1">
-                                        <li>• Power supply</li>
+                                        <li>• Power supply (standard electrical)</li>
                                         <li>• Safaricom SIM (~KES 1,000/month)</li>
-                                        <li>• Support: $75/hour after year 1</li>
+                                        <li>• Optional support: $75/hour after year 1</li>
+                                        <li>• <strong>No fees to ParcelPoint</strong></li>
                                     </ul>
                                 </div>
-                                
+
                                 <div className="bg-emerald-50 dark:bg-gray-700 p-4 rounded-lg">
-                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Full Ownership:</h4>
+                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Your Revenue:</h4>
                                     <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                        Keep 100% of revenue. Set your own pricing or offer as free amenity.
+                                        <strong>Keep 100% of all revenue.</strong> Set your own pricing, offer as paid service, or provide free to tenants/customers. It's your business.
                                     </p>
                                 </div>
                             </div>
-                            
-                            <button 
+
+                            <button
                                 className="w-full bg-gray-900 dark:bg-gray-600 text-white py-3 px-4 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-500 transition-colors font-medium"
-                                onClick={() => window.open('mailto:hello@squared.co.ke?subject=ParcelPoint System Purchase Inquiry&body=I\'m interested in purchasing a complete ParcelPoint locker system. Please provide pricing and technical details.', '_blank')}
+                                onClick={() => window.open('mailto:hello@squared.co.ke?subject=ParcelPoint System Purchase Inquiry&body=I\'m interested in purchasing a complete ParcelPoint locker system for full ownership. Please provide pricing and technical details.', '_blank')}
                             >
-                                Purchase System
+                                Get Purchase Quote
                             </button>
                         </div>
 
@@ -299,7 +308,7 @@ const ParcelPoint = () => {
                                 </h3>
                                 <p className="text-emerald-600 dark:text-emerald-500 font-medium">Revenue Sharing Model</p>
                             </div>
-                            
+
                             <div className="space-y-4 mb-6">
                                 <div>
                                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Perfect for:</h4>
@@ -307,7 +316,7 @@ const ParcelPoint = () => {
                                         Schools, offices, and community centers wanting passive income from lockers
                                     </p>
                                 </div>
-                                
+
                                 <div>
                                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Your Role:</h4>
                                     <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1">
@@ -317,7 +326,7 @@ const ParcelPoint = () => {
                                         <li>• Help identify new locations</li>
                                     </ul>
                                 </div>
-                                
+
                                 <div>
                                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Our Role:</h4>
                                     <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1">
@@ -327,7 +336,7 @@ const ParcelPoint = () => {
                                         <li>• Process all payments</li>
                                     </ul>
                                 </div>
-                                
+
                                 <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg">
                                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Revenue Split:</h4>
                                     <div className="text-center">
@@ -336,8 +345,8 @@ const ParcelPoint = () => {
                                     </div>
                                 </div>
                             </div>
-                            
-                            <button 
+
+                            <button
                                 className="w-full bg-blue-600 dark:bg-blue-500 text-white py-3 px-4 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium"
                                 onClick={() => window.open('https://wa.me/254700549607?text=I\'m interested in the ParcelPoint revenue sharing model with 70/30 split. I can provide free space and would like to discuss the partnership details.', '_blank')}
                             >
@@ -350,7 +359,7 @@ const ParcelPoint = () => {
                         <p className="text-gray-600 dark:text-gray-300 mb-6">
                             Not sure which model is right for you? We'll help you choose the best option for your specific needs.
                         </p>
-                        <button 
+                        <button
                             className="bg-emerald-600 dark:bg-emerald-500 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors font-medium inline-flex items-center gap-2"
                             onClick={() => window.open('https://wa.me/254700549607?text=I\'m interested in ParcelPoint and would like to discuss the different service models.', '_blank')}
                         >

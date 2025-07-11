@@ -8,6 +8,13 @@ const LOCATIONS = [
     lat: -1.231850,
     lng: 36.878823,
     hours: "24/7"
+  },
+  {
+    name: "Donholm, Savannah Road",
+    address: "Donholm, Savannah Road",
+    lat: -1.2990613,
+    lng: 36.8889069,
+    hours: "24/7"
   }
 ];
 
@@ -43,8 +50,8 @@ const LocationModal = ({ isOpen, onClose }) => {
           {/* Locations List */}
           <div className="mt-4 space-y-4">
             {LOCATIONS.map((location, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-emerald-50 dark:bg-gray-700 p-4 rounded-lg border border-emerald-100 dark:border-emerald-900 hover:border-emerald-200 dark:hover:border-emerald-700 transition-colors"
               >
                 <div className="flex items-start gap-3">

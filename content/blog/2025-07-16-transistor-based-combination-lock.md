@@ -89,7 +89,7 @@ This way, only the correct timing and sequence of S1 → S2 → S5 → S9 will a
 * The cathode of the LED is grounded.
 
 ***How It Works:***
-* When Q4 is properly activated by pressing S4 in sequence, the emitter becomes a voltage source.
+* When Q4 is properly activated by pressing S9 in sequence, the emitter becomes a voltage source.
 * The LED receives current through the 330Ω resistor, limiting it to safe operating levels (around 10–15mA).
 
 The LED lights up—signaling a successful code entry.

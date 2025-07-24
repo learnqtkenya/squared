@@ -167,6 +167,131 @@ const ParcelPoint = () => {
                 </div>
             </section>
 
+            {/* Network Section */}
+            <section className="py-12 sm:py-16 bg-white dark:bg-gray-900 text-center">
+                <div className="max-w-3xl mx-auto px-4 sm:px-6">
+                    <p className="text-2xl text-gray-600 dark:text-gray-300">
+                        We're building a network of ParcelPoint lockers across Kenya, strategically located in
+                        malls, residential areas, schools, and offices. This makes secure, convenient parcel pickup
+                        and delivery easily accessible, wherever you are.
+                    </p>
+                    <button
+                        className="mt-8 bg-emerald-600 dark:bg-emerald-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 mx-auto hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-sm"
+                        onClick={() => setIsLocationModalOpen(true)}
+                    >
+                        <MapPin className="h-5 w-5" />
+                        See our locations
+                    </button>
+                </div>
+            </section>
+
+            {/* Real Solutions Section */}
+            <section className="py-12 sm:py-16 bg-emerald-50 dark:bg-gray-800">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <h2 className="text-2xl sm:text-3xl text-gray-900 dark:text-white font-bold mb-8 sm:mb-12 text-center">
+                        Delivering Real Solutions with ParcelPoint
+                    </h2>
+
+                    <div className="space-y-8 sm:space-y-16">
+                        {/* Missed Deliveries */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                            <img
+                                src="/images/parcel-point/other/missed-deliveries.png"
+                                alt="Person retrieving parcel from locker"
+                                className="w-full aspect-video object-cover rounded-lg shadow-sm border border-emerald-200 dark:border-emerald-900"
+                            />
+                            <div>
+                                <h3 className="text-xl sm:text-2xl text-gray-900 dark:text-white font-bold mb-4">
+                                    Missed Deliveries in a Busy Schedule
+                                </h3>
+                                <p className="text-gray-600 dark:text-gray-300">
+                                    In a fast-paced city life, missed deliveries are more than just an
+                                    inconvenience—they waste valuable time. ParcelPoint solves this problem
+                                    by offering 24/7 access to secure lockers. Whether you're at work, at
+                                    the gym, or running errands, your parcels are waiting for you at your
+                                    convenience.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Convenient Locations */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                            <img
+                                src="/images/parcel-point/other/inconvenient-locations.png"
+                                alt="ParcelPoint locker locations"
+                                className="lg:order-2 w-full aspect-video object-cover rounded-lg shadow-sm border border-emerald-200 dark:border-emerald-900"
+                            />
+                            <div className="lg:order-1">
+                                <h3 className="text-xl sm:text-2xl text-gray-900 dark:text-white font-bold mb-4">
+                                    Convenient Pickup Locations
+                                </h3>
+                                <p className="text-gray-600 dark:text-gray-300">
+                                    Living in a busy city means you're often juggling work, social
+                                    commitments, and family. The last thing you want is to trek across town
+                                    to find a parcel pickup point. ParcelPoint has strategically placed
+                                    lockers in high-traffic locations like malls, office buildings, and
+                                    residential complexes.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Easy Payments */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                            <img
+                                src="/images/parcel-point/other/hassle-free-payments.png"
+                                alt="M-Pesa payment at ParcelPoint locker"
+                                className="w-full aspect-video object-cover rounded-lg shadow-sm border border-emerald-200 dark:border-emerald-900"
+                            />
+                            <div>
+                                <h3 className="text-xl sm:text-2xl text-gray-900 dark:text-white font-bold mb-4">
+                                    Hassle-Free Payments
+                                </h3>
+                                <p className="text-gray-600 dark:text-gray-300">
+                                    City dwellers often deal with long lines and frustrating payment
+                                    processes. ParcelPoint eliminates this by allowing you to pay for your
+                                    parcel pickup through M-Pesa directly at the locker, simplifying the
+                                    process.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Partners Section */}
+            <section className="bg-white dark:bg-gray-900 py-12 sm:py-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <h2 className="text-2xl sm:text-3xl text-gray-900 dark:text-white font-bold mb-8 sm:mb-12 text-center">
+                        Perfect Partners for ParcelPoint
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                        {[
+                            {
+                                title: "E-commerce Platforms",
+                                description: "We partner with popular e-commerce platforms to streamline deliveries."
+                            },
+                            {
+                                title: "Retail chains",
+                                description: "We collaborate with retail stores and malls to place ParcelPoint lockers at high-traffic locations."
+                            },
+                            {
+                                title: "Real Estate Developers",
+                                description: "We work with developers of residential and commercial properties to install ParcelPoint lockers."
+                            },
+                            {
+                                title: "Courier & Logistics Companies",
+                                description: "We team up with couriers and logistics providers to reduce delivery inefficiencies."
+                            }
+                        ].map((partner, index) => (
+                            <div key={index} className="bg-emerald-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-emerald-200 dark:border-emerald-900">
+                                <h3 className="font-bold text-gray-900 dark:text-white mb-4">{partner.title}</h3>
+                                <p className="text-gray-600 dark:text-gray-300">{partner.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Service Models Section */}
             <section className="py-12 sm:py-16 bg-white dark:bg-gray-900">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -368,131 +493,6 @@ const ParcelPoint = () => {
                             </svg>
                             Get Free Consultation
                         </button>
-                    </div>
-                </div>
-            </section>
-
-            {/* Network Section */}
-            <section className="py-12 sm:py-16 bg-white dark:bg-gray-900 text-center">
-                <div className="max-w-3xl mx-auto px-4 sm:px-6">
-                    <p className="text-2xl text-gray-600 dark:text-gray-300">
-                        We're building a network of ParcelPoint lockers across Kenya, strategically located in
-                        malls, residential areas, schools, and offices. This makes secure, convenient parcel pickup
-                        and delivery easily accessible, wherever you are.
-                    </p>
-                    <button
-                        className="mt-8 bg-emerald-600 dark:bg-emerald-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 mx-auto hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors shadow-sm"
-                        onClick={() => setIsLocationModalOpen(true)}
-                    >
-                        <MapPin className="h-5 w-5" />
-                        See our locations
-                    </button>
-                </div>
-            </section>
-
-            {/* Real Solutions Section */}
-            <section className="py-12 sm:py-16 bg-emerald-50 dark:bg-gray-800">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <h2 className="text-2xl sm:text-3xl text-gray-900 dark:text-white font-bold mb-8 sm:mb-12 text-center">
-                        Delivering Real Solutions with ParcelPoint
-                    </h2>
-
-                    <div className="space-y-8 sm:space-y-16">
-                        {/* Missed Deliveries */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                            <img
-                                src="/images/parcel-point/other/missed-deliveries.png"
-                                alt="Person retrieving parcel from locker"
-                                className="w-full aspect-video object-cover rounded-lg shadow-sm border border-emerald-200 dark:border-emerald-900"
-                            />
-                            <div>
-                                <h3 className="text-xl sm:text-2xl text-gray-900 dark:text-white font-bold mb-4">
-                                    Missed Deliveries in a Busy Schedule
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300">
-                                    In a fast-paced city life, missed deliveries are more than just an
-                                    inconvenience—they waste valuable time. ParcelPoint solves this problem
-                                    by offering 24/7 access to secure lockers. Whether you're at work, at
-                                    the gym, or running errands, your parcels are waiting for you at your
-                                    convenience.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Convenient Locations */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                            <img
-                                src="/images/parcel-point/other/inconvenient-locations.png"
-                                alt="ParcelPoint locker locations"
-                                className="lg:order-2 w-full aspect-video object-cover rounded-lg shadow-sm border border-emerald-200 dark:border-emerald-900"
-                            />
-                            <div className="lg:order-1">
-                                <h3 className="text-xl sm:text-2xl text-gray-900 dark:text-white font-bold mb-4">
-                                    Convenient Pickup Locations
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300">
-                                    Living in a busy city means you're often juggling work, social
-                                    commitments, and family. The last thing you want is to trek across town
-                                    to find a parcel pickup point. ParcelPoint has strategically placed
-                                    lockers in high-traffic locations like malls, office buildings, and
-                                    residential complexes.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Easy Payments */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                            <img
-                                src="/images/parcel-point/other/hassle-free-payments.png"
-                                alt="M-Pesa payment at ParcelPoint locker"
-                                className="w-full aspect-video object-cover rounded-lg shadow-sm border border-emerald-200 dark:border-emerald-900"
-                            />
-                            <div>
-                                <h3 className="text-xl sm:text-2xl text-gray-900 dark:text-white font-bold mb-4">
-                                    Hassle-Free Payments
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300">
-                                    City dwellers often deal with long lines and frustrating payment
-                                    processes. ParcelPoint eliminates this by allowing you to pay for your
-                                    parcel pickup through M-Pesa directly at the locker, simplifying the
-                                    process.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Partners Section */}
-            <section className="bg-white dark:bg-gray-900 py-12 sm:py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <h2 className="text-2xl sm:text-3xl text-gray-900 dark:text-white font-bold mb-8 sm:mb-12 text-center">
-                        Perfect Partners for ParcelPoint
-                    </h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                        {[
-                            {
-                                title: "E-commerce Platforms",
-                                description: "We partner with popular e-commerce platforms to streamline deliveries."
-                            },
-                            {
-                                title: "Retail chains",
-                                description: "We collaborate with retail stores and malls to place ParcelPoint lockers at high-traffic locations."
-                            },
-                            {
-                                title: "Real Estate Developers",
-                                description: "We work with developers of residential and commercial properties to install ParcelPoint lockers."
-                            },
-                            {
-                                title: "Courier & Logistics Companies",
-                                description: "We team up with couriers and logistics providers to reduce delivery inefficiencies."
-                            }
-                        ].map((partner, index) => (
-                            <div key={index} className="bg-emerald-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-emerald-200 dark:border-emerald-900">
-                                <h3 className="font-bold text-gray-900 dark:text-white mb-4">{partner.title}</h3>
-                                <p className="text-gray-600 dark:text-gray-300">{partner.description}</p>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </section>

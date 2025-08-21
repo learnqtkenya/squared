@@ -16,7 +16,8 @@ import {
 import Link from 'next/link';
 import { ContactForm } from '@/components/ContactForm';
 import { Footer } from '@/components/Footer';
-import { Navigation } from '@/components/Navigation';
+// import { Navigation } from '@/components/Navigation';
+import Header from '@/components/layout/Header';
 
 const TechnicalGlossary = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,7 +69,8 @@ const UserFriendlyInterfacesPage = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Header */}
-      <Navigation />
+      {/* <Navigation /> */}
+      <Header/>
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-white dark:from-gray-900 to-emerald-50 dark:to-emerald-950 transition-colors duration-300">

@@ -11,7 +11,7 @@ image:
 
 *Picture this: You're developing a smart factory controller using a Raspberry Pi CM4. It handles WiFi, processes data beautifully, and interfaces with cloud services—but your factory floor runs on CAN bus networks that have been reliable for decades. Your modern processor doesn't speak CAN natively, creating a critical integration gap. You're not alone: over 1 billion CAN nodes operate worldwide in automotive and industrial systems, yet mainstream processors prioritize consumer connectivity over industrial protocols.*
 
-*This guide examines three proven approaches to bridge SPI interfaces with CAN networks, helping you connect cutting-edge processors to established industrial infrastructure.*
+*This guide examines three proven approaches to bridge SPI interfaces with CAN networks, helping you connect cutting-edge processors to established industrial infrastructure. Performance figures presented are representative values based on vendor specifications, typical implementations, and published application notes—actual performance may vary based on specific hardware, software implementation, and operating conditions.*
 
 ## The Integration Challenge
 
@@ -54,7 +54,7 @@ while (!interrupt_pin_active()) { delay_us(10); }
 received_message = spi_read(MCP2515_READ_RX_BUFFER);
 ```
 
-Performance analysis indicates practical throughput limits around 3,000 messages per second before buffer overflow conditions occur. This limitation stems from the restricted buffer capacity and SPI transaction overhead requirements. In practical terms, this handles typical industrial monitoring applications but may struggle with high-frequency automotive diagnostics.
+Typical implementations achieve practical throughput limits around 3,000 messages per second before buffer overflow conditions occur, based on the restricted buffer capacity and SPI transaction overhead. These representative figures indicate the MCP2515 handles typical industrial monitoring applications but may struggle with high-frequency automotive diagnostics.
 
 ### TCAN4550: Modern Alternative
 
@@ -78,7 +78,7 @@ The TCAN4550 addresses MCP2515 limitations with substantially increased buffer c
 | Max Frame Size | 8 bytes | 64 bytes | 8x |
 | Throughput | 3K msg/sec | 25K msg/sec | 8.3x |
 
-The expanded buffer architecture enables sustained throughput exceeding 25,000 messages per second. This means the TCAN4550 can handle intensive automotive data logging or complex industrial automation scenarios that would overwhelm the older MCP2515. CAN-FD capability provides forward compatibility with modern automotive and industrial protocols requiring higher data rates and larger frame sizes.
+The expanded buffer architecture enables typical sustained throughput exceeding 25,000 messages per second in real-world implementations. These representative performance figures indicate the TCAN4550 can handle intensive automotive data logging or complex industrial automation scenarios that would overwhelm the older MCP2515. CAN-FD capability provides forward compatibility with modern automotive and industrial protocols requiring higher data rates and larger frame sizes.
 
 **Key Takeaway:** The TCAN4550 is a modern, integrated IC suitable for most CAN-FD use cases where you need higher throughput and future-proofing without custom development complexity.
 
@@ -90,13 +90,15 @@ When dedicated controller ICs cannot meet performance or functionality requireme
 
 Modern ARM Cortex-M processors offer substantial computational resources suitable for high-performance bridge applications:
 
-| MCU | Core | Freq (MHz) | SRAM (KB) | CAN Controllers | Max Throughput | Cost ($) |
-|-----|------|------------|-----------|-----------------|----------------|----------|
+*Representative Performance Characteristics*
+
+| MCU | Core | Freq (MHz) | SRAM (KB) | CAN Controllers | Typical Max Throughput | Cost ($) |
+|-----|------|------------|-----------|-----------------|------------------------|----------|
 | STM32F103 | M3 | 72 | 20 | 1 Classical | 5K msg/sec | 3 |
 | STM32G474 | M4 | 170 | 128 | 2 CAN-FD | 40K msg/sec | 6 |
 | STM32H743 | M7 | 550 | 1024 | 2 CAN-FD | 150K msg/sec | 18 |
 
-The throughput numbers represent realistic sustained performance under heavy traffic loads. For context, 40K messages per second means processing a new CAN message every 25 microseconds—sufficient for the most demanding automotive test equipment or multi-network industrial gateways.
+The throughput numbers represent typical sustained performance under heavy traffic loads based on vendor specifications and common implementation patterns. For context, 40K messages per second means processing a new CAN message every 25 microseconds—sufficient for the most demanding automotive test equipment or multi-network industrial gateways.
 
 **Key Takeaway:** Choose your MCU based on performance needs vs. cost—the STM32G474 offers the best price-performance balance for most applications requiring dual CAN networks.
 
@@ -168,7 +170,7 @@ class CANBridge {
 };
 ```
 
-Adaptive polling strategies adjust polling frequency based on message traffic to balance CPU utilization with message latency requirements. During high traffic periods, polling every 1-2ms may be necessary, while quiet periods can extend to 10ms intervals.
+Adaptive polling strategies adjust polling frequency based on traffic patterns to balance CPU utilization with message latency requirements. During high traffic periods, polling every 1-2ms may be necessary, while quiet periods can extend to 10ms intervals.
 
 ### Multi-Network Handling
 
@@ -196,7 +198,9 @@ This structure allows each network to operate independently with different bit r
 
 ## Performance Analysis and Comparison
 
-**Complete Performance Matrix**
+**Representative Performance Comparison***
+
+*Performance figures based on vendor specifications and typical implementation characteristics*
 
 | Approach | Component Cost | Max Throughput | Typical Latency | Development Time | CAN Type | Networks |
 |----------|---------------|----------------|-----------------|------------------|----------|----------|
@@ -205,13 +209,15 @@ This structure allows each network to operate independently with different bit r
 | STM32G474 | $7-10 | 40,000 msg/sec | 10-50µs | 2-4 weeks | CAN-FD | 2 |
 | STM32H743 | $18-25 | 150,000 msg/sec | 5-20µs | 3-5 weeks | CAN-FD | 2+ |
 
+**Note**: These performance figures are representative estimates based on vendor datasheets, application notes, and typical implementation patterns. Actual performance will vary significantly based on specific hardware configuration, software implementation quality, environmental conditions, and system integration factors. For critical applications, conduct controlled benchmarking using standardized test methodology.
+
 Performance limitations typically arise from:
 - Buffer overflow conditions during traffic bursts (when incoming messages exceed processing capacity)
 - SPI transaction overhead and polling frequency (each SPI transaction adds 10-50µs overhead)
 - CAN bus physical layer constraints (1Mbps classical, 8Mbps CAN-FD theoretical maximum)
 - Host CPU availability for polling operations (polling every 1ms uses roughly 5-10% CPU on typical ARM processors)
 
-These numbers help you understand the real-world constraints: if your application needs to handle 10,000 messages per second reliably, the MCP2515 won't suffice, but the TCAN4550 provides comfortable headroom.
+These numbers help you understand the relative performance scaling between approaches. For specific applications, validate performance through controlled testing with your exact hardware and software configuration.
 
 ## Hardware Design Considerations
 
@@ -373,6 +379,9 @@ However, bridging solutions remain relevant for existing processor architectures
 - Development time ranges from 1-2 weeks (dedicated ICs) to 3-5 weeks (custom MCU)
 - Throughput spans three orders of magnitude: 3K to 150K messages per second
 - Latency improvements justify higher complexity for real-time applications
+
+**Performance Validation Note:**
+The representative performance figures in this guide provide order-of-magnitude comparisons for initial design decisions. For production systems, validate actual performance through controlled benchmarking with your specific hardware, software implementation, and operating conditions using standardized test methodology.
 
 **Success factors:**
 - Proper buffer sizing for traffic bursts

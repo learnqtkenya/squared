@@ -360,8 +360,13 @@ const ParcelPoint = () => {
 
                         {/* Managed Service Partnership Model */}
                         <div className="bg-emerald-50 dark:bg-gray-800 rounded-xl p-6 sm:p-8 border-2 border-emerald-200 dark:border-emerald-700 relative">
-                            <div className="absolute top-4 right-4 bg-emerald-600 dark:bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            <div className="absolute top-4 right-4 sm:block hidden bg-emerald-600 dark:bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                                 Most Popular
+                            </div>
+                            <div className="sm:hidden flex justify-center mb-4">
+                                <div className="bg-emerald-600 dark:bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                    Most Popular
+                                </div>
                             </div>
                             <div className="mb-6">
                                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">

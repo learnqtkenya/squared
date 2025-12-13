@@ -1,4 +1,4 @@
-import { CircuitBoard } from 'lucide-react';
+import { CircuitBoard, Github, Linkedin } from 'lucide-react';
 import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/lib/constants';
 import Link from 'next/link';
 
@@ -93,6 +93,31 @@ export const Footer = ({
               <li className="break-words text-sm text-gray-600 dark:text-gray-400">{contactEmail}</li>
               <li className="text-sm text-gray-600 dark:text-gray-400">{contactLocation}</li>
             </ul>
+
+            {/* Social Links */}
+            <div className="mt-6">
+              <h4 className="font-bold mb-4 text-gray-900 dark:text-white">Follow Us</h4>
+              <div className="flex gap-4">
+                <a
+                  href="https://github.com/learnqtkenya"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                  aria-label="GitHub"
+                >
+                  <Github className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/squared-computing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-6 w-6" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 

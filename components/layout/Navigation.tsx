@@ -54,6 +54,7 @@ export const Navigation = ({
       ]
     },
     { label: 'Blog', href: '/blog' },
+    { label: 'About', href: '/about' },
     { label: 'Contact', onClick: () => onScrollToSection?.('contact') }
   ];
 

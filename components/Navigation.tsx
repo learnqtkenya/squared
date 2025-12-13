@@ -35,35 +35,19 @@ export const Navigation = ({
     {
       label: 'Services',
       children: [
-        { label: 'Hardware Design', onClick: () => onScrollToSection?.('services') },
-        { label: 'Firmware Development', onClick: () => onScrollToSection?.('services') },
-        { label: 'IoT Solutions', onClick: () => onScrollToSection?.('services') },
-        { label: 'Qt Development', onClick: () => onScrollToSection?.('services') }
+        { label: 'HMI Development', href: '/services/hmi-development' },
+        { label: 'Firmware Engineering', href: '/services/embedded-firmware' },
+        { label: 'Hardware Design', href: '/services/embedded-systems-design' }
       ]
     },
     {
-      label: 'Solutions',
+      label: 'Case Studies',
       children: [
-        { label: 'Embedded Systems', onClick: () => onScrollToSection?.('expertise') },
-        { label: 'Custom Electronics', onClick: () => onScrollToSection?.('expertise') },
-        { label: 'Industrial IoT', onClick: () => onScrollToSection?.('expertise') },
-        { label: 'Prototyping', onClick: () => onScrollToSection?.('expertise') }
+        { label: 'ParcelPoint', href: '/case-studies/parcelpoint' },
+        { label: 'View All', onClick: () => onScrollToSection?.('portfolio') }
       ]
     },
-    { 
-      label: 'Products', 
-      children: [
-        { label: 'ParcelPoint', href: '/parcelpoint' }
-      ]
-    },
-    { 
-      label: 'Blog', 
-      children: [
-        { label: 'All Posts', href: '/blog' },
-        { label: 'Archives', href: '/blog/archives' },
-        { label: 'Categories', href: '/blog/categories' }
-      ]
-    },
+    { label: 'Blog', href: '/blog' },
     { label: 'Contact', onClick: () => onScrollToSection?.('contact') }
   ];
 
@@ -74,54 +58,54 @@ export const Navigation = ({
   return (
     <header className={cn(
       "fixed w-full z-50 border-b",
-      "bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-emerald-100 dark:border-gray-800",
+      "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-gray-200 dark:border-gray-800",
       className
     )}>
-      <nav className="max-w-6xl mx-auto px-4 py-4">
+      <nav className="max-w-7xl mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-3 group">
             {logo || (
               <>
                 <img
                   src="/images/squared/squared_computing_dark.png"
                   alt="Squared Computing Logo"
-                  className="h-8 w-auto dark:hidden"
+                  className="h-9 w-auto dark:hidden transition-transform group-hover:scale-105"
                 />
                 <img
                   src="/images/squared/squared_computing_light.png"
                   alt="Squared Computing Logo"
-                  className="h-8 w-auto hidden dark:block"
+                  className="h-9 w-auto hidden dark:block transition-transform group-hover:scale-105"
                 />
               </>
             )}
-            <span className="text-xl font-bold text-gray-800 dark:text-white">
+            <span className="text-xl font-bold text-gray-900 dark:text-white">
               {COMPANY_NAME}
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-2">
             {navItems.map((item) => (
               <div key={item.label} className="relative group">
                 {item.children ? (
                   <button
                     onClick={() => toggleDropdown(item.label)}
-                    className="flex items-center px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
+                    className="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                   >
                     {item.label}
-                    <ChevronDown className="ml-1 h-4 w-4" />
+                    <ChevronDown className="ml-1.5 h-4 w-4" />
                   </button>
                 ) : item.href ? (
                   <Link
                     href={item.href}
-                    className="block px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
+                    className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                   >
                     {item.label}
                   </Link>
                 ) : (
                   <button
                     onClick={item.onClick}
-                    className="block px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
+                    className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                   >
                     {item.label}
                   </button>
@@ -129,13 +113,13 @@ export const Navigation = ({
 
                 {/* Dropdown Menu */}
                 {item.children && (
-                  <div className="absolute left-0 mt-1 w-48 py-2 rounded-lg shadow-lg border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white dark:bg-gray-900 border-emerald-100 dark:border-gray-800">
+                  <div className="absolute left-0 mt-2 w-56 py-2 rounded-xl shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
                     {item.children.map((child) => (
                       child.href ? (
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
+                          className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-500 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -143,7 +127,7 @@ export const Navigation = ({
                         <button
                           key={child.label}
                           onClick={child.onClick}
-                          className="block w-full text-left px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
+                          className="block w-full text-left px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-500 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                         >
                           {child.label}
                         </button>
@@ -153,9 +137,9 @@ export const Navigation = ({
                 )}
               </div>
             ))}
-            
+
             {/* Theme Toggle - Desktop */}
-            <div className="ml-2">
+            <div className="ml-3">
               <ThemeToggle />
             </div>
           </div>

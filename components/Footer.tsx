@@ -44,16 +44,16 @@ export const Footer = ({
   className = ''
 }: FooterProps) => {
   return (
-    <footer className={`bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 py-12 px-4 border-t border-emerald-100 dark:border-emerald-900/50 ${className}`}>
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-8">
+    <footer className={`bg-gray-50 dark:bg-gray-950 text-gray-600 dark:text-gray-400 py-16 px-4 border-t border-gray-200 dark:border-gray-800 ${className}`}>
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-12">
           {/* Company Info */}
-          <div>
+          <div className="md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <CircuitBoard className="h-6 w-6 text-emerald-600 dark:text-emerald-500" />
-              <span className="font-bold text-gray-800 dark:text-white">{COMPANY_NAME}</span>
+              <CircuitBoard className="h-7 w-7 text-emerald-600 dark:text-emerald-500" />
+              <span className="font-bold text-lg text-gray-900 dark:text-white">{COMPANY_NAME}</span>
             </div>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
               {COMPANY_DESCRIPTION}
             </p>
           </div>
@@ -61,21 +61,21 @@ export const Footer = ({
           {/* Dynamic Sections */}
           {sections.map((section) => (
             <div key={section.title}>
-              <h4 className="font-semibold mb-4 text-gray-800 dark:text-white">{section.title}</h4>
-              <ul className="space-y-2">
+              <h4 className="font-bold mb-4 text-gray-900 dark:text-white">{section.title}</h4>
+              <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.label}>
                     {link.href ? (
-                      <Link 
+                      <Link
                         href={link.href}
-                        className="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
                       >
                         {link.label}
                       </Link>
                     ) : (
                       <button
                         onClick={link.onClick}
-                        className="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
                       >
                         {link.label}
                       </button>
@@ -88,17 +88,19 @@ export const Footer = ({
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-4 text-gray-800 dark:text-white">Contact</h4>
-            <ul className="space-y-2">
-              <li className="break-words text-gray-600 dark:text-gray-300">{contactEmail}</li>
-              <li className="text-gray-600 dark:text-gray-300">{contactLocation}</li>
+            <h4 className="font-bold mb-4 text-gray-900 dark:text-white">Contact</h4>
+            <ul className="space-y-3">
+              <li className="break-words text-sm text-gray-600 dark:text-gray-400">{contactEmail}</li>
+              <li className="text-sm text-gray-600 dark:text-gray-400">{contactLocation}</li>
             </ul>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-emerald-100 dark:border-emerald-900/30 mt-12 pt-8 text-center text-gray-600 dark:text-gray-400">
-          <p>© {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.</p>
+        <div className="border-t border-gray-200 dark:border-gray-800 mt-12 pt-8 text-center">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            © {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

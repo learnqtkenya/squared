@@ -1,6 +1,6 @@
 import { getAllCategories } from '@/lib/blog-utils';
-import { Navigation } from '@/components/Navigation';
-import { Footer } from '@/components/Footer';
+import { Navigation } from '@/components/layout';
+import { Footer } from '@/components/layout';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 

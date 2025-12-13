@@ -1,8 +1,8 @@
-import { Navigation } from '@/components/Navigation';
-import { Footer } from '@/components/Footer';
-import { BlogCard } from '@/components/BlogCard';
-import { BlogSearch } from '@/components/BlogSearch';
-import { Pagination } from '@/components/Pagination';
+import { Navigation } from '@/components/layout';
+import { Footer } from '@/components/layout';
+import { BlogCard } from '@/components/blog';
+import { BlogSearch } from '@/components/blog';
+import { Pagination } from '@/components/ui';
 import { getPaginatedPosts, getAllPosts, getAllTags } from '@/lib/blog-utils';
 import Link from 'next/link';
 import { Tag } from 'lucide-react';

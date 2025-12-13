@@ -2,7 +2,7 @@
 
 import { Zap, Rocket, Layers, Target, CheckCircle, Cpu, Settings } from 'lucide-react';
 import React from 'react';
-import { AnimatedSection, AnimatedCard } from '../AnimatedSection';
+import { AnimatedSection, AnimatedCard } from '../ui';
 import { motion } from 'framer-motion';
 
 interface ValueProp {

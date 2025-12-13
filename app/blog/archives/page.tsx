@@ -1,7 +1,7 @@
 import { getAllPosts } from '@/lib/blog-utils';
-import { Navigation } from '@/components/Navigation';
-import { Footer } from '@/components/Footer';
-import { BlogArchives } from '@/components/BlogArchives';
+import { Navigation } from '@/components/layout';
+import { Footer } from '@/components/layout';
+import { BlogArchives } from '@/components/blog';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 

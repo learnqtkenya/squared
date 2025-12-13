@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { CheckCircle, Zap, Shield, Battery, Code, Cpu, ArrowRight } from 'lucide-react';
-import { ServicePageLayout } from '@/components/ServicePageLayout';
-import { AnimatedSection } from '@/components/AnimatedSection';
+import { ServicePageLayout } from '@/components/templates';
+import { AnimatedSection } from '@/components/ui';
 import Link from 'next/link';
 
 const EmbeddedFirmwarePage = () => {

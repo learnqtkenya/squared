@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import { ContactForm } from '@/components/ContactForm';
-import { Footer } from '@/components/Footer';
-import { Navigation } from '@/components/Navigation';
+import { ContactForm } from '@/components/forms';
+import { Footer, Navigation } from '@/components/layout';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { TechStackSection } from '@/components/sections/TechStackSection';
 import { ServicesSection } from '@/components/sections/ServicesSection';

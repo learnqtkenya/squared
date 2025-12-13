@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { CheckCircle, ChevronRight } from 'lucide-react';
-import { ImageCarousel } from '../ImageCarousel';
-import { AnimatedSection } from '../AnimatedSection';
+import { ImageCarousel } from '../ui';
+import { AnimatedSection } from '../ui';
 import { motion } from 'framer-motion';
 
 interface Feature {

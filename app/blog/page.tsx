@@ -1,8 +1,6 @@
 import { getAllPosts, getAllTags, getAllCategories } from '@/lib/blog-utils';
-import { Navigation } from '@/components/Navigation';
-import { Footer } from '@/components/Footer';
-import { BlogCard } from '@/components/BlogCard';
-import { BlogSearch } from '@/components/BlogSearch';
+import { Navigation, Footer } from '@/components/layout';
+import { BlogCard, BlogSearch } from '@/components/blog';
 import Link from 'next/link';
 import { Tag } from 'lucide-react';
 

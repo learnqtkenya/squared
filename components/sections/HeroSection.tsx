@@ -2,7 +2,7 @@
 
 import { Monitor, Cpu, Layers, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { AnimatedCard } from '../AnimatedSection';
+import { AnimatedCard } from '../ui';
 
 interface FeatureCard {
   icon: JSX.Element;

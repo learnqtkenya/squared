@@ -3,11 +3,11 @@
 import React from 'react';
 import { CheckCircle, ChevronLeft, Cpu, Monitor, Code, Layers, Shield, Zap, Users } from 'lucide-react';
 import Link from 'next/link';
-import { ContactForm } from '@/components/ContactForm';
-import { Footer } from '@/components/Footer';
-import { Navigation } from '@/components/Navigation';
-import { AnimatedSection, AnimatedCard } from '@/components/AnimatedSection';
-import { ImageCarousel } from '@/components/ImageCarousel';
+import { ContactForm } from '@/components/forms';
+import { Footer } from '@/components/layout';
+import { Navigation } from '@/components/layout';
+import { AnimatedSection, AnimatedCard } from '@/components/ui';
+import { ImageCarousel } from '@/components/ui';
 import { motion } from 'framer-motion';
 
 const ParcelPointCaseStudyPage = () => {

@@ -1,13 +1,12 @@
 import { getPostBySlug, getAllPosts, getRelatedPosts } from '@/lib/blog-utils';
-import { Navigation } from '@/components/Navigation';
-import { Footer } from '@/components/Footer';
+import { Navigation } from '@/components/layout';
+import { Footer } from '@/components/layout';
 import { Calendar, Clock, Tag, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 import { formatDate } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import '@/app/styles/syntax.css'; 
-import BlogCommentsWrapper from '@/components/BlogCommentsWrapper';
-import { BlogCard } from '@/components/BlogCard';
+import { BlogCommentsWrapper, BlogCard } from '@/components/blog';
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();

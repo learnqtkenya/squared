@@ -3,9 +3,8 @@
 import React from 'react';
 import { Package, Clock, Shield, MapPin, Smartphone, CreditCard, ChevronLeft, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
-import { Footer } from '@/components/Footer';
-import { AnimatedSection, AnimatedCard } from '@/components/AnimatedSection';
-import { ImageCarousel } from '@/components/ImageCarousel';
+import { Footer } from '@/components/layout';
+import { AnimatedSection, AnimatedCard, ImageCarousel } from '@/components/ui';
 import { motion } from 'framer-motion';
 
 const ParcelPoint = () => {

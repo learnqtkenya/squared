@@ -4,7 +4,7 @@ import "./globals.css";
 import "./styles/syntax.css";
 import 'highlight.js/styles/github-dark.css';
 import 'katex/dist/katex.min.css'; 
-import { ThemeProvider } from '@/components/ThemeProvider';
+import { ThemeProvider } from '@/components/theme';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

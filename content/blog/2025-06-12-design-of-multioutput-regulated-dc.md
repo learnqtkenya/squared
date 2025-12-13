@@ -1,6 +1,6 @@
 ---
 title: "Design and Operation of a Multi-Output Regulated DC Power Supply for Electronics Applications"
-author: MIchael(intern)
+author: Michael(intern)
 date: 2025-06-12 08:00:00 +0300
 categories: [Basics]
 tags: [Electrical, Power]

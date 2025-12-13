@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { Monitor, Smartphone, Zap, Users, Layers, Sparkles, ArrowRight } from 'lucide-react';
-import { ServicePageLayout } from '@/components/ServicePageLayout';
-import { AnimatedSection } from '@/components/AnimatedSection';
+import { ServicePageLayout } from '@/components/templates';
+import { AnimatedSection } from '@/components/ui';
 import Link from 'next/link';
-import { ImageCarousel } from '@/components/ImageCarousel';
+import { ImageCarousel } from '@/components/ui';
 
 const HMIDevelopmentPage = () => {
   const hero = {

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Monitor, Code, Layers, ChevronRight } from 'lucide-react';
-import { AnimatedSection, AnimatedCard } from '../AnimatedSection';
+import { AnimatedSection, AnimatedCard } from '../ui';
 import { motion } from 'framer-motion';
 
 interface Service {

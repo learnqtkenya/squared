@@ -4,10 +4,10 @@ import React from 'react';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { AnimatedSection, AnimatedCard } from './AnimatedSection';
-import { Navigation } from './Navigation';
-import { Footer } from './Footer';
-import { ContactForm } from './ContactForm';
+import { AnimatedSection, AnimatedCard } from '../ui';
+import { Navigation } from '../layout';
+import { Footer } from '../layout';
+import { ContactForm } from '../forms';
 
 interface ServiceHeroProps {
   title: string;

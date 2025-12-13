@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { COMPANY_NAME } from '@/lib/constants';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { ThemeToggle } from './ThemeToggle';
+import { ThemeToggle } from '../theme';
 import { useTheme } from 'next-themes';
 
 interface NavItem {

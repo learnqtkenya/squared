@@ -1,7 +1,7 @@
 import { getPostsByTag, getAllTags } from '@/lib/blog-utils';
-import { Navigation } from '@/components/Navigation';
-import { Footer } from '@/components/Footer';
-import { BlogCard } from '@/components/BlogCard';
+import { Navigation } from '@/components/layout';
+import { Footer } from '@/components/layout';
+import { BlogCard } from '@/components/blog';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';

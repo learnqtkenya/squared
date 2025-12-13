@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { Layers, Cpu, Workflow, PencilRuler, ShieldCheck, Wrench, ArrowRight, Zap } from 'lucide-react';
-import { ServicePageLayout } from '@/components/ServicePageLayout';
-import { AnimatedSection } from '@/components/AnimatedSection';
+import { ServicePageLayout } from '@/components/templates';
+import { AnimatedSection } from '@/components/ui';
 import Link from 'next/link';
 
 const EmbeddedSystemsDesignPage = () => {

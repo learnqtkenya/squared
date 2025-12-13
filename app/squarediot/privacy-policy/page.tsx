@@ -3,8 +3,8 @@
 import React from 'react';
 import { Shield, Mail, ArrowLeft, Smartphone, Eye, Lock, UserCheck } from 'lucide-react';
 import Link from 'next/link';
-import { Navigation } from '@/components/Navigation';
-import { Footer } from '@/components/Footer';
+import { Navigation } from '@/components/layout';
+import { Footer } from '@/components/layout';
 
 const PrivacyPolicyPage = () => {
   const currentDate = new Date().toLocaleDateString('en-US', {

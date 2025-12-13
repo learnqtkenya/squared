@@ -1,6 +1,6 @@
 ---
 title: "What if you could create a functional combination lock without a single line of code?"
-author: MIchael(Intern)
+author: Michael(Intern)
 date: 2025-07-16 14:00:00 +0300
 categories: [Basics]
 tags: [electrical]

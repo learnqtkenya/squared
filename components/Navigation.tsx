@@ -41,6 +41,12 @@ export const Navigation = ({
       ]
     },
     {
+      label: 'Products',
+      children: [
+        { label: 'ParcelPoint', href: '/parcelpoint' }
+      ]
+    },
+    {
       label: 'Case Studies',
       children: [
         { label: 'ParcelPoint', href: '/case-studies/parcelpoint' },

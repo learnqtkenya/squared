@@ -97,7 +97,7 @@ export const ValuePropositionsSection = () => {
                   </motion.div>
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-white">Senior Embedded Systems Engineering</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">10+ years of experience in smart device development</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">5+ years of experience in smart device development</p>
                   </div>
                 </div>
                 <div className="pl-16">

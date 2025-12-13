@@ -7,14 +7,13 @@ interface Technology {
 
 export const TechStackSection = () => {
   const technologies: Technology[] = [
-    { name: 'STM32', category: 'MCU' },
-    { name: 'ARM Cortex', category: 'Architecture' },
-    { name: 'Qt/QML', category: 'HMI Framework' },
+    { name: 'Qt/QML|LVGL|TouchFx|...', category: 'HMI Framework' },
+    { name: 'KiCad|Cadence|Altium', category: 'PCB Design' },
+    { name: 'Zephyr|MbedRTOS|FreeRTOS|...', category: 'RTOS' },
+    { name: 'CAN|SPI|I2C|RS485|RS232|...', category: 'Protocols' },
     { name: 'Embedded Linux', category: 'OS' },
-    { name: 'FreeRTOS', category: 'RTOS' },
-    { name: 'C/C++', category: 'Language' },
-    { name: 'Altium', category: 'PCB Design' },
-    { name: 'CAN/SPI/I2C', category: 'Protocols' }
+    { name: 'STM32|Atmel|...', category: 'MCU' },
+    { name: 'ARM Cortex', category: 'Architecture' },
   ];
 
   return (

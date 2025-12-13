@@ -88,7 +88,7 @@ const ParcelPointCaseStudyPage = () => {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {[
-              { label: 'Project Duration', value: '8 months' },
+              { label: 'Project Duration', value: '3 months' },
               { label: 'Team Size', value: '4 engineers' },
               { label: 'System Uptime', value: '99.7%' }
             ].map((stat, idx) => (
@@ -302,7 +302,7 @@ const ParcelPointCaseStudyPage = () => {
                   "The team delivered a complete solution that exceeded our expectations. The system has been incredibly reliable, and the user feedback has been overwhelmingly positive. Their expertise in embedded systems was evident throughout the project."
                 </p>
                 <footer className="text-gray-600 dark:text-gray-400 font-medium">
-                  — ParcelPoint Clients
+                  — ParcelPoint Partners
                 </footer>
               </blockquote>
             </div>

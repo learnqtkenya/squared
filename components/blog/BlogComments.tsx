@@ -8,10 +8,10 @@ interface BlogCommentsProps {
 }
 
 export const BlogComments: React.FC<BlogCommentsProps> = ({ slug }) => {
-  const repo = 'learnqtkenya/learnqtkenya';
-  
+  const repo = 'learnqtkenya/squared';
+
   return (
-    <Utterances 
+    <Utterances
       repo={repo}
       issueTerm={`blog-post-${slug}`}
       theme="preferred-color-scheme"

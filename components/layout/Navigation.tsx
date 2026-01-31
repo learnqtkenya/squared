@@ -65,7 +65,7 @@ export const Navigation = ({
   return (
     <header className={cn(
       "fixed w-full z-50 border-b",
-      "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-gray-200 dark:border-gray-800",
+      "bg-white/95 dark:bg-[#2f3136]/95 backdrop-blur-md border-gray-200 dark:border-gray-700/50",
       className
     )}>
       <nav className="max-w-7xl mx-auto px-4 py-3">
@@ -85,7 +85,7 @@ export const Navigation = ({
                 />
               </>
             )}
-            <span className="text-xl font-bold text-gray-900 dark:text-white">
+            <span className="text-xl font-bold text-gray-900 dark:text-white font-heading">
               {COMPANY_NAME}
             </span>
           </Link>

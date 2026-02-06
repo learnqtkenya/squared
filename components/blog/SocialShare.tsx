@@ -44,7 +44,7 @@ export const SocialShare = ({ title, url }: SocialShareProps) => {
           href={shareUrls.twitter}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors"
+          className="p-2 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-primary dark:text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors"
           title="Share on Twitter"
         >
           <Twitter className="h-4 w-4" />
@@ -53,7 +53,7 @@ export const SocialShare = ({ title, url }: SocialShareProps) => {
           href={shareUrls.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors"
+          className="p-2 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-primary dark:text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors"
           title="Share on LinkedIn"
         >
           <Linkedin className="h-4 w-4" />
@@ -62,14 +62,14 @@ export const SocialShare = ({ title, url }: SocialShareProps) => {
           href={shareUrls.facebook}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors"
+          className="p-2 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-primary dark:text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors"
           title="Share on Facebook"
         >
           <Facebook className="h-4 w-4" />
         </a>
         <button
           onClick={copyToClipboard}
-          className="p-2 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors"
+          className="p-2 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-primary dark:text-emerald-500 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors"
           title="Copy link"
         >
           {copied ? (

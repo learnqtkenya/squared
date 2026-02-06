@@ -1,4 +1,4 @@
-import { Navigation } from '@/components/layout';
+
 import { Footer } from '@/components/layout';
 import { BlogCard } from '@/components/blog';
 import { BlogSearch } from '@/components/blog';
@@ -52,9 +52,9 @@ async function BlogContent({ page }: { page: string }) {
             <Link
               key={tag}
               href={`/blog/tag/${tag.toLowerCase()}`}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-emerald-200 text-sm text-gray-600 hover:border-emerald-400 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-primary/20200 text-sm text-gray-600 hover:border-primary/20400 transition-colors"
             >
-              <Tag className="h-4 w-4 text-emerald-600" />
+              <Tag className="h-4 w-4 text-primary" />
               {tag}
               <span className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full text-xs">
                 {count}
@@ -96,7 +96,7 @@ export default async function BlogListPage({ params }: PageProps) {
   
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navigation />
+      
       
       <main className="pt-32 pb-20 px-4">
         <div className="max-w-6xl mx-auto">
@@ -106,7 +106,7 @@ export default async function BlogListPage({ params }: PageProps) {
         </div>
       </main>
 
-      <Footer />
+      
     </div>
   );
 }

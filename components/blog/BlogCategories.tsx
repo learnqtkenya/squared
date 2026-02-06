@@ -12,7 +12,7 @@ export const BlogCategories: React.FC<CategoriesProps> = ({ categories }) => {
 
     return (
       <div className="blog-categories">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Categories</h2>
+        <h2 className="text-2xl font-bold mb-6 text-foreground">Categories</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {sortedCategories.map(([category, count]) => (
             <Link 

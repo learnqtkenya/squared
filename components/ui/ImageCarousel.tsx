@@ -101,7 +101,7 @@ export const ImageCarousel = ({
             className={cn(
               "w-2.5 h-2.5 rounded-full transition-all duration-300",
               selectedIndex === index
-                ? "bg-emerald-600 dark:bg-emerald-500 w-8"
+                ? "bg-primary dark:bg-emerald-500 w-8"
                 : "bg-white/70 dark:bg-gray-400/70 hover:bg-white dark:hover:bg-gray-300"
             )}
             aria-label={`Go to slide ${index + 1}`}

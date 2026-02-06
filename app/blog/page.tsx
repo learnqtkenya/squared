@@ -10,8 +10,8 @@ export default async function BlogPage() {
   const categories = await getAllCategories();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-      <Navigation />
+    <div className="min-h-screen bg-background transition-colors duration-300">
+      
 
       <main className="pt-24 pb-16 px-4">
         <div className="max-w-7xl mx-auto">
@@ -21,7 +21,7 @@ export default async function BlogPage() {
                 Technical Articles
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Engineering Blog
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -40,13 +40,13 @@ export default async function BlogPage() {
           </div>
 
           <div className="mt-16 pt-12 border-t border-gray-200 dark:border-gray-800">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Topics</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6">Topics</h2>
             <div className="flex flex-wrap gap-3">
               {Object.entries(tags).map(([tag, count]) => (
                 <Link
                   key={tag}
                   href={`/blog/tag/${encodeURIComponent(tag)}`}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors border border-gray-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-700"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors border border-gray-200 dark:border-gray-700 hover:border-primary/20300 dark:hover:border-primary/20700"
                 >
                   <Tag className="h-4 w-4" />
                   <span className="font-medium">{tag}</span>
@@ -58,7 +58,7 @@ export default async function BlogPage() {
         </div>
       </main>
 
-      <Footer />
+      
     </div>
   );
 }

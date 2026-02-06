@@ -75,10 +75,10 @@ export const ContactForm: React.FC = () => {
     }
   };
 
-  const inputClasses = "p-2 border border-emerald-200 dark:border-emerald-800 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-emerald-500 dark:focus:border-emerald-600 focus:ring-1 focus:ring-emerald-500 dark:focus:ring-emerald-600 bg-white dark:bg-gray-800 hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors outline-none";
+  const inputClasses = "p-2 border border-primary/20200 dark:border-primary/20800 rounded-lg text-foreground placeholder-gray-500 dark:placeholder-gray-400 focus:border-primary/20500 dark:focus:border-primary/20600 focus:ring-1 focus:ring-emerald-500 dark:focus:ring-primary bg-white dark:bg-gray-800 hover:border-primary/20300 dark:hover:border-primary/20700 transition-colors outline-none";
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-emerald-100 dark:border-emerald-900 max-w-2xl mx-auto">
+    <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-primary/20100 dark:border-primary/20900 max-w-2xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <input
           type="text"
@@ -112,14 +112,14 @@ export const ContactForm: React.FC = () => {
 
       <button
         type="submit"
-        className="bg-emerald-600 dark:bg-emerald-700 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors w-full disabled:bg-emerald-400 dark:disabled:bg-emerald-800 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
+        className="bg-primary dark:bg-emerald-700 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 dark:hover:bg-primary transition-colors w-full disabled:bg-emerald-400 dark:disabled:bg-emerald-800 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
         disabled={submitStatus === 'sending'}
       >
         {submitStatus === 'sending' ? 'Sending...' : 'Send Message'}
       </button>
 
       {submitStatus === 'success' && (
-        <div className="mt-4 text-emerald-600 dark:text-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 p-3 rounded-lg border border-emerald-200 dark:border-emerald-800">
+        <div className="mt-4 text-primary dark:text-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 p-3 rounded-lg border border-primary/20200 dark:border-primary/20800">
           Message sent successfully! We'll get back to you soon.
         </div>
       )}

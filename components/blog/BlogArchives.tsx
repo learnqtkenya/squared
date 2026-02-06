@@ -25,7 +25,7 @@ export const BlogArchives: React.FC<ArchiveProps> = ({ posts }) => {
     <div className="blog-archives">
       {years.map(year => (
         <div key={year} className="archive-year mb-10">
-          <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">{year}</h2>
+          <h2 className="text-2xl font-bold mb-6 text-foreground">{year}</h2>
           <ul className="space-y-4">
             {postsByYear[year].map(post => (
               <li key={post.slug} className="border-b border-gray-200 dark:border-gray-700 pb-4">

@@ -5,6 +5,7 @@ import "./styles/syntax.css";
 import 'highlight.js/styles/github-dark.css';
 import 'katex/dist/katex.min.css'; 
 import { ThemeProvider } from '@/components/theme';
+import { Footer, Navigation } from "@/components/layout";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -50,7 +51,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Navigation />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

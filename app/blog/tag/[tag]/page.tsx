@@ -1,5 +1,5 @@
 import { getPostsByTag, getAllTags } from '@/lib/blog-utils';
-import { Navigation } from '@/components/layout';
+
 import { Footer } from '@/components/layout';
 import { BlogCard } from '@/components/blog';
 import Link from 'next/link';
@@ -22,7 +22,7 @@ async function TagContent({ tag }: { tag: string }) {
     <>
       <Link 
         href="/blog"
-        className="inline-flex items-center text-emerald-600 hover:text-emerald-700 transition-colors mb-8"
+        className="inline-flex items-center text-primary hover:text-emerald-700 transition-colors mb-8"
       >
         <ChevronLeft className="h-4 w-4 mr-1" />
         Back to Blog
@@ -51,7 +51,7 @@ export default async function TagPage({ params }: Props) {
   
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navigation />
+      
       
       <main className="pt-32 pb-20 px-4">
         <div className="max-w-6xl mx-auto">
@@ -59,7 +59,7 @@ export default async function TagPage({ params }: Props) {
         </div>
       </main>
 
-      <Footer />
+      
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { getPostBySlug, getAllPosts, getRelatedPosts } from '@/lib/blog-utils';
-import { Navigation } from '@/components/layout';
+
 import { Footer } from '@/components/layout';
 import { Calendar, Clock, Tag, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
@@ -30,15 +30,15 @@ export default async function BlogPostPage({
   const relatedPosts = await getRelatedPosts(post, 3);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-      <Navigation />
+    <div className="min-h-screen bg-background transition-colors duration-300">
+      
 
       <main className="pt-24 pb-20 px-4">
         <article className="container mx-auto max-w-4xl">
           <div className="mb-12">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-500 transition-colors mb-8 font-medium"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-emerald-500 transition-colors mb-8 font-medium"
             >
               <ChevronLeft className="h-4 w-4" />
               Back to Blog
@@ -67,16 +67,16 @@ export default async function BlogPostPage({
               ))}
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
               {post.title}
             </h1>
 
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400 pb-8 border-b border-gray-200 dark:border-gray-800">
               <div className="flex items-center gap-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold">
+                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-primary rounded-full flex items-center justify-center text-white font-bold">
                   {post.author.charAt(0)}
                 </div>
-                <span className="font-medium text-gray-900 dark:text-white">{post.author}</span>
+                <span className="font-medium text-foreground">{post.author}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Calendar className="h-4 w-4" />
@@ -95,7 +95,7 @@ export default async function BlogPostPage({
             </div>
           </div>
 
-          <div className="prose prose-lg prose-emerald dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-emerald-600 dark:prose-a:text-emerald-500 prose-a:no-underline hover:prose-a:underline prose-code:text-emerald-600 dark:prose-code:text-emerald-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 dark:prose-pre:bg-gray-950 prose-pre:border prose-pre:border-gray-800">
+          <div className="prose prose-lg prose-emerald dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary dark:prose-a:text-emerald-500 prose-a:no-underline hover:prose-a:underline prose-code:text-primary dark:prose-code:text-emerald-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 dark:prose-pre:bg-gray-950 prose-pre:border prose-pre:border-gray-800">
             <div
               dangerouslySetInnerHTML={{ __html: post.content }}
               className="text-gray-800 dark:text-gray-200"
@@ -104,7 +104,7 @@ export default async function BlogPostPage({
 
           {relatedPosts.length > 0 && (
             <div className="mt-20 pt-12 border-t border-gray-200 dark:border-gray-800">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">Related Articles</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Related Articles</h3>
               <div className="grid md:grid-cols-3 gap-8">
                 {relatedPosts.map(relatedPost => (
                   <BlogCard key={relatedPost.slug} post={relatedPost} />
@@ -114,13 +114,13 @@ export default async function BlogPostPage({
           )}
 
           <div className="mt-16 pt-12 border-t border-gray-200 dark:border-gray-800">
-            <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-white">Comments</h3>
+            <h3 className="text-2xl font-bold mb-8 text-foreground">Comments</h3>
             <BlogCommentsWrapper slug={resolvedParams.slug} />
           </div>
         </article>
       </main>
 
-      <Footer />
+      
     </div>
   );
 }

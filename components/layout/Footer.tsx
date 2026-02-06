@@ -50,8 +50,8 @@ export const Footer = ({
           {/* Company Info */}
           <div className="md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <CircuitBoard className="h-7 w-7 text-emerald-600 dark:text-emerald-500" />
-              <span className="font-bold text-lg text-gray-900 dark:text-white">{COMPANY_NAME}</span>
+              <CircuitBoard className="h-7 w-7 text-primary dark:text-emerald-500" />
+              <span className="font-bold text-lg text-foreground">{COMPANY_NAME}</span>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
               {COMPANY_DESCRIPTION}
@@ -61,21 +61,21 @@ export const Footer = ({
           {/* Dynamic Sections */}
           {sections.map((section) => (
             <div key={section.title}>
-              <h4 className="font-bold mb-4 text-gray-900 dark:text-white">{section.title}</h4>
+              <h4 className="font-bold mb-4 text-foreground">{section.title}</h4>
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.label}>
                     {link.href ? (
                       <Link
                         href={link.href}
-                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-emerald-500 transition-colors"
                       >
                         {link.label}
                       </Link>
                     ) : (
                       <button
                         onClick={link.onClick}
-                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-emerald-500 transition-colors"
                       >
                         {link.label}
                       </button>
@@ -88,7 +88,7 @@ export const Footer = ({
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-bold mb-4 text-gray-900 dark:text-white">Contact</h4>
+            <h4 className="font-bold mb-4 text-foreground">Contact</h4>
             <ul className="space-y-3">
               <li className="break-words text-sm text-gray-600 dark:text-gray-400">{contactEmail}</li>
               <li className="text-sm text-gray-600 dark:text-gray-400">{contactLocation}</li>
@@ -96,13 +96,13 @@ export const Footer = ({
 
             {/* Social Links */}
             <div className="mt-6">
-              <h4 className="font-bold mb-4 text-gray-900 dark:text-white">Follow Us</h4>
+              <h4 className="font-bold mb-4 text-foreground">Follow Us</h4>
               <div className="flex gap-4">
                 <a
                   href="https://github.com/learnqtkenya"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-emerald-500 transition-colors"
                   aria-label="GitHub"
                 >
                   <Github className="h-6 w-6" />
@@ -111,7 +111,7 @@ export const Footer = ({
                   href="https://www.linkedin.com/company/squared-computing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-emerald-500 transition-colors"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="h-6 w-6" />

@@ -8,7 +8,7 @@ interface BlogCardProps {
 }
 
 export const BlogCard = ({ post }: BlogCardProps) => (
-  <article className="group bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-emerald-400 dark:hover:border-emerald-600 transition-all duration-300 overflow-hidden hover:shadow-xl h-full flex flex-col">
+  <article className="group bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary/20400 dark:hover:border-primary/20600 transition-all duration-300 overflow-hidden hover:shadow-xl h-full flex flex-col">
     {post.coverImage && (
       <Link href={`/blog/${post.slug}`}>
         <div className="aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-900">
@@ -34,7 +34,7 @@ export const BlogCard = ({ post }: BlogCardProps) => (
       </div>
 
       <Link href={`/blog/${post.slug}`} className="flex-1 flex flex-col">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors line-clamp-2 leading-snug">
+        <h2 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary dark:group-hover:text-emerald-500 transition-colors line-clamp-2 leading-snug">
           {post.title}
         </h2>
 

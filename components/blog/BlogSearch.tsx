@@ -57,7 +57,7 @@ export const BlogSearch = ({ posts }: BlogSearchProps) => {
             setSearchQuery(e.target.value);
             setIsSearching(true);
           }}
-          className="w-full px-4 py-2 pl-10 pr-10 rounded-lg border border-emerald-200 dark:border-emerald-800 focus:border-emerald-400 dark:focus:border-emerald-700 focus:ring-1 focus:ring-emerald-400 dark:focus:ring-emerald-700 outline-none bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
+          className="w-full px-4 py-2 pl-10 pr-10 rounded-lg border border-primary/20200 dark:border-primary/20800 focus:border-primary/20400 dark:focus:border-primary/20700 focus:ring-1 focus:ring-emerald-400 dark:focus:ring-emerald-700 outline-none bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
         />
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
         {searchQuery && (
@@ -74,7 +74,7 @@ export const BlogSearch = ({ posts }: BlogSearchProps) => {
       </div>
 
       {isSearching && searchQuery && (
-        <div className="absolute z-10 w-full mt-2 bg-white dark:bg-gray-800 rounded-lg border border-emerald-200 dark:border-emerald-900 shadow-lg max-h-96 overflow-y-auto">
+        <div className="absolute z-10 w-full mt-2 bg-white dark:bg-gray-800 rounded-lg border border-primary/20200 dark:border-primary/20900 shadow-lg max-h-96 overflow-y-auto">
           {searchResults.length > 0 ? (
             <ul className="py-2">
               {searchResults.map((post) => (
@@ -87,14 +87,14 @@ export const BlogSearch = ({ posts }: BlogSearchProps) => {
                       setIsSearching(false);
                     }}
                   >
-                    <h3 className="font-semibold text-gray-900 dark:text-white">{post.title}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">{post.excerpt}</p>
+                    <h3 className="font-semibold text-foreground">{post.title}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
                   </Link>
                 </li>
               ))}
             </ul>
           ) : (
-            <div className="px-4 py-3 text-gray-600 dark:text-gray-300">
+            <div className="px-4 py-3 text-muted-foreground">
               No results found for "{searchQuery}"
             </div>
           )}

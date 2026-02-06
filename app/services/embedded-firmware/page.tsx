@@ -95,17 +95,17 @@ const EmbeddedFirmwarePage = () => {
       <section className="py-20 px-4 bg-gradient-to-br from-white via-gray-50/50 to-white dark:from-gray-900 dark:via-gray-800/50 dark:to-gray-900">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
               What We Build
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               From medical devices to industrial controllers, our firmware powers products in demanding environments
             </p>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-3 gap-8">
             <AnimatedSection delay={0.1}>
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 hover:border-emerald-400 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-xl h-full">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 hover:border-primary/20400 dark:hover:border-primary/20600 transition-all duration-300 hover:shadow-xl h-full">
                 <div className="mb-6 overflow-hidden rounded-xl">
                   <img
                     src="/images/services/smartthermostat.png"
@@ -113,21 +113,21 @@ const EmbeddedFirmwarePage = () => {
                     className="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">IoT Devices</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <h3 className="text-xl font-bold mb-3 text-foreground">IoT Devices</h3>
+                <p className="text-muted-foreground mb-4">
                   Smart thermostats, sensors, and connected devices that need to run for months on battery while maintaining cloud connectivity.
                 </p>
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                   <li className="flex items-start gap-2">
-                    <span className="text-emerald-600 dark:text-emerald-500 mt-0.5">•</span>
+                    <span className="text-primary dark:text-emerald-500 mt-0.5">•</span>
                     <span>Battery life optimization</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-emerald-600 dark:text-emerald-500 mt-0.5">•</span>
+                    <span className="text-primary dark:text-emerald-500 mt-0.5">•</span>
                     <span>Wireless protocol stacks</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-emerald-600 dark:text-emerald-500 mt-0.5">•</span>
+                    <span className="text-primary dark:text-emerald-500 mt-0.5">•</span>
                     <span>Cloud integration</span>
                   </li>
                 </ul>
@@ -135,7 +135,7 @@ const EmbeddedFirmwarePage = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 hover:border-emerald-400 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-xl h-full">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 hover:border-primary/20400 dark:hover:border-primary/20600 transition-all duration-300 hover:shadow-xl h-full">
                 <div className="mb-6 overflow-hidden rounded-xl">
                   <img
                     src="/images/services/medicalmonitoringdevice.jpg"
@@ -143,21 +143,21 @@ const EmbeddedFirmwarePage = () => {
                     className="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Medical Equipment</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <h3 className="text-xl font-bold mb-3 text-foreground">Medical Equipment</h3>
+                <p className="text-muted-foreground mb-4">
                   Critical monitoring and diagnostic equipment where reliability and precise timing are non-negotiable.
                 </p>
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                   <li className="flex items-start gap-2">
-                    <span className="text-emerald-600 dark:text-emerald-500 mt-0.5">•</span>
+                    <span className="text-primary dark:text-emerald-500 mt-0.5">•</span>
                     <span>Safety-critical design</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-emerald-600 dark:text-emerald-500 mt-0.5">•</span>
+                    <span className="text-primary dark:text-emerald-500 mt-0.5">•</span>
                     <span>Real-time signal processing</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-emerald-600 dark:text-emerald-500 mt-0.5">•</span>
+                    <span className="text-primary dark:text-emerald-500 mt-0.5">•</span>
                     <span>Regulatory compliance</span>
                   </li>
                 </ul>
@@ -165,7 +165,7 @@ const EmbeddedFirmwarePage = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={0.3}>
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 hover:border-emerald-400 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-xl h-full">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 hover:border-primary/20400 dark:hover:border-primary/20600 transition-all duration-300 hover:shadow-xl h-full">
                 <div className="mb-6 overflow-hidden rounded-xl">
                   <img
                     src="/images/services/industrialcontrolpanel.png"
@@ -173,21 +173,21 @@ const EmbeddedFirmwarePage = () => {
                     className="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Industrial Control</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <h3 className="text-xl font-bold mb-3 text-foreground">Industrial Control</h3>
+                <p className="text-muted-foreground mb-4">
                   Factory automation, motor controllers, and PLCs that demand precision and uptime in harsh environments.
                 </p>
                 <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                   <li className="flex items-start gap-2">
-                    <span className="text-emerald-600 dark:text-emerald-500 mt-0.5">•</span>
+                    <span className="text-primary dark:text-emerald-500 mt-0.5">•</span>
                     <span>Deterministic control loops</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-emerald-600 dark:text-emerald-500 mt-0.5">•</span>
+                    <span className="text-primary dark:text-emerald-500 mt-0.5">•</span>
                     <span>Industrial protocols</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-emerald-600 dark:text-emerald-500 mt-0.5">•</span>
+                    <span className="text-primary dark:text-emerald-500 mt-0.5">•</span>
                     <span>EMI/EMC hardening</span>
                   </li>
                 </ul>
@@ -198,16 +198,16 @@ const EmbeddedFirmwarePage = () => {
       </section>
 
       {/* Case Study Preview */}
-      <section className="py-20 px-4 bg-white dark:bg-gray-900">
+      <section className="py-20 px-4 bg-background">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
               Featured Project
             </h2>
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>
-            <div className="bg-gradient-to-br from-emerald-50 via-white to-emerald-50/30 dark:from-gray-800 dark:via-gray-800 dark:to-emerald-950/20 rounded-2xl shadow-xl p-8 md:p-12 border border-emerald-200 dark:border-emerald-900">
+            <div className="bg-gradient-to-br from-emerald-50 via-white to-emerald-50/30 dark:from-gray-800 dark:via-gray-800 dark:to-emerald-950/20 rounded-2xl shadow-xl p-8 md:p-12 border border-primary/20200 dark:border-primary/20900">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="overflow-hidden rounded-xl shadow-lg">
                   <img
@@ -217,13 +217,13 @@ const EmbeddedFirmwarePage = () => {
                   />
                 </div>
                 <div>
-                  <div className="mb-4 inline-block px-4 py-1.5 bg-emerald-600 dark:bg-emerald-700 text-white rounded-full text-sm font-medium">
+                  <div className="mb-4 inline-block px-4 py-1.5 bg-primary dark:bg-emerald-700 text-white rounded-full text-sm font-medium">
                     Case Study
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
                     ParcelPoint Smart Locker
                   </h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                  <p className="text-lg text-muted-foreground mb-6">
                     Multi-processor firmware managing secure access control, payment processing, cloud connectivity, and thermal printing.
                   </p>
                   <ul className="space-y-3 mb-8">
@@ -234,13 +234,13 @@ const EmbeddedFirmwarePage = () => {
                       'Remote monitoring and diagnostics'
                     ].map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 bg-emerald-600 dark:bg-emerald-500 rounded-full"></div>
+                        <div className="w-1.5 h-1.5 bg-primary dark:bg-emerald-500 rounded-full"></div>
                         <span className="text-gray-700 dark:text-gray-300">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <Link href="/case-studies/parcelpoint">
-                    <button className="inline-flex items-center gap-2 bg-emerald-600 dark:bg-emerald-700 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-all duration-300 shadow-lg hover:shadow-xl font-medium">
+                    <button className="inline-flex items-center gap-2 bg-primary dark:bg-emerald-700 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 dark:hover:bg-primary transition-all duration-300 shadow-lg hover:shadow-xl font-medium">
                       <span>Read Full Case Study</span>
                       <ArrowRight className="h-4 w-4" />
                     </button>
@@ -256,10 +256,10 @@ const EmbeddedFirmwarePage = () => {
       <section className="py-20 px-4 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
               Platforms We Support
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Deep expertise across major embedded platforms and architectures
             </p>
           </AnimatedSection>
@@ -278,13 +278,13 @@ const EmbeddedFirmwarePage = () => {
               { name: 'Infineon', logo: '/images/services/logos/Infineon.svg' }
             ].map((platform, idx) => (
               <AnimatedSection key={platform.name} delay={idx * 0.05}>
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-emerald-400 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-lg flex flex-col items-center justify-center group">
+                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-primary/20400 dark:hover:border-primary/20600 transition-all duration-300 hover:shadow-lg flex flex-col items-center justify-center group">
                   <img
                     src={platform.logo}
                     alt={`${platform.name} logo`}
                     className="h-12 mb-3 dark:filter dark:brightness-90 dark:invert group-hover:scale-110 transition-transform duration-300"
                   />
-                  <span className="text-sm text-gray-600 dark:text-gray-300 text-center font-medium">{platform.name}</span>
+                  <span className="text-sm text-muted-foreground text-center font-medium">{platform.name}</span>
                 </div>
               </AnimatedSection>
             ))}

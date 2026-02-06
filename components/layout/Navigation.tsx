@@ -16,13 +16,11 @@ interface NavItem {
 }
 
 interface NavigationProps {
-  onScrollToSection?: (sectionId: string) => void;
   logo?: React.ReactNode;
   className?: string;
 }
 
 export const Navigation = ({ 
-  onScrollToSection, 
   logo, 
   className 
 }: NavigationProps) => {
@@ -43,19 +41,20 @@ export const Navigation = ({
     {
       label: 'Products',
       children: [
-        { label: 'ParcelPoint', href: '/parcelpoint' }
+        { label: 'ParcelPoint', href: '/products/parcelpoint' },
+        { label: 'SquaredIot', href: '/products/squarediot' }
       ]
     },
     {
       label: 'Case Studies',
       children: [
         { label: 'ParcelPoint', href: '/case-studies/parcelpoint' },
-        { label: 'View All', onClick: () => onScrollToSection?.('portfolio') }
+        { label: 'View All', href: '/case-studies/parcelpoint' }
       ]
     },
     { label: 'Blog', href: '/blog' },
     { label: 'About', href: '/about' },
-    { label: 'Contact', onClick: () => onScrollToSection?.('contact') }
+    { label: 'Contact', href: '/contact' }
   ];
 
   const toggleDropdown = (label: string) => {
@@ -85,7 +84,7 @@ export const Navigation = ({
                 />
               </>
             )}
-            <span className="text-xl font-bold text-gray-900 dark:text-white font-heading">
+            <span className="text-xl font-bold text-foreground font-heading">
               {COMPANY_NAME}
             </span>
           </Link>
@@ -97,7 +96,7 @@ export const Navigation = ({
                 {item.children ? (
                   <button
                     onClick={() => toggleDropdown(item.label)}
-                    className="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    className="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-emerald-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                   >
                     {item.label}
                     <ChevronDown className="ml-1.5 h-4 w-4" />
@@ -105,14 +104,14 @@ export const Navigation = ({
                 ) : item.href ? (
                   <Link
                     href={item.href}
-                    className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-emerald-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                   >
                     {item.label}
                   </Link>
                 ) : (
                   <button
                     onClick={item.onClick}
-                    className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    className="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-emerald-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                   >
                     {item.label}
                   </button>
@@ -126,7 +125,7 @@ export const Navigation = ({
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-500 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                          className="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-emerald-500 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -134,7 +133,7 @@ export const Navigation = ({
                         <button
                           key={child.label}
                           onClick={child.onClick}
-                          className="block w-full text-left px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-500 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                          className="block w-full text-left px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-emerald-500 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                         >
                           {child.label}
                         </button>
@@ -159,7 +158,7 @@ export const Navigation = ({
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="ml-2 p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
+              className="ml-2 p-2 rounded-lg text-muted-foreground hover:text-primary dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -179,7 +178,7 @@ export const Navigation = ({
                   <>
                     <button
                       onClick={() => toggleDropdown(item.label)}
-                      className="flex items-center justify-between w-full px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
+                      className="flex items-center justify-between w-full px-4 py-2 rounded-lg text-muted-foreground hover:text-primary dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
                     >
                       {item.label}
                       <ChevronDown
@@ -196,7 +195,7 @@ export const Navigation = ({
                             <Link
                               key={child.label}
                               href={child.href}
-                              className="block px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
+                              className="block px-4 py-2 rounded-lg text-muted-foreground hover:text-primary dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
                               onClick={() => setIsMenuOpen(false)}
                             >
                               {child.label}
@@ -208,7 +207,7 @@ export const Navigation = ({
                                 child.onClick?.();
                                 setIsMenuOpen(false);
                               }}
-                              className="block w-full text-left px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
+                              className="block w-full text-left px-4 py-2 rounded-lg text-muted-foreground hover:text-primary dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
                             >
                               {child.label}
                             </button>
@@ -220,7 +219,7 @@ export const Navigation = ({
                 ) : item.href ? (
                   <Link
                     href={item.href}
-                    className="block px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
+                    className="block px-4 py-2 rounded-lg text-muted-foreground hover:text-primary dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
@@ -231,7 +230,7 @@ export const Navigation = ({
                       item.onClick?.();
                       setIsMenuOpen(false);
                     }}
-                    className="block w-full text-left px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
+                    className="block w-full text-left px-4 py-2 rounded-lg text-muted-foreground hover:text-primary dark:hover:text-white hover:bg-emerald-50 dark:hover:bg-gray-800"
                   >
                     {item.label}
                   </button>

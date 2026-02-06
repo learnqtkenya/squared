@@ -5,21 +5,21 @@ import { CheckCircle, ChevronLeft, Cpu, Monitor, Code, Layers, Shield, Zap, User
 import Link from 'next/link';
 import { ContactForm } from '@/components/forms';
 import { Footer } from '@/components/layout';
-import { Navigation } from '@/components/layout';
+
 import { AnimatedSection, AnimatedCard } from '@/components/ui';
 import { ImageCarousel } from '@/components/ui';
 import { motion } from 'framer-motion';
 
 const ParcelPointCaseStudyPage = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-      <Navigation />
+    <div className="min-h-screen bg-background transition-colors duration-300">
+      
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-white via-emerald-50/30 to-white dark:from-gray-900 dark:via-emerald-950/20 dark:to-gray-900 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
-            <Link href="/" className="inline-flex items-center text-emerald-600 dark:text-emerald-500 mb-8 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-medium">
+            <Link href="/" className="inline-flex items-center text-primary dark:text-emerald-500 mb-8 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors font-medium">
               <ChevronLeft className="h-4 w-4 mr-1" />
               <span>Back to Home</span>
             </Link>
@@ -27,13 +27,13 @@ const ParcelPointCaseStudyPage = () => {
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <AnimatedSection delay={0.2}>
-              <div className="mb-4 inline-block px-4 py-1.5 bg-emerald-600 dark:bg-emerald-700 text-white rounded-full text-sm font-medium shadow-lg">
+              <div className="mb-4 inline-block px-4 py-1.5 bg-primary dark:bg-emerald-700 text-white rounded-full text-sm font-medium shadow-lg">
                 Case Study
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground leading-tight">
                 ParcelPoint Smart Locker
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                 A complete embedded solution for automated parcel management - from custom hardware to cloud-connected software.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -41,7 +41,7 @@ const ParcelPointCaseStudyPage = () => {
                   href="#contact"
                   whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(5, 150, 105, 0.3)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-emerald-600 text-white px-8 py-4 rounded-lg hover:bg-emerald-700 dark:bg-emerald-700 dark:hover:bg-emerald-600 transition-all duration-300 shadow-lg font-medium"
+                  className="bg-primary text-white px-8 py-4 rounded-lg hover:bg-emerald-700 dark:bg-emerald-700 dark:hover:bg-primary transition-all duration-300 shadow-lg font-medium"
                 >
                   Start Similar Project
                 </motion.a>
@@ -49,7 +49,7 @@ const ParcelPointCaseStudyPage = () => {
                   href="#technical"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="border-2 border-emerald-600 dark:border-emerald-500 text-emerald-600 dark:text-emerald-500 px-8 py-4 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-all duration-300 font-medium"
+                  className="border-2 border-primary/20600 dark:border-primary/20500 text-primary dark:text-emerald-500 px-8 py-4 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-all duration-300 font-medium"
                 >
                   View Details
                 </motion.a>
@@ -75,13 +75,13 @@ const ParcelPointCaseStudyPage = () => {
       </section>
 
       {/* Project Overview */}
-      <section className="py-20 px-4 bg-white dark:bg-gray-900">
+      <section className="py-20 px-4 bg-background">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
               Project Overview
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               An automated locker system that streamlines package delivery and collection in urban areas
             </p>
           </AnimatedSection>
@@ -93,9 +93,9 @@ const ParcelPointCaseStudyPage = () => {
               { label: 'System Uptime', value: '99.7%' }
             ].map((stat, idx) => (
               <AnimatedCard key={idx} delay={idx * 0.1}>
-                <div className="bg-gradient-to-br from-emerald-50 to-white dark:from-gray-800 dark:to-emerald-950/20 rounded-2xl p-8 border border-emerald-200 dark:border-emerald-900 text-center">
-                  <div className="text-4xl font-bold text-emerald-600 dark:text-emerald-500 mb-2">{stat.value}</div>
-                  <div className="text-gray-600 dark:text-gray-300">{stat.label}</div>
+                <div className="bg-gradient-to-br from-emerald-50 to-white dark:from-gray-800 dark:to-emerald-950/20 rounded-2xl p-8 border border-primary/20200 dark:border-primary/20900 text-center">
+                  <div className="text-4xl font-bold text-primary dark:text-emerald-500 mb-2">{stat.value}</div>
+                  <div className="text-muted-foreground">{stat.label}</div>
                 </div>
               </AnimatedCard>
             ))}
@@ -103,8 +103,8 @@ const ParcelPointCaseStudyPage = () => {
 
           <div className="grid md:grid-cols-2 gap-12">
             <AnimatedSection delay={0.2}>
-              <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">The Challenge</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              <h3 className="text-2xl font-bold mb-6 text-foreground">The Challenge</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
                 Develop a secure, reliable automated locker system that works 24/7 in outdoor environments, handles payment processing, provides real-time status updates, and offers an intuitive user experience.
               </p>
               <div className="space-y-4">
@@ -123,7 +123,7 @@ const ParcelPointCaseStudyPage = () => {
                     transition={{ duration: 0.4, delay: idx * 0.1 }}
                     className="flex items-start gap-3"
                   >
-                    <div className="w-2 h-2 bg-emerald-600 dark:bg-emerald-500 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-primary dark:bg-emerald-500 rounded-full mt-2"></div>
                     <span className="text-gray-700 dark:text-gray-300">{challenge}</span>
                   </motion.div>
                 ))}
@@ -131,11 +131,11 @@ const ParcelPointCaseStudyPage = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={0.4}>
-              <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">The Solution</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              <h3 className="text-2xl font-bold mb-6 text-foreground">The Solution</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
                 We designed and delivered a complete end-to-end solution covering hardware, firmware, user interface, and cloud integration.
               </p>
-              <div className="bg-gradient-to-br from-emerald-50 to-white dark:from-gray-800 dark:to-emerald-950/20 p-6 rounded-2xl border border-emerald-200 dark:border-emerald-900">
+              <div className="bg-gradient-to-br from-emerald-50 to-white dark:from-gray-800 dark:to-emerald-950/20 p-6 rounded-2xl border border-primary/20200 dark:border-primary/20900">
                 <ul className="space-y-3">
                   {[
                     'Qt/QML touchscreen interface',
@@ -143,7 +143,7 @@ const ParcelPointCaseStudyPage = () => {
                     'Mobile and desktop app integration',
                   ].map((solution, idx) => (
                     <li key={idx} className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-emerald-600 dark:text-emerald-500 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-primary dark:text-emerald-500 flex-shrink-0" />
                       <span className="text-gray-700 dark:text-gray-300">{solution}</span>
                     </li>
                   ))}
@@ -158,10 +158,10 @@ const ParcelPointCaseStudyPage = () => {
       <section id="technical" className="py-20 px-4 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
               Technical Implementation
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               A multi-disciplinary approach combining hardware, firmware, and software expertise
             </p>
           </AnimatedSection>
@@ -242,16 +242,16 @@ const ParcelPointCaseStudyPage = () => {
               }
             ].map((area, idx) => (
               <AnimatedCard key={idx} delay={idx * 0.1}>
-                <div className="h-full bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 hover:border-emerald-400 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-xl">
-                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-700 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg">
+                <div className="h-full bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 hover:border-primary/20400 dark:hover:border-primary/20600 transition-all duration-300 hover:shadow-xl">
+                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-primary dark:primary dark:to-emerald-700 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg">
                     {area.icon}
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{area.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">{area.description}</p>
+                  <h3 className="text-xl font-bold mb-3 text-foreground">{area.title}</h3>
+                  <p className="text-muted-foreground mb-4 text-sm">{area.description}</p>
                   <ul className="space-y-2">
                     {area.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
-                        <span className="text-emerald-600 dark:text-emerald-500 mt-0.5">•</span>
+                        <span className="text-primary dark:text-emerald-500 mt-0.5">•</span>
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -264,13 +264,13 @@ const ParcelPointCaseStudyPage = () => {
       </section>
 
       {/* Results & Impact */}
-      <section className="py-20 px-4 bg-white dark:bg-gray-900">
+      <section className="py-20 px-4 bg-background">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
               Results & Impact
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Measurable success in real-world deployment
             </p>
           </AnimatedSection>
@@ -283,20 +283,20 @@ const ParcelPointCaseStudyPage = () => {
               { metric: '24/7', label: 'Operation', icon: <Shield className="h-6 w-6" /> }
             ].map((result, idx) => (
               <AnimatedSection key={idx} delay={idx * 0.1}>
-                <div className="bg-gradient-to-br from-emerald-50 via-white to-emerald-50/30 dark:from-gray-800 dark:via-gray-800 dark:to-emerald-950/20 rounded-2xl p-8 border border-emerald-200 dark:border-emerald-900 text-center hover:shadow-xl transition-shadow duration-300">
-                  <div className="w-12 h-12 bg-emerald-600 dark:bg-emerald-700 rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+                <div className="bg-gradient-to-br from-emerald-50 via-white to-emerald-50/30 dark:from-gray-800 dark:via-gray-800 dark:to-emerald-950/20 rounded-2xl p-8 border border-primary/20200 dark:border-primary/20900 text-center hover:shadow-xl transition-shadow duration-300">
+                  <div className="w-12 h-12 bg-primary dark:bg-emerald-700 rounded-full flex items-center justify-center mx-auto mb-4 text-white">
                     {result.icon}
                   </div>
-                  <div className="text-4xl font-bold text-emerald-600 dark:text-emerald-500 mb-2">{result.metric}</div>
-                  <div className="text-gray-600 dark:text-gray-300 font-medium">{result.label}</div>
+                  <div className="text-4xl font-bold text-primary dark:text-emerald-500 mb-2">{result.metric}</div>
+                  <div className="text-muted-foreground font-medium">{result.label}</div>
                 </div>
               </AnimatedSection>
             ))}
           </div>
 
           <AnimatedSection delay={0.6}>
-            <div className="mt-16 bg-gradient-to-br from-emerald-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 md:p-12 border border-emerald-200 dark:border-emerald-900 shadow-lg">
-              <h3 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Client Feedback</h3>
+            <div className="mt-16 bg-gradient-to-br from-emerald-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 md:p-12 border border-primary/20200 dark:border-primary/20900 shadow-lg">
+              <h3 className="text-2xl font-bold mb-6 text-center text-foreground">Client Feedback</h3>
               <blockquote className="text-center">
                 <p className="text-lg text-gray-700 dark:text-gray-300 italic mb-4 leading-relaxed">
                   "The team delivered a complete solution that exceeded our expectations. The system has been incredibly reliable, and the user feedback has been overwhelmingly positive. Their expertise in embedded systems was evident throughout the project."
@@ -314,10 +314,10 @@ const ParcelPointCaseStudyPage = () => {
       <section id="contact" className="py-20 px-4 bg-gradient-to-br from-emerald-50 via-white to-emerald-50/30 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
               Ready to Start Your Project?
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Let's discuss how we can bring your embedded systems project to life with the same level of expertise and dedication.
             </p>
           </AnimatedSection>

@@ -29,7 +29,7 @@ export const Pagination = ({ currentPage, totalPages, basePath }: PaginationProp
         className={`p-2 rounded-lg border ${
           currentPage === 1
             ? 'border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-600 cursor-not-allowed'
-            : 'border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-500 hover:border-emerald-400 dark:hover:border-emerald-700'
+            : 'border-primary/20200 dark:border-primary/20800 text-primary dark:text-emerald-500 hover:border-primary/20400 dark:hover:border-primary/20700'
         }`}
         aria-disabled={currentPage === 1}
         tabIndex={currentPage === 1 ? -1 : 0}
@@ -41,7 +41,7 @@ export const Pagination = ({ currentPage, totalPages, basePath }: PaginationProp
         <>
           <Link
             href={`${basePath}/1`}
-            className="px-4 py-2 rounded-lg border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-500 hover:border-emerald-400 dark:hover:border-emerald-700"
+            className="px-4 py-2 rounded-lg border border-primary/20200 dark:border-primary/20800 text-primary dark:text-emerald-500 hover:border-primary/20400 dark:hover:border-primary/20700"
           >
             1
           </Link>
@@ -55,8 +55,8 @@ export const Pagination = ({ currentPage, totalPages, basePath }: PaginationProp
           href={`${basePath}/${page}`}
           className={`px-4 py-2 rounded-lg border ${
             currentPage === page
-              ? 'bg-emerald-600 dark:bg-emerald-700 text-white border-emerald-600 dark:border-emerald-700'
-              : 'border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-500 hover:border-emerald-400 dark:hover:border-emerald-700'
+              ? 'bg-primary dark:bg-emerald-700 text-white border-primary/20600 dark:border-primary/20700'
+              : 'border-primary/20200 dark:border-primary/20800 text-primary dark:text-emerald-500 hover:border-primary/20400 dark:hover:border-primary/20700'
           }`}
         >
           {page}
@@ -68,7 +68,7 @@ export const Pagination = ({ currentPage, totalPages, basePath }: PaginationProp
           <span className="text-gray-400 dark:text-gray-500">...</span>
           <Link
             href={`${basePath}/${totalPages}`}
-            className="px-4 py-2 rounded-lg border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-500 hover:border-emerald-400 dark:hover:border-emerald-700"
+            className="px-4 py-2 rounded-lg border border-primary/20200 dark:border-primary/20800 text-primary dark:text-emerald-500 hover:border-primary/20400 dark:hover:border-primary/20700"
           >
             {totalPages}
           </Link>
@@ -80,7 +80,7 @@ export const Pagination = ({ currentPage, totalPages, basePath }: PaginationProp
         className={`p-2 rounded-lg border ${
           currentPage === totalPages
             ? 'border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-600 cursor-not-allowed'
-            : 'border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-500 hover:border-emerald-400 dark:hover:border-emerald-700'
+            : 'border-primary/20200 dark:border-primary/20800 text-primary dark:text-emerald-500 hover:border-primary/20400 dark:hover:border-primary/20700'
         }`}
         aria-disabled={currentPage === totalPages}
         tabIndex={currentPage === totalPages ? -1 : 0}

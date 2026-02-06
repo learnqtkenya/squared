@@ -15,6 +15,15 @@ export const HeroSection = ({ onScrollToSection }: HeroSectionProps) => {
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5 dark:hidden"></div>
       <div className="absolute inset-0 bg-[url('/circuit-board.svg')] opacity-0 dark:opacity-100"></div>
 
+      {/* Mobile background image */}
+      <div className="lg:hidden absolute inset-0 opacity-10 dark:opacity-5">
+        <img
+          src="/products/parcel-point.png"
+          alt=""
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
+
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => {
@@ -112,7 +121,7 @@ export const HeroSection = ({ onScrollToSection }: HeroSectionProps) => {
             </motion.div>
           </div>
 
-          {/* Right side - Banner image */}
+          {/* Right side - Banner image (Desktop only) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -120,12 +129,14 @@ export const HeroSection = ({ onScrollToSection }: HeroSectionProps) => {
             className="relative hidden lg:flex items-center justify-center"
           >
             <div className="relative w-full h-[600px]">
-              {/* Banner image - replace src with your actual image */}
-              <img
-                src="/products/parcel-point.png"
-                alt="Embedded Systems Innovation"
-                className="w-full h-full object-contain object-right"
-              />
+              {/* Banner image */}
+              <div className="absolute inset-0 flex items-center justify-end">
+                <img
+                  src="/products/parcel-point.png"
+                  alt="Embedded Systems Innovation"
+                  className="w-full h-full object-contain object-right"
+                />
+              </div>
               {/* Optional glow effect behind image */}
               <div className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-secondary/10 to-primary/10 dark:via-secondary/20 dark:to-primary/20 blur-3xl"></div>
             </div>

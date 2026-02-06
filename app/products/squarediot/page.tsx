@@ -3,8 +3,6 @@
 import { useState } from 'react';
 import Image from 'next/image'
 import Iot from '../../../public/assets/iot.svg?url';
-// import Iot from '@/components/ui/icons/iot';
-import SvgProductIteration from '@/components/ui/icons/product-iteration';
 
 export default function SquaredIoTPage() {
     const [data, setData] = useState(null);

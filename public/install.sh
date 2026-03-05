@@ -21,18 +21,18 @@ case "$(uname -m)" in
     *)              echo "Error: unsupported architecture $(uname -m)"; exit 1 ;;
 esac
 
-# Get latest CLI release tag (cli-v*)
+# Get latest release tag (v*)
 LATEST=$(curl -fsSL "https://api.github.com/repos/${REPO}/releases" \
-    | grep -o '"tag_name": *"cli-v[^"]*"' \
+    | grep -o '"tag_name": *"v[^"]*"' \
     | head -1 \
-    | grep -o 'cli-v[^"]*')
+    | grep -o 'v[^"]*')
 
 if [ -z "$LATEST" ]; then
-    echo "Error: could not find a CLI release"
+    echo "Error: could not find a release"
     exit 1
 fi
 
-VERSION="${LATEST#cli-}"
+VERSION="${LATEST}"
 
 ARCHIVE="squared_${VERSION#v}_${OS}_${ARCH}.tar.gz"
 URL="https://github.com/${REPO}/releases/download/${LATEST}/${ARCHIVE}"

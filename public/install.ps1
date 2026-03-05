@@ -13,16 +13,16 @@ $Arch = switch ([System.Runtime.InteropServices.RuntimeInformation]::OSArchitect
     default { Write-Error "Unsupported architecture: $_"; exit 1 }
 }
 
-# Get latest CLI release tag
+# Get latest release tag
 $Releases = Invoke-RestMethod "https://api.github.com/repos/$Repo/releases"
-$Latest = ($Releases | Where-Object { $_.tag_name -like "cli-v*" } | Select-Object -First 1).tag_name
+$Latest = ($Releases | Where-Object { $_.tag_name -like "v*" } | Select-Object -First 1).tag_name
 
 if (-not $Latest) {
-    Write-Error "Could not find a CLI release"
+    Write-Error "Could not find a release"
     exit 1
 }
 
-$Version = $Latest -replace "^cli-", ""
+$Version = $Latest -replace "^v", ""
 $Archive = "squared_${Version}_windows_${Arch}.zip"
 $Url = "https://github.com/$Repo/releases/download/$Latest/$Archive"
 
